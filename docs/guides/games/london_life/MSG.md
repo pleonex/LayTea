@@ -1,4 +1,6 @@
-# MSG format
+# Text format MSG (MeSsaGe)
+
+Binary format that encode the game text.
 
 ## Specification
 

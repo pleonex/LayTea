@@ -3,6 +3,12 @@
     - name: Professor Layton - London Life
       href: games/london_life/summary.md
       items:
+        - name: Format ARCHIVE
+          href: games/london_life/ARCHIVE.md
+        - name: Format DARC
+          href: games/london_life/DARC.md
+        - name: Format DENC
+          href: games/london_life/DENC.md
         - name: Format MSG
           href: games/london_life/MSG.md
 
