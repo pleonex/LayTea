@@ -1,0 +1,11 @@
+{
+    "_appTitle": "Modding tools for 'Professor Layton' games",
+    "_appFooter": "Copyright (c) 2020 pleonex",
+    "_enableSearch": true,
+    "_enableNewTab": true,
+    "_gitContribute": {
+        "apiSpecFolder": "docs/apidoc",
+        "repo": "https://github.com/pleonex/LayTea",
+        "branch": "main"
+    }
+}
