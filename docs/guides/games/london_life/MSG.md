@@ -6,7 +6,7 @@ Binary format that encode the game text.
 
 | Offset | Size | Description                                         |
 | ------ | ---- | --------------------------------------------------- |
-| 0x00   | 0x04 | ID: `MSG `                                          |
+| 0x00   | 0x04 | Stamp `MSG `                                        |
 | 0x04   | 0x04 | Number of scripts                                   |
 | 0x08   | -    | 32-bits script pointers, relative to their position |
 | -      | -    | Scripts                                             |

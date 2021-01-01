@@ -14,6 +14,8 @@
     },
     "prettier.proseWrap": "always",
     "cSpell.words": [
-        "Ekona"
+        "DENC",
+        "Ekona",
+        "LZSS"
     ],
 }
