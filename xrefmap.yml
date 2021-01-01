@@ -1,0 +1,9 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: CONTRIBUTING
+  name: Contributing to the project
+  href: guides/Contributing.html
+- uid: README
+  name: 'LayTea  '
+  href: index.html
