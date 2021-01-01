@@ -2,12 +2,12 @@
 
 ## Specification
 
-| Offset | Size | Description                                        |
-| ------ | ---- | -------------------------------------------------- |
-| 0x00   | 0x04 | ID: `MSG `                                         |
-| 0x04   | 0x04 | Number of entries                                  |
-| 0x08   | x    | 32-bits script pointers relative to their position |
-| x      | x    | Scripts                                            |
+| Offset | Size | Description                                         |
+| ------ | ---- | --------------------------------------------------- |
+| 0x00   | 0x04 | ID: `MSG `                                          |
+| 0x04   | 0x04 | Number of scripts                                   |
+| 0x08   | -    | 32-bits script pointers, relative to their position |
+| -      | -    | Scripts                                             |
 
 ### Script encoding
 
@@ -16,17 +16,15 @@
 - Script ends with null-terminator character (`\0`).
 - Padding to multiple of 4 with byte `0x00`.
 
-The script consists in blocks of 4 bytes. A block may contain text _or_ control
-codes. When necessary, it uses padding with the byte `0xFF` to fill until the
-next block. If the first byte of the block is in the range `[0xF0, 0xFE]`, then
-the following bytes are for a control code (it could take more than a block).
-Otherwise, it is a text block.
+The script consists of blocks of 4 bytes. A block contains text _or_ control
+codes. Control code blocks start with a byte in the range `[0xF0, 0xFE]`. The
+byte `0xFF` serves as block padding.
 
 #### Text blocks
 
-Text code-points are `Latin-1`, so they are always 1-byte. If the first
-code-point is in the range `[0xF0, 0xFE]`, escape it with a first byte `0xFF` so
-it is not detected as a control code block.
+Text code-points are `Latin-1`, so they are always 1 byte. If the first
+code-point of a block is in the range `[0xF0, 0xFE]`, it must be escaped with
+the byte `0xFF`, so it is not detected as a control code block.
 
 #### Control code blocks
 
@@ -37,9 +35,9 @@ Control code blocks have two 16-bits values:
 
 There are three type of arguments:
 
-- No arguments.
-- One signed 16-bits.
-- A list of strings.
+- No arguments (length is _2_).
+- One signed 16-bits (length is _4_).
+- A list of strings (length is bigger than _4_).
 
 The format of the latter is:
 
@@ -56,15 +54,15 @@ The format of the latter is:
 
 The known control codes are:
 
-| ID       | Argument type | Mnemonic    | Description                                    |
-| -------- | ------------- | ----------- | ---------------------------------------------- |
-| `0x00F0` | None          | `\n`        | New line                                       |
-| `0x00F1` | None          | split entry | End of dialog, user must press a button        |
-| `0x00F2` | 16-bits       | `color`     | Change text color                              |
-| `0x00F3` | 16-bits       | `wait`      | Wait a specific time                           |
-| `0x00F4` | 16-bits       | `name`      | Print a name                                   |
-| `0x00F5` | Strings list  | `question`  | Ask a question                                 |
-| `0x00F9` | 16-bits       | `variable`  | Print a variable                               |
-| `0x00FA` | 16-bits       | `unk_FA`    | Unknown                                        |
-| `0x00FB` | None          | `bg_work`   | Wait for a background task (saving or loading) |
-| `0x00FC` | None          | `unk_FC`    | Unknown                                        |
+| ID       | Arguments  | Mnemonic    | Description                         |
+| -------- | ---------- | ----------- | ----------------------------------- |
+| `0x00F0` | None       | `\n`        | New line                            |
+| `0x00F1` | None       | split entry | End of dialog, press button `A`     |
+| `0x00F2` | `short`    | `color`     | Change text color                   |
+| `0x00F3` | `short`    | `wait`      | Wait a specific time                |
+| `0x00F4` | `short`    | `name`      | Print a name                        |
+| `0x00F5` | `string[]` | `question`  | Ask a question                      |
+| `0x00F9` | `short`    | `variable`  | Print a variable                    |
+| `0x00FA` | `short`    | `unk_FA`    | Unknown                             |
+| `0x00FB` | None       | `bg_work`   | Wait for a task (saving or loading) |
+| `0x00FC` | None       | `unk_FC`    | Unknown                             |

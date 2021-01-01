@@ -1,7 +1,7 @@
 - name: Games
   items:
     - name: Professor Layton - London Life
-      href: games/london_life/london_life_summary.md
+      href: games/london_life/summary.md
       items:
         - name: Format MSG
           href: games/london_life/MSG.md
