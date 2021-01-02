@@ -68,3 +68,48 @@ The known control codes are:
 | `0x00FA` | `short`    | `unk_FA`    | Unknown                             |
 | `0x00FB` | None       | `bg_work`   | Wait for a task (saving or loading) |
 | `0x00FC` | None       | `unk_FC`    | Unknown                             |
+
+## Sections
+
+The file contains _11,102_ entries. But internally the game access to the
+content by sections. These are the known sections:
+
+- `[0, 1526]`: character dialogs, 6 entries per character.
+- TBC `[1527,2072]`: news, 2 entries per piece: title and content.
+- TBC `[2073,2077]`: weird conversation.
+- TBC `[2078,2327]`: requests.
+- `[10849,11102)`: character names and descriptions. 2 entries per character:
+  name and description.
+
+### Character dialogs
+
+The information to correlate the speaker name with their dialog is in the
+`overlay48`. Each speaker has an ID that goes from 0 to 255. For each speaker,
+there are 6 dialogs, divided en 2 groups according to the current event. At
+`0x020E3D48` there is a table that gives the address to the information entry
+for the speaker. Each entry of this main table is 12 bytes and has the following
+format:
+
+| Offset | Size | Description        |
+| ------ | ---- | ------------------ |
+| 0x00   | 1    | Speaker minimum ID |
+| 0x01   | 1    | Speaker maximum ID |
+| 0x02   | 2    | Reserved           |
+| 0x04   | 4    | Base address       |
+| 0x08   | 4    | Entry size         |
+
+To calculate the address to the speaker information given its ID, iterate the
+table finding an entry where the ID is in the range minimum and maximum ID.
+Then, calculate the relative ID from the minimum value, multiply by the entry
+size and add the base address. The size of the character info changes depending
+the speaker category, but the second byte gives always the internal ID. This
+second ID is also the index to the speaker dialog texts.
+
+There is a second table at `0x020DC03C` with more information about the speaker.
+To access, use the internal ID, each entry has a constant size of 12 bytes. This
+information is divided in 2 groups of 3 values of 16-bits.
+
+Internally, there aren't scripts. The game iterates over all characters,
+deciding if they appear in the current map or not. This happens in the
+subroutine `0x020EC6C4`. If they happen, then the game creates a new dialog
+event assigning the speaker ID and the text index.
