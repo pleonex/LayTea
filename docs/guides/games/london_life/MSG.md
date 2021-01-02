@@ -45,8 +45,8 @@ The format of the latter is:
 
 | Offset | Size | Description                                 |
 | ------ | ---- | ------------------------------------------- |
-| 0x00   | 0x02 | Unknown                                     |
-| 0x02   | 0x02 | Unknown                                     |
+| 0x00   | 0x02 | Pre-selected option                         |
+| 0x02   | 0x02 | Default option                              |
 | 0x04   | 0x04 | Number of strings                           |
 | 0x08   | x    | 16-bits string pointers from their position |
 | ...    | ...  | For each string...                          |
@@ -71,14 +71,37 @@ The known control codes are:
 
 ## Sections
 
-The file contains _11,102_ entries. But internally the game access to the
+The file contains _11,103_ entries. But internally the game access to the
 content by sections. These are the known sections:
 
-- `[0, 1526]`: character dialogs, 6 entries per character.
-- TBC `[1527,2072]`: news, 2 entries per piece: title and content.
-- TBC `[2073,2077]`: weird conversation.
-- TBC `[2078,2327]`: requests.
-- `[10849,11102)`: character names and descriptions. 2 entries per character:
+- `[0, 1526]`: default character dialogs, 6 entries per character (see
+  [character dialogs](#character-dialogs)).
+- `[1527,2072]`: requests, 2 entries per value: title and content.
+- `[2073,2077]`: weird expressions.
+- `[2078,2327]`: request info.
+- `[2328,2758]`: script dialogs, hard-coded without speaker correlation.
+- `[2759,4972]`: items, 3 entries per object: name, description, article.
+- `[4973,4983]`: colors.
+- `[4984,5010]`: numbers.
+- `[5011,5019]`: style.
+- `[5020,5043]`: house items, 2 entries per object: name and description.
+- `[5044,5057]`: furniture style.
+- `[5058,5601]`: map, 2 entries: title and subtitle.
+- `[5602,7649]`: locations, 2 entries: location, first dialog
+- `[7650,7658]`: reserved names.
+- `[7659,8229]`: miscellaneous, hard-coded.
+- `[8230,8301]`: second keyboard, first placeholders and then overwrite.
+- `[8302,8601]`: keyboard, first placeholders and then overwrite.
+- `[8602,8949]`: ban names regex
+- `[8950,10473]`: quests, 6 entries per quest: start, accept, cancel, running,
+  achieve, reserved.
+- `[10474,10553]`: delivered messages, 2 entries: question and wrong reply.
+- `[10554,10628]`: trait, 8 entries per value: trait, 3 special dialogs,
+  birthday appeal, birthday blessing, special message, reserved.
+- `[10629,10677]`: profession titles, 7 entries per value
+- `[10678,10728]`: crossing and directions
+- `[10729,10848]`: train messages, 4 entries: buy, thanks, failed, wait
+- `[10849,11102]`: character names and descriptions. 2 entries per character:
   name and description.
 
 ### Character dialogs
