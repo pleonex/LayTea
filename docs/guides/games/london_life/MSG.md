@@ -72,37 +72,36 @@ The known control codes are:
 ## Sections
 
 The file contains _11,103_ entries. But internally the game access to the
-content by sections. These are the known sections:
+content by sections. Each section contains a set of entries which may have
+different fields. These are the known sections:
 
-- `[0, 1526]`: default character dialogs, 6 entries per character (see
-  [character dialogs](#character-dialogs)).
-- `[1527,2072]`: requests, 2 entries per value: title and content.
-- `[2073,2077]`: weird expressions.
-- `[2078,2327]`: request info.
-- `[2328,2758]`: script dialogs, hard-coded without speaker correlation.
-- `[2759,4972]`: items, 3 entries per object: name, description, article.
-- `[4973,4983]`: colors.
-- `[4984,5010]`: numbers.
-- `[5011,5019]`: style.
-- `[5020,5043]`: house items, 2 entries per object: name and description.
-- `[5044,5057]`: furniture style.
-- `[5058,5601]`: map, 2 entries: title and subtitle.
-- `[5602,7649]`: locations, 2 entries: location, first dialog
-- `[7650,7658]`: reserved names.
-- `[7659,8229]`: miscellaneous, hard-coded.
-- `[8230,8301]`: second keyboard, first placeholders and then overwrite.
-- `[8302,8601]`: keyboard, first placeholders and then overwrite.
-- `[8602,8949]`: ban names regex
-- `[8950,10473]`: quests, 6 entries per quest: start, accept, cancel, running,
-  achieve, reserved.
-- `[10474,10553]`: delivered messages, 2 entries: question and wrong reply.
-- `[10554,10628]`: trait, 8 entries per value: trait, 3 special dialogs,
-  birthday appeal, birthday blessing, special message, reserved.
-- `[10629,10677]`: profession titles, 7 entries per value
-- `[10678,10728]`: crossing and directions
-- `[10729,10848]`: train messages, 4 entries: buy, thanks, failed, wait
-- `[10849,11102]`: character names and descriptions. 2 entries per character:
-  name and description.
+| Index | Fields | Description                                               |
+| ----- | ------ | --------------------------------------------------------- |
+| 0     | 6      | static dialogs ([character dialogs](#character-dialogs))  |
+| 1527  | 2      | requests title and description                            |
+| 2073  | 1      | weird expressions                                         |
+| 2078  | 1      | requests info                                             |
+| 2328  | 1      | script dialogs, hard-coded without speaker correlation    |
+| 2759  | 3      | items name, description and article                       |
+| 4973  | 1      | colors                                                    |
+| 4984  | 1      | numbers                                                   |
+| 5011  | 1      | style                                                     |
+| 5020  | 2      | house items name and description                          |
+| 5044  | 1      | furniture style                                           |
+| 5058  | 2      | maps title and subtitle                                   |
+| 5602  | 2      | places and default dialog                                 |
+| 7650  | 1      | reserved names                                            |
+| 7659  | 1      | miscellaneous messages, hard-coded                        |
+| 8230  | 1      | Keys from keyboard 1                                      |
+| 8302  | 1      | Keys from keyboard 2                                      |
+| 8602  | 1      | forbidden name regex                                      |
+| 8950  | 6      | quest start, accept, cancel, running, 2x achieve messages |
+| 10474 | 2      | delivered messages question and dialog on wrong reply     |
+| 10554 | 8      | traits and 7 special dialogs                              |
+| 10629 | 7      | profession titles                                         |
+| 10678 | 1      | crossing and directions                                   |
+| 10729 | 4      | train dialogs: buy, thanks and 2x failed messages         |
+| 10849 | 2      | characters name and description                           |
 
 ### Character dialogs
 
@@ -121,18 +120,24 @@ format:
 | 0x04   | 4    | Base address       |
 | 0x08   | 4    | Entry size         |
 
+The name of the speakers are in order of ID starting at `10849` in the message
+sections.
+
 To calculate the address to the speaker information given its ID, iterate the
 table finding an entry where the ID is in the range minimum and maximum ID.
 Then, calculate the relative ID from the minimum value, multiply by the entry
 size and add the base address. The size of the character info changes depending
 the speaker category, but the second byte gives always the internal ID. This
-second ID is also the index to the speaker dialog texts.
+second ID is also the index to the character static dialog texts.
 
-There is a second table at `0x020DC03C` with more information about the speaker.
-To access, use the internal ID, each entry has a constant size of 12 bytes. This
-information is divided in 2 groups of 3 values of 16-bits.
+There is a second table at `0x020DC03C` with more information about the
+character. To access, use the internal ID, each entry has a constant size of 12
+bytes. This information is divided in 2 groups of 3 values of 16-bits.
 
 Internally, there aren't scripts. The game iterates over all characters,
 deciding if they appear in the current map or not. This happens in the
 subroutine `0x020EC6C4`. If they happen, then the game creates a new dialog
 event assigning the speaker ID and the text index.
+
+It is not possible to get the speaker of script dialogs since the speaker ID and
+text index are hard-coded in code for each case.
