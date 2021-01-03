@@ -11,6 +11,10 @@
           href: games/london_life/DENC.md
         - name: Texts MSG
           href: games/london_life/MSG.md
+        - name: Images ACL
+          href: games/london_life/ACL.md
+        - name: Images ACB and ACG
+          href: games/london_life/ACB.md
 
 - name: Contributing
   items:

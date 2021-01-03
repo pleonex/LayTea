@@ -14,8 +14,13 @@ The files for this mini-game are inside the folder `/ll`.
   [[Format DARC]](DARC.md)
 - `ll/common/ll_common.darc/fileX.denc` [[Format DENC]](DENC.md)
 - `ll/kihira/kihira.archive` contains images [[Format ARCHIVE]](ARCHIVE.md)
+- `ll/kihira/kihira.archive/fileX` Nitro BIOS compressed format
 - `ll/save/ll_save.darc` contains images [[Format DARC]](DARC.md)
 - `ll/town/ll_town.darc` contains images [[Format DARC]](DARC.md)
+- `ll/anazawa/anazawa.dat` unknown [Format ANAG]
+- `ll/menu/menudata.dat` unknown [Format ANAG]
+- `ll/shop/shopdata.dat` unknown [Format ANAG]
+- `ll/strage/stragedata.dat` unknown [Format ANAG]
 
 ### Text files
 
@@ -34,6 +39,35 @@ Recommended tool to modify `NFTR` font files:
 - `ll/common/ll_common.darc/file7.denc/file7.nftr` large bold, size 16 [Format
   NFTR]
 
+### Image files
+
+The image encoding depends on their container.
+
+- [ARCHIVE](ARCHIVE.md):
+  - Files:
+    - `ll/kihira/kihira.archive`: backgrounds, item and character sprites
+  - Formats:
+    - Palette: [NCCL]
+    - Pixel: [NCCG]
+    - Map: [NCSC]
+    - Sprite: [NCOB]
+- [DARC](DARC.md):
+  - Files:
+    - `ll/save/ll_save.darc`
+    - `ll/town/ll_town.darc`
+  - Formats:
+    - Palette: [ACL](ACL.md)
+    - Pixel: [ACB and ACG](ACB.md)
+    - Unknown: `ASC`, `ACE`, `ANM` and `ACP`
+- Unknown `ANAG`
+  - Files:
+    - `ll/anazawa/anazawa.dat`
+    - `ll/menu/menudata.dat`
+    - `ll/shop/shopdata.dat`
+    - `ll/strage/stragedata.dat`
+  - Formats:
+    - Unknown
+
 ### Audio files
 
 Recommended tool to export and import `SAD` files:
@@ -47,10 +81,6 @@ Recommended tool to export and import `SAD` files:
 
 ### Unknown files
 
-- `ll/anazawa/anazawa.dat` [Format ANAG]
-- `ll/menu/menudata.dat` [Format ANAG]
-- `ll/shop/shopdata.dat` [Format ANAG]
-- `ll/strage/stragedata.dat` [Format ANAG]
 - `ll/wifi/parts.dat`
 - `ll/wifi/wifimenu.dat`
 - `ll/wifi/wifimenuobj.dat`
