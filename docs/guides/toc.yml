@@ -3,13 +3,13 @@
     - name: Professor Layton - London Life
       href: games/london_life/summary.md
       items:
-        - name: Format ARCHIVE
+        - name: Containers ARCHIVE
           href: games/london_life/ARCHIVE.md
-        - name: Format DARC
+        - name: Containers DARC
           href: games/london_life/DARC.md
-        - name: Format DENC
+        - name: Compression DENC
           href: games/london_life/DENC.md
-        - name: Format MSG
+        - name: Texts MSG
           href: games/london_life/MSG.md
 
 - name: Contributing

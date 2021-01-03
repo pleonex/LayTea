@@ -11,7 +11,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://pleonex.dev/LayTea</PackageProjectUrl>
         <RepositoryUrl>https://github.com/pleonex/LayTea</RepositoryUrl>
-        <!-- <PackageIcon>icon.png</PackageIcon> -->
+        <PackageIcon>icon.png</PackageIcon>
         <PackageTags>modding;scenegate;layton;romhacking</PackageTags>
     </PropertyGroup>
 

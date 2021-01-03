@@ -39,3 +39,14 @@ To just build and test quickly, run:
 ```sh
 dotnet cake --target=BuildTest
 ```
+
+## License
+
+The software is licensed under the terms of the
+[MIT license](https://choosealicense.com/licenses/mit/). The information and
+software provided by this repository is only for educational and research
+purpose. Please support the original game developers by buying their games.
+
+Icon by Vincent Le Moign,
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0), via
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:568-teacup-without-handle.svg).

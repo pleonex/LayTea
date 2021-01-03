@@ -1,6 +1,8 @@
 {
     "_appTitle": "Modding tools for 'Professor Layton' games",
     "_appFooter": "Copyright (c) 2020 pleonex",
+    "_appLogoPath": "images/favicon-48.png",
+    "_appFaviconPath": "images/favicon.ico",
     "_enableSearch": true,
     "_enableNewTab": true,
     "_gitContribute": {
