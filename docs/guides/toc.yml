@@ -5,6 +5,8 @@
       items:
         - name: Containers ARCHIVE
           href: games/london_life/ARCHIVE.md
+        - name: Containers ANAG
+          href: games/london_life/ANAG.md
         - name: Containers DARC
           href: games/london_life/DARC.md
         - name: Compression DENC

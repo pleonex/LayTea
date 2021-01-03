@@ -17,10 +17,10 @@ The files for this mini-game are inside the folder `/ll`.
 - `ll/kihira/kihira.archive/fileX` Nitro BIOS compressed format
 - `ll/save/ll_save.darc` contains images [[Format DARC]](DARC.md)
 - `ll/town/ll_town.darc` contains images [[Format DARC]](DARC.md)
-- `ll/anazawa/anazawa.dat` unknown [Format ANAG]
-- `ll/menu/menudata.dat` unknown [Format ANAG]
-- `ll/shop/shopdata.dat` unknown [Format ANAG]
-- `ll/strage/stragedata.dat` unknown [Format ANAG]
+- `ll/anazawa/anazawa.dat` contains images [[Format ANAG]](ANAG.md)
+- `ll/menu/menudata.dat` contains images [[Format ANAG]](ANAG.md)
+- `ll/shop/shopdata.dat` contains images [[Format ANAG]](ANAG.md)
+- `ll/strage/stragedata.dat` contains images [[Format ANAG]](ANAG.md)
 
 ### Text files
 
@@ -29,7 +29,7 @@ The files for this mini-game are inside the folder `/ll`.
 ### Font files
 
 Recommended tool to modify `NFTR` font files:
-[NerdFontTerminatoR](https://github.com/pleonex/NerdFontTerminatoR).
+[NerdFontTerminator](https://github.com/pleonex/NerdFontTerminatoR).
 
 - `ll/common/ll_common.darc/file3.denc/file3.nftr` small, size 8 [Format NFTR]
 - `ll/common/ll_common.darc/file4.denc/file4.nftr` medium, size 10 [Format NFTR]
@@ -59,7 +59,7 @@ The image encoding depends on their container.
     - Palette: [ACL](ACL.md)
     - Pixel: [ACB and ACG](ACB.md)
     - Unknown: `ASC`, `ACE`, `ANM` and `ACP`
-- Unknown `ANAG`
+- [ANAG](ANAG.md)
   - Files:
     - `ll/anazawa/anazawa.dat`
     - `ll/menu/menudata.dat`
