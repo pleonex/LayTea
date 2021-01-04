@@ -18,7 +18,7 @@ For each image:
 | 0x00   | 1    | ?                              |
 | 0x01   | 2    | ?                              |
 | 0x03   | 1    | ?                              |
-| 0x04   | 4    | ?                              |
+| 0x04   | 4    | Image size                     |
 | 0x08   | -    | Indexed pixel information 4bpp |
 
 Images have several tiles of standard 8x8 pixel size.

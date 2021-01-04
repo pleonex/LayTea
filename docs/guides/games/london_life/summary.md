@@ -21,6 +21,9 @@ The files for this mini-game are inside the folder `/ll`.
 - `ll/menu/menudata.dat` contains images [[Format ANAG]](ANAG.md)
 - `ll/shop/shopdata.dat` contains images [[Format ANAG]](ANAG.md)
 - `ll/strage/stragedata.dat` contains images [[Format ANAG]](ANAG.md)
+- `ll/wifi/parts.dat` contains images [Format wifi_parts]
+- `ll/wifi/wifimenu.dat` contains images [Format wifimenu]
+- `ll/wifi/wifimenuobj.dat` contains images [Format wifimenuobj]
 
 ### Text files
 
@@ -58,7 +61,8 @@ The image encoding depends on their container.
   - Formats:
     - Palette: [ACL](ACL.md)
     - Pixel: [ACB and ACG](ACB.md)
-    - Unknown: `ASC`, `ACE`, `ANM` and `ACP`
+    - Map: [ASC](ASC.md)
+    - Unknown: `ACE`, `ANM` and `ACP`
 - [ANAG](ANAG.md)
   - Files:
     - `ll/anazawa/anazawa.dat`
@@ -66,7 +70,15 @@ The image encoding depends on their container.
     - `ll/shop/shopdata.dat`
     - `ll/strage/stragedata.dat`
   - Formats:
-    - Unknown
+    - Palette: raw, usually first file
+    - Sprite: unknown, same file with OAM and pixel info
+- Wi-Fi
+  - Files:
+    - `ll/wifi/parts.dat`
+    - `ll/wifi/wifimenu.dat`
+    - `ll/wifi/wifimenuobj.dat`
+  - Formats:
+    - Unknown, seems raw.
 
 ### Audio files
 
@@ -78,9 +90,3 @@ Recommended tool to export and import `SAD` files:
 - `ll/common/stream00_null.SAD` [Format SAD]
 - `ll/common/stream01.SAD` [Format SAD]
 - `ll/common/stream02.SAD` [Format SAD]
-
-### Unknown files
-
-- `ll/wifi/parts.dat`
-- `ll/wifi/wifimenu.dat`
-- `ll/wifi/wifimenuobj.dat`
