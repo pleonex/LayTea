@@ -4,7 +4,6 @@
         "src": [
           {
             "files": [
-              "LayTea/LayTea.csproj"
             ],
             "src": "../src"
           }

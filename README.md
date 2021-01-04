@@ -2,11 +2,16 @@
 
 **Work-in-progress** modding tools for games of the _"Professor Layton"_.
 
+Library is available from the
+[GitHub packages](https://github.com/users/pleonex/packages?repo_name=LayTea).
+Applications are attach in each
+[GitHub release](https://github.com/pleonex/LayTea/releases).
+
 <!-- prettier-ignore -->
 | Release | Package |
 | ------- | ------- |
-| Stable  | TODO    |
-| Preview | TODO    |
+| Stable  | ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/pleonex/LayTea?sort=semver) |
+| Preview | ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/pleonex/LayTea/latest?sort=semver) |
 
 ## Documentation
 
