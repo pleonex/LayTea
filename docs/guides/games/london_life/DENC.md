@@ -1,4 +1,4 @@
-# Compression format DENC (D ENCrypt)
+# Format DENC (D? ENCrypt)
 
 Binary format that contains data that can be compressed.
 
@@ -40,3 +40,5 @@ the token decides the operation:
 | 0     | `1` for repeat decompressed data                      |
 | 1-11  | Number of bytes to go back in output (max 2048 bytes) |
 | 12-15 | Number of bytes to copy (max 16 bytes)                |
+
+The decompression subroutine is in overlay 48 at `0x020d3330`.

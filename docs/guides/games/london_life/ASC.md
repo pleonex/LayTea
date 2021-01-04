@@ -1,4 +1,4 @@
-# Image format ACS
+# Format ASC (A? SCreen)
 
 Binary format that contains background map tile information.
 

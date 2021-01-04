@@ -13,12 +13,21 @@
           href: games/london_life/DENC.md
         - name: Texts MSG
           href: games/london_life/MSG.md
-        - name: Images ACL
+        - name: (TODO) Palettes NCCL
+        - name: (TODO) Pixels NCCG
+        - name: (TODO) Tile maps NCSC
+        - name: (TODO) Sprites NCOB
+        - name: Palettes ACL
           href: games/london_life/ACL.md
-        - name: Images ACB and ACG
+        - name: Pixels ACB and ACG
           href: games/london_life/ACB.md
-        - name: Images ASC
+        - name: Tile maps ASC
           href: games/london_life/ASC.md
+        - name: (WIP) Sprites ACP
+          href: games/london_life/ACP.md
+        - name: (TODO) Sprites ACE
+        - name: (TODO) Animations ANM
+        - name: (TODO) Wi-Fi images
 
 - name: Contributing
   items:

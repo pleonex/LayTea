@@ -1,4 +1,4 @@
-# Text format MSG (MeSsaGe)
+# Format MSG (MeSsaGe)
 
 Binary format that encode the game text.
 

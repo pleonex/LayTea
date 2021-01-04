@@ -1,4 +1,4 @@
-# Container format DARC (D ARChive)
+# Format DARC (D? ARChive)
 
 Binary format that contains files without name. Every file is compressed with
 the format [`DENC`](DENC.md).

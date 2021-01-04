@@ -1,4 +1,4 @@
-# Container format ANAG
+# Format ANAG (ANAzawa? G?)
 
 Binary format that contains files without name or headers.
 

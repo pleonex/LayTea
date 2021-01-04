@@ -1,4 +1,4 @@
-# Container format ARCHIVE
+# Format ARCHIVE
 
 Binary format that contains files without name. Files are typically compressed
 using Nintendo DS BIOS compression algorithms and formats: _LZSS_, _Huffman_ and

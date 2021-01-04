@@ -1,4 +1,4 @@
-# Image format ACL
+# Format ACL (A? CoLor)
 
 Binary format that contains palette colors.
 

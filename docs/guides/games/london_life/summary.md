@@ -62,7 +62,8 @@ The image encoding depends on their container.
     - Palette: [ACL](ACL.md)
     - Pixel: [ACB and ACG](ACB.md)
     - Map: [ASC](ASC.md)
-    - Unknown: `ACE`, `ANM` and `ACP`
+    - Sprite: [ACP](ACP.md) and [ACE]
+    - Animation: [ANM]
 - [ANAG](ANAG.md)
   - Files:
     - `ll/anazawa/anazawa.dat`
