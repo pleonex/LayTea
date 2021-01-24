@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "CONTRIBUTING.html",
-          "hash": "YsoZF306mzMyKgMq0ZV8Jg=="
+          "hash": "6TuGuARr9j/9T/Fo+cBf1w=="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "PhfL9KKFMssFt6Ncv6yeZQ=="
+          "hash": "l1K/G6KcTibJ31YCx6L3Ug=="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "EeBOW+bumcND6mnFLie2TQ=="
+          "hash": "FVIn6JG6T/aiBCAcmHmmTg=="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,187 @@
       "output": {
         ".html": {
           "relative_path": "guides/Contributing.html",
-          "hash": "PO/Q30tzL9IhUgLflnpQsA=="
+          "hash": "/cwkctsoNJqiXLHZcmei2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/ACB.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/ACB.html",
+          "hash": "fAwM6wGmAU6m3VNogbP2gA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/ACE.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/ACE.html",
+          "hash": "SXz/uIeCMQrRLGFKuTeEzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/ACL.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/ACL.html",
+          "hash": "7hkyT8S8WSqPCWz2CAMyXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/ACP.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/ACP.html",
+          "hash": "cj5sYS5YfpHeXJZ+cfIXnQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/ANAG.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/ANAG.html",
+          "hash": "xJELDLycdwEDClokSVZJyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/ARCHIVE.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/ARCHIVE.html",
+          "hash": "ZWqX7alMMRspAeDnECN6pQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/ASC.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/ASC.html",
+          "hash": "0cI8Iu4VELX5ps5kyCSAiw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/DARC.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/DARC.html",
+          "hash": "ByhXVo6yeKsXKDJdQWHi7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/DENC.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/DENC.html",
+          "hash": "gUAyUi2yLTIWSfYY8dvQwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/MSG.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/MSG.html",
+          "hash": "llHD9RUOXICcUFdvpZJ1WQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/NCCG.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/NCCG.html",
+          "hash": "NmfapZ02ONuzia+srgokxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/NCCL.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/NCCL.html",
+          "hash": "es0v16xaOwdX0rG2b8FDPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/NCOB.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/NCOB.html",
+          "hash": "6KxDUrX3f0VwIs2C+i8rDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/NCSC.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/NCSC.html",
+          "hash": "eewKCIDaFA8I3GiH+o1l4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "guides/games/london_life/summary.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/games/london_life/summary.html",
+          "hash": "BwiFUwThf+NAXFlppWkuwg=="
         }
       },
       "is_incremental": false,
@@ -78,7 +258,51 @@
       "output": {
         ".html": {
           "relative_path": "guides/toc.html",
-          "hash": "0pB3cl9ZRdpHiRekJsfngA=="
+          "hash": "l5VzJHce3RtIrnjrbWcihA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon-128.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon-128.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon-192.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon-192.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon-48.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon-48.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.svg"
         }
       },
       "is_incremental": false,
@@ -90,7 +314,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "FZMOvS1TRx8Tmjqs3/9SIw=="
+          "hash": "70ajNvMZ8GsaddR/3haMMA=="
         }
       },
       "is_incremental": false,
@@ -102,7 +326,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "O7ChSB4m3YpJsd8hjsBklg=="
+          "hash": "kHdV3zAexXG8MHl9drNatw=="
         }
       },
       "is_incremental": false,
@@ -123,7 +347,14 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 5,
+          "total_file_count": 20,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
