@@ -13,3 +13,6 @@ test_results/
 docs/_site
 docs/api
 docs/_site_pdf
+
+# Test and research data
+gamedata/

@@ -1,5 +1,38 @@
 - name: Games
   items:
+    - name: Professor Layton - London Life
+      href: games/london_life/summary.md
+      items:
+        - name: Containers ARCHIVE
+          href: games/london_life/ARCHIVE.md
+        - name: Containers ANAG
+          href: games/london_life/ANAG.md
+        - name: Containers DARC
+          href: games/london_life/DARC.md
+        - name: Compression DENC
+          href: games/london_life/DENC.md
+        - name: Texts MSG
+          href: games/london_life/MSG.md
+        - name: Palettes NCCL
+          href: games/london_life/NCCL.md
+        - name: Pixels NCCG
+          href: games/london_life/NCCG.md
+        - name: Tile maps NCSC
+          href: games/london_life/NCSC.md
+        - name: Sprites NCOB
+          href: games/london_life/NCOB.md
+        - name: Palettes ACL
+          href: games/london_life/ACL.md
+        - name: Pixels ACB and ACG
+          href: games/london_life/ACB.md
+        - name: Tile maps ASC
+          href: games/london_life/ASC.md
+        - name: Sprites ACP
+          href: games/london_life/ACP.md
+        - name: Sprites ACE
+          href: games/london_life/ACE.md
+        - name: (TODO) Animations ANM
+        - name: (TODO) Wi-Fi images
 
 - name: Contributing
   items:
