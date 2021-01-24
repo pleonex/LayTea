@@ -50,10 +50,10 @@ The image encoding depends on their container.
   - Files:
     - `ll/kihira/kihira.archive`: backgrounds, item and character sprites
   - Formats:
-    - Palette: [NCCL]
-    - Pixel: [NCCG]
-    - Map: [NCSC]
-    - Sprite: [NCOB]
+    - Palette: [NCCL](NCCL.md)
+    - Pixel: [NCCG](NCCG.md)
+    - Map: [NCSC](NCSC.md)
+    - Sprite: [NCOB](NCOB.md)
 - [DARC](DARC.md):
   - Files:
     - `ll/save/ll_save.darc`
@@ -62,7 +62,7 @@ The image encoding depends on their container.
     - Palette: [ACL](ACL.md)
     - Pixel: [ACB and ACG](ACB.md)
     - Map: [ASC](ASC.md)
-    - Sprite: [ACP](ACP.md) and [ACE]
+    - Sprite: [ACP](ACP.md) and [ACE](ACE.md)
     - Animation: [ANM]
 - [ANAG](ANAG.md)
   - Files:

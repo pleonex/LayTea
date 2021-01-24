@@ -1,6 +1,6 @@
 # Format ACP (A? Character P?)
 
-Binary format that contains unknown data related to images.
+Binary format that contains the definition of one or more sprites.
 
 ## Specification
 
