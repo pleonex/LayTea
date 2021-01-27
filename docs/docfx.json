@@ -4,6 +4,7 @@
         "src": [
           {
             "files": [
+              "LayTea/LayTea.csproj"
             ],
             "src": "../src"
           }
@@ -49,6 +50,9 @@
       "keepFileLink": false,
       "cleanupCacheHistory": false,
       "disableGitFeatures": false,
-      "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ]
+      "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ],
+      "xref": [
+        "https://scenegate.github.io/Yarhl/xrefmap.yml"
+      ]
     }
 }

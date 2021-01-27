@@ -10,6 +10,9 @@ Task("Define-Project")
 
     info.PreviewNuGetFeed = "https://nuget.pkg.github.com/pleonex/index.json";
     info.StableNuGetFeed = "https://nuget.pkg.github.com/pleonex/index.json";
+
+    // We can't force code coverage as it requires game files
+    info.CoverageTarget = 0;
 });
 
 Task("Default")
