@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net5.0</TargetFrameworks>
-    <RootNamespace>SceneGate.Ekona.Games.ProfessorLayton</RootNamespace>
+    <RootNamespace>SceneGate.Games.ProfessorLayton</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

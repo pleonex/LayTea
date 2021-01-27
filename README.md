@@ -13,6 +13,17 @@ Applications are attach in each
 | Stable  | ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/pleonex/LayTea?sort=semver) |
 | Preview | ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/pleonex/LayTea/latest?sort=semver) |
 
+## Features
+
+Games:
+
+- Documentation for
+  [Professor Layton - London Life](https://www.pleonex.dev/LayTea/guides/games/london_life/summary.html)
+
+Formats:
+
+- **`DARC` containers**: read and write.
+
 ## Documentation
 
 Feel free to ask any question in the
