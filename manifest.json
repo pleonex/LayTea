@@ -30,7 +30,43 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "l1K/G6KcTibJ31YCx6L3Ug=="
+          "hash": "okpGGENJdegG9knLy8luTg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2NodeContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2NodeContainer.html",
+          "hash": "8ZR2sGFK+DhfTfiAzgI/ng=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.NodeContainer2BinaryDarc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.NodeContainer2BinaryDarc.html",
+          "hash": "ETunYcULoWsEwAuGDyAUtA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.html",
+          "hash": "2kKF+gRrEyOFZuQOeUbuow=="
         }
       },
       "is_incremental": false,
@@ -42,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "FVIn6JG6T/aiBCAcmHmmTg=="
+          "hash": "ZWeLVx6YtHj84j25daE2Fw=="
         }
       },
       "is_incremental": false,
@@ -54,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/toc.html",
-          "hash": "FoWReD0MBXmX8Y2LwQA8Lg=="
+          "hash": "R54WTHumL8DLLtqzsxtLyA=="
         }
       },
       "is_incremental": false,
@@ -314,7 +350,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "70ajNvMZ8GsaddR/3haMMA=="
+          "hash": "qF5IjbkRMZ2XodiFkGJPmg=="
         }
       },
       "is_incremental": false,
@@ -348,6 +384,12 @@
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 20,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
