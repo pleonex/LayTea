@@ -28,7 +28,7 @@ namespace SceneGate.Games.ProfessorLayton.Containers
     /// Converter for binary DARC streams into node containers.
     /// The DARC streams contains DENC (un)compressed files.
     /// </summary>
-    public class BinaryDarc2NodeContainer : IConverter<BinaryFormat, NodeContainerFormat>
+    public class BinaryDarc2Container : IConverter<BinaryFormat, NodeContainerFormat>
     {
         private const string Stamp = "DARC";
 
