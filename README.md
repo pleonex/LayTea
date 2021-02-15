@@ -23,6 +23,8 @@ Games:
 Formats:
 
 - **`DARC` containers**: read and write.
+- **`DENC` containers**: read.
+- **`LZSS` compression**: decompress.
 
 ## Documentation
 
