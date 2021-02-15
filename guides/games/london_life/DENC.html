@@ -214,9 +214,21 @@
 </table>
 <p>The possible values for the <em>compression algorithm</em> field are:</p>
 <ul>
-<li><code>NULL</code>: data is <strong>not</strong> compressed.</li>
-<li><code>LZSS</code>: data is compressed with a LZSS variant.</li>
+<li><code>\0</code>: not implemented in this game but it is detected as a valid case.</li>
+<li><a href="#null-compression"><code>NULL</code></a>: data is not compressed.</li>
+<li><a href="#rle-compression"><code>RLE </code></a>: data is compressed with RLE variant.</li>
+<li><a href="#lzss-compression"><code>LZSS</code></a>: data is compressed with a LZSS variant.</li>
+<li><a href="#bpe-compression"><code>BPE </code></a>: Not implemented in this game.</li>
+<li><a href="#zskp-compression"><code>ZSKP</code></a>: data is compressed with ZSKP.</li>
+<li><a href="#lskp-compression"><code>LSKP</code></a>: data is compressed with LSKP.</li>
+<li><a href="#rnge-compression"><code>RNGE</code></a>: data is compressed with RNGE.</li>
+<li><a href="#soa-compression"><code>SOA </code></a>: Not implemented in this game.</li>
 </ul>
+<h3 id="null-compression">Null compression</h3>
+<p>Data is not compressed. The processing subroutine in overlay 48 at <code>0x020d314c</code>.</p>
+<h3 id="rle-compression">RLE compression</h3>
+<p>TODO: Analyze code. The decompression subroutine is in overlay 48 at
+<code>0x020d320c</code>.</p>
 <h3 id="lzss-compression">LZSS compression</h3>
 <p>The compression algorithm has two mode of operation. The compressed data starts
 with a token that contains the operation mode and information. The first bit of
@@ -266,11 +278,24 @@ second byte and combine). The format is:</li>
 </tr>
 <tr>
 <td>12-15</td>
-<td>Number of bytes to copy (max 16 bytes)</td>
+<td>Number of bytes to copy starting with 2 (2-18 bytes)</td>
 </tr>
 </tbody>
 </table>
 <p>The decompression subroutine is in overlay 48 at <code>0x020d3330</code>.</p>
+<h3 id="bpe-compression">BPE compression</h3>
+<p>The game <em>Layton London Life</em> does not implement this compression.</p>
+<h3 id="zskp-compression">ZSKP compression</h3>
+<p>TODO: Analyze code. The decompression subroutine is in overlay 48 at
+<code>0x020d3580</code>.</p>
+<h3 id="lskp-compression">LSKP compression</h3>
+<p>TODO: Analyze code. The decompression subroutine is in overlay 48 at
+<code>0x020d366c</code>.</p>
+<h3 id="rnge-compression">RNGE compression</h3>
+<p>TODO: Analyze code. The decompression subroutine is in overlay 48 at
+<code>0x020d3744</code>.</p>
+<h3 id="soa-compression">SOA compression</h3>
+<p>The game <em>Layton London Life</em> does not implement this compression.</p>
 </article>
           </div>
           

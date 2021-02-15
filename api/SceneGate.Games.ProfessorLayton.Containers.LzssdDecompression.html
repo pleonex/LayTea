@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace SceneGate.Games.ProfessorLayton.Containers
+    <title>Class LzssdDecompression
    | Modding tools for 'Professor Layton' games </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace SceneGate.Games.ProfessorLayton.Containers
+    <meta name="title" content="Class LzssdDecompression
    | Modding tools for 'Professor Layton' games ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -131,28 +131,127 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SceneGate.Games.ProfessorLayton.Containers">
+            <article class="content wrap" id="_content" data-uid="SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression">
   
-  <h1 id="SceneGate_Games_ProfessorLayton_Containers" data-uid="SceneGate.Games.ProfessorLayton.Containers" class="text-break">Namespace SceneGate.Games.ProfessorLayton.Containers
+  
+  <h1 id="SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression" data-uid="SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression" class="text-break">Class LzssdDecompression
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Decompression algorithm for LZSS variant found in DENC formats.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">LzssdDecompression</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SceneGate.Games.ProfessorLayton.Containers.html">SceneGate.Games.ProfessorLayton.Containers</a></h6>
+  <h6><strong>Assembly</strong>: LayTea.dll</h6>
+  <h5 id="SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class LzssdDecompression : IConverter&lt;BinaryFormat, BinaryFormat&gt;</code></pre>
+  </div>
+  <h3 id="methods">Methods
   </h3>
-      <h4><a class="xref" href="SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2Container.html">BinaryDarc2Container</a></h4>
-      <section><p>Converter for binary DARC streams into node containers.
-The DARC streams contains DENC (un)compressed files.</p>
-</section>
-      <h4><a class="xref" href="SceneGate.Games.ProfessorLayton.Containers.DencDecompression.html">DencDecompression</a></h4>
-      <section><p>Converter for binary DENC compressed streams into uncompressed streams.</p>
-</section>
-      <h4><a class="xref" href="SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html">LzssdDecompression</a></h4>
-      <section><p>Decompression algorithm for LZSS variant found in DENC formats.</p>
-</section>
-      <h4><a class="xref" href="SceneGate.Games.ProfessorLayton.Containers.NodeContainer2BinaryDarc.html">NodeContainer2BinaryDarc</a></h4>
-      <section><p>Converter node containers into binary DARC streams.</p>
-</section>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_BinaryFormat_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(BinaryFormat)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/LzssdDecompression.cs/#L36">View Source</a>
+  </span>
+  <a id="SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_" data-uid="SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert*"></a>
+  <h4 id="SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_BinaryFormat_" data-uid="SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(BinaryFormat)">Convert(BinaryFormat)</h4>
+  <div class="markdown level1 summary"><p>Decompress a LZSS-DENC compressed stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BinaryFormat Convert(BinaryFormat source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">BinaryFormat</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The compressed stream with LZSS-DENC.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">BinaryFormat</span></td>
+        <td><p>The decompressed stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_DataStream_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(DataStream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/LzssdDecompression.cs/#L50">View Source</a>
+  </span>
+  <a id="SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_" data-uid="SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert*"></a>
+  <h4 id="SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_DataStream_" data-uid="SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(DataStream)">Convert(DataStream)</h4>
+  <div class="markdown level1 summary"><p>Decompress a LZSS-DENC compressed stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DataStream Convert(DataStream source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DataStream</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The compressed stream with LZSS-DENC.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DataStream</span></td>
+        <td><p>The decompressed stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -160,6 +259,12 @@ The DARC streams contains DENC (un)compressed files.</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/LzssdDecompression.cs/#L29" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

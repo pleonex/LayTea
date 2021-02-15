@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BinaryDarc2NodeContainer
+    <title>Class DencDecompression
    | Modding tools for 'Professor Layton' games </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BinaryDarc2NodeContainer
+    <meta name="title" content="Class DencDecompression
    | Modding tools for 'Professor Layton' games ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -111,7 +111,13 @@
                               
                               <ul class="nav level3">
                                 <li class="">
-                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2NodeContainer.html" title="BinaryDarc2NodeContainer" class="">BinaryDarc2NodeContainer</a>
+                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2Container.html" title="BinaryDarc2Container" class="">BinaryDarc2Container</a>
+                                </li>
+                                <li class="">
+                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Containers.DencDecompression.html" title="DencDecompression" class="">DencDecompression</a>
+                                </li>
+                                <li class="">
+                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html" title="LzssdDecompression" class="">LzssdDecompression</a>
                                 </li>
                                 <li class="">
                                   <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Containers.NodeContainer2BinaryDarc.html" title="NodeContainer2BinaryDarc" class="">NodeContainer2BinaryDarc</a>
@@ -125,43 +131,45 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2NodeContainer">
+            <article class="content wrap" id="_content" data-uid="SceneGate.Games.ProfessorLayton.Containers.DencDecompression">
   
   
-  <h1 id="SceneGate_Games_ProfessorLayton_Containers_BinaryDarc2NodeContainer" data-uid="SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2NodeContainer" class="text-break">Class BinaryDarc2NodeContainer
+  <h1 id="SceneGate_Games_ProfessorLayton_Containers_DencDecompression" data-uid="SceneGate.Games.ProfessorLayton.Containers.DencDecompression" class="text-break">Class DencDecompression
   </h1>
-  <div class="markdown level0 summary"><p>Converter for binary DARC streams into node containers.
-The DARC streams contains DENC (un)compressed files.</p>
+  <div class="markdown level0 summary"><p>Converter for binary DENC compressed streams into uncompressed streams.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">BinaryDarc2NodeContainer</span></div>
+    <div class="level1"><span class="xref">DencDecompression</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SceneGate.Games.ProfessorLayton.Containers.html">SceneGate.Games.ProfessorLayton.Containers</a></h6>
   <h6><strong>Assembly</strong>: LayTea.dll</h6>
-  <h5 id="SceneGate_Games_ProfessorLayton_Containers_BinaryDarc2NodeContainer_syntax">Syntax</h5>
+  <h5 id="SceneGate_Games_ProfessorLayton_Containers_DencDecompression_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BinaryDarc2NodeContainer : IConverter&lt;BinaryFormat, NodeContainerFormat&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class DencDecompression : IConverter&lt;BinaryFormat, BinaryFormat&gt;</code></pre>
   </div>
+  <h5 id="SceneGate_Games_ProfessorLayton_Containers_DencDecompression_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Supported compressions: NULL, LZSSD.</p>
+</div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_BinaryDarc2NodeContainer_Convert_BinaryFormat_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2NodeContainer.Convert(BinaryFormat)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_DencDecompression_Convert_BinaryFormat_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.DencDecompression.Convert(BinaryFormat)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/BinaryDarc2NodeContainer.cs/#L44">View Source</a>
+    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/DencDecompression.cs/#L42">View Source</a>
   </span>
-  <a id="SceneGate_Games_ProfessorLayton_Containers_BinaryDarc2NodeContainer_Convert_" data-uid="SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2NodeContainer.Convert*"></a>
-  <h4 id="SceneGate_Games_ProfessorLayton_Containers_BinaryDarc2NodeContainer_Convert_BinaryFormat_" data-uid="SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2NodeContainer.Convert(BinaryFormat)">Convert(BinaryFormat)</h4>
-  <div class="markdown level1 summary"><p>Converts a binary DARC format into a container.</p>
+  <a id="SceneGate_Games_ProfessorLayton_Containers_DencDecompression_Convert_" data-uid="SceneGate.Games.ProfessorLayton.Containers.DencDecompression.Convert*"></a>
+  <h4 id="SceneGate_Games_ProfessorLayton_Containers_DencDecompression_Convert_BinaryFormat_" data-uid="SceneGate.Games.ProfessorLayton.Containers.DencDecompression.Convert(BinaryFormat)">Convert(BinaryFormat)</h4>
+  <div class="markdown level1 summary"><p>Decompress a binary DENC stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NodeContainerFormat Convert(BinaryFormat source)</code></pre>
+    <pre><code class="lang-csharp hljs">public BinaryFormat Convert(BinaryFormat source)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,7 +184,7 @@ The DARC streams contains DENC (un)compressed files.</p>
       <tr>
         <td><span class="xref">BinaryFormat</span></td>
         <td><span class="parametername">source</span></td>
-        <td><p>The binary DARC format.</p>
+        <td><p>The compressed stream with DENC.</p>
 </td>
       </tr>
     </tbody>
@@ -191,16 +199,12 @@ The DARC streams contains DENC (un)compressed files.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NodeContainerFormat</span></td>
-        <td><p>The container with the DARC content.</p>
+        <td><span class="xref">BinaryFormat</span></td>
+        <td><p>The decompressed stream.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="SceneGate_Games_ProfessorLayton_Containers_BinaryDarc2NodeContainer_Convert_BinaryFormat__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The format does not provide names for the files, so the
-converter sets name as &quot;fileX.denc&quot;.</p>
-</div>
 </article>
           </div>
           
@@ -209,10 +213,10 @@ converter sets name as &quot;fileX.denc&quot;.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_BinaryDarc2NodeContainer.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2NodeContainer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_DencDecompression.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.DencDecompression%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/BinaryDarc2NodeContainer.cs/#L31" class="contribution-link">View Source</a>
+                    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/DencDecompression.cs/#L32" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
