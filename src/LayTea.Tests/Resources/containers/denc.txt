@@ -1,0 +1,5 @@
+# NULL compression
+ll_common_denc0.yml,ll_common.darc,140,64
+
+# LZSS compression
+ll_common_denc2.yml,ll_common.darc,276,384277

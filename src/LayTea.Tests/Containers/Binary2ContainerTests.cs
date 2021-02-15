@@ -59,6 +59,22 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
         }
 
         [Test]
+        public void NullToContainerThrowsException()
+        {
+            Assert.That(() => containerConverter.Convert(null), Throws.ArgumentNullException);
+        }
+
+        [Test]
+        public void NullToBinaryThrowsException()
+        {
+            if (binaryConverter == null) {
+                Assert.Ignore();
+            }
+
+            Assert.That(() => binaryConverter.Convert(null), Throws.ArgumentNullException);
+        }
+
+        [Test]
         public void TransformToContainer()
         {
             // Check nodes are expected

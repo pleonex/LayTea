@@ -21,56 +21,54 @@ namespace SceneGate.Games.ProfessorLayton.Containers
 {
     using System;
     using Yarhl.FileFormat;
-    using Yarhl.FileSystem;
     using Yarhl.IO;
 
     /// <summary>
-    /// Converter for binary DARC streams into node containers.
-    /// The DARC streams contains DENC (un)compressed files.
+    /// Converter for binary DENC compressed streams into uncompressed streams.
     /// </summary>
-    public class BinaryDarc2NodeContainer : IConverter<BinaryFormat, NodeContainerFormat>
+    /// <remarks>
+    /// <para>Supported compressions: NULL, LZSSD.</para>
+    /// </remarks>
+    public class DencDecompression : IConverter<BinaryFormat, BinaryFormat>
     {
-        private const string Stamp = "DARC";
+        private const string Stamp = "DENC";
+        private const int HeaderLength = 0x10;
 
         /// <summary>
-        /// Converts a binary DARC format into a container.
+        /// Decompress a binary DENC stream.
         /// </summary>
-        /// <param name="source">The binary DARC format.</param>
-        /// <returns>The container with the DARC content.</returns>
-        /// <remarks>
-        /// <para>The format does not provide names for the files, so the
-        /// converter sets name as "fileX.denc".</para>
-        /// </remarks>
-        public NodeContainerFormat Convert(BinaryFormat source)
+        /// <param name="source">The compressed stream with DENC.</param>
+        /// <returns>The decompressed stream.</returns>
+        public BinaryFormat Convert(BinaryFormat source)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
 
             source.Stream.Position = 0;
             var reader = new DataReader(source.Stream);
-            var container = new NodeContainerFormat();
 
             string stamp = reader.ReadString(4);
             if (stamp != Stamp) {
-                throw new FormatException($"Invalid stamp: '{stamp}'");
+                throw new FormatException($"Invalid stamp: {stamp}");
             }
 
-            int numFiles = reader.ReadInt32();
-            for (int i = 0; i < numFiles; i++) {
-                long offset = reader.Stream.Position + reader.ReadUInt32();
-                source.Stream.PushToPosition(offset);
-                uint length = reader.ReadUInt32();
-                source.Stream.PopPosition();
+            reader.ReadUInt32(); // decompressed length
+            string algorithm = reader.ReadString(4);
+            uint compressedLength = reader.ReadUInt32();
 
-                var child = NodeFactory.FromSubstream(
-                    $"file{i}.denc",
-                    source.Stream,
-                    offset + 4,
-                    length);
-                container.Root.Add(child);
-            }
+            var substream = new DataStream(source.Stream, HeaderLength, compressedLength);
+            return GetDecompressedBinary(substream, algorithm);
+        }
 
-            return container;
+        private BinaryFormat GetDecompressedBinary(DataStream stream, string algorithm)
+        {
+            DataStream decompressed = algorithm switch {
+                "NULL" => stream,
+                "LZSS" => new LzssdDecompression().Convert(stream),
+                _ => throw new NotImplementedException($"'{algorithm}' not implemented")
+            };
+
+            return new BinaryFormat(decompressed);
         }
     }
 }

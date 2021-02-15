@@ -20,6 +20,7 @@
 namespace SceneGate.Games.ProfessorLayton.Tests.Containers
 {
     using System.Collections;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using NUnit.Framework;
@@ -34,13 +35,28 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
             get => Path.Combine(TestDataBase.RootFromOutputPath, "containers");
         }
 
-        private static IEnumerable GetStreamAndInfoCollection(string listName)
+        public static IEnumerable GetStreamAndInfoCollection(string listName)
         {
             return TestDataBase.ReadTestListFile(Path.Combine(ContainersResources, listName))
                     .Select(line => line.Split(','))
                     .Select(data => new TestFixtureData(
                         Path.Combine(ContainersResources, data[0]),
                         Path.Combine(ContainersResources, data[1])));
+        }
+
+        public static IEnumerable GetSubstreamAndInfoCollection(string listName)
+        {
+            string path = Path.Combine(ContainersResources, listName);
+            IEnumerable<string[]> lines = TestDataBase.ReadTestListFile(path)
+                    .Select(line => line.Split(','));
+            foreach (string[] info in lines) {
+                yield return new TestCaseData(
+                    Path.Combine(ContainersResources, info[1]),
+                    int.Parse(info[2]),
+                    int.Parse(info[3]),
+                    Path.Combine(ContainersResources, info[0]))
+                    .SetName($"{{m}}({info[1]})");
+            }
         }
     }
 }

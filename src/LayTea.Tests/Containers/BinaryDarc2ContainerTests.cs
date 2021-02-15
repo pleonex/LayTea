@@ -28,32 +28,18 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
     using Yarhl.IO;
 
     [TestFixtureSource(typeof(TestData), nameof(TestData.DarcParams))]
-    public class Binary2DarcTests : Binary2ContainerTests
+    public class BinaryDarc2ContainerTests : Binary2ContainerTests
     {
         private readonly string yamlPath;
         private readonly string binaryPath;
 
-        public Binary2DarcTests(string yamlPath, string binaryPath)
+        public BinaryDarc2ContainerTests(string yamlPath, string binaryPath)
         {
             this.yamlPath = yamlPath;
             this.binaryPath = binaryPath;
 
             TestDataBase.IgnoreIfFileDoesNotExist(yamlPath);
             TestDataBase.IgnoreIfFileDoesNotExist(binaryPath);
-        }
-
-        [Test]
-        public void NullToContainerThrowsException()
-        {
-            var converter = GetToContainerConverter();
-            Assert.That(() => converter.Convert(null), Throws.ArgumentNullException);
-        }
-
-        [Test]
-        public void NullToBinaryThrowsException()
-        {
-            var converter = GetToBinaryConverter();
-            Assert.That(() => converter.Convert(null), Throws.ArgumentNullException);
         }
 
         [Test]
@@ -92,6 +78,6 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
             new NodeContainer2BinaryDarc();
 
         protected override IConverter<BinaryFormat, NodeContainerFormat> GetToContainerConverter() =>
-            new BinaryDarc2NodeContainer();
+            new BinaryDarc2Container();
     }
 }
