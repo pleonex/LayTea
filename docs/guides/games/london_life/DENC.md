@@ -14,8 +14,24 @@ Binary format that contains data that can be compressed.
 
 The possible values for the _compression algorithm_ field are:
 
-- `NULL`: data is **not** compressed.
-- `LZSS`: data is compressed with a LZSS variant.
+- `\0`: not implemented in this game but it is detected as a valid case.
+- [`NULL`](#null-compression): data is not compressed.
+- [`RLE `](#rle-compression): data is compressed with RLE variant.
+- [`LZSS`](#lzss-compression): data is compressed with a LZSS variant.
+- [`BPE `](#bpe-compression): Not implemented in this game.
+- [`ZSKP`](#zskp-compression): data is compressed with ZSKP.
+- [`LSKP`](#lskp-compression): data is compressed with LSKP.
+- [`RNGE`](#rnge-compression): data is compressed with RNGE.
+- [`SOA `](#soa-compression): Not implemented in this game.
+
+### Null compression
+
+Data is not compressed. The processing subroutine in overlay 48 at `0x020d314c`.
+
+### RLE compression
+
+TODO: Analyze code. The decompression subroutine is in overlay 48 at
+`0x020d320c`.
 
 ### LZSS compression
 
@@ -39,6 +55,29 @@ the token decides the operation:
 | ----- | ----------------------------------------------------- |
 | 0     | `1` for repeat decompressed data                      |
 | 1-11  | Number of bytes to go back in output (max 2048 bytes) |
-| 12-15 | Number of bytes to copy (max 16 bytes)                |
+| 12-15 | Number of bytes to copy starting with 2 (2-18 bytes)  |
 
 The decompression subroutine is in overlay 48 at `0x020d3330`.
+
+### BPE compression
+
+The game _Layton London Life_ does not implement this compression.
+
+### ZSKP compression
+
+TODO: Analyze code. The decompression subroutine is in overlay 48 at
+`0x020d3580`.
+
+### LSKP compression
+
+TODO: Analyze code. The decompression subroutine is in overlay 48 at
+`0x020d366c`.
+
+### RNGE compression
+
+TODO: Analyze code. The decompression subroutine is in overlay 48 at
+`0x020d3744`.
+
+### SOA compression
+
+The game _Layton London Life_ does not implement this compression.
