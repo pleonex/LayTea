@@ -43,6 +43,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
         }
 
         [TestCaseSource(nameof(GetCompressedFiles))]
+        [Timeout(1000)]
         public void DecompressionWithFiles(string inputPath, long offset, long length, string infoPath)
         {
             TestDataBase.IgnoreIfFileDoesNotExist(inputPath);
@@ -51,6 +52,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
             using var input = new BinaryFormat(DataStreamFactory.FromFile(inputPath, FileOpenMode.Read, offset, length));
             var expected = BinaryInfo.FromYaml(infoPath);
 
+            int initialStreams = DataStream.ActiveStreams;
             BinaryFormat decompressed = null;
             try {
                 Assert.That(() => decompressed = decompression.Convert(input), Throws.Nothing);
@@ -58,6 +60,8 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
             } finally {
                 decompressed?.Dispose();
             }
+
+            Assert.That(DataStream.ActiveStreams, Is.EqualTo(initialStreams), "Missing stream disposes");
         }
 
         [Test]
