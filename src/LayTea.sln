@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayTea.Tests", "LayTea.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayTea.Tool", "LayTea.Tool\LayTea.Tool.csproj", "{127BB0F9-84F0-48DB-987B-C9383CFC55CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayTea.PerformanceTests", "LayTea.PerformanceTests\LayTea.PerformanceTests.csproj", "{1049A217-BEA9-4439-8BAF-1EA89A08CF01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{127BB0F9-84F0-48DB-987B-C9383CFC55CD}.Release|x64.Build.0 = Release|Any CPU
 		{127BB0F9-84F0-48DB-987B-C9383CFC55CD}.Release|x86.ActiveCfg = Release|Any CPU
 		{127BB0F9-84F0-48DB-987B-C9383CFC55CD}.Release|x86.Build.0 = Release|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Debug|x64.Build.0 = Debug|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Debug|x86.Build.0 = Debug|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Release|x64.ActiveCfg = Release|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Release|x64.Build.0 = Release|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Release|x86.ActiveCfg = Release|Any CPU
+		{1049A217-BEA9-4439-8BAF-1EA89A08CF01}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

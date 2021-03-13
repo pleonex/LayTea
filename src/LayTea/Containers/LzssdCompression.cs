@@ -28,6 +28,11 @@ namespace SceneGate.Games.ProfessorLayton.Containers
     /// </summary>
     public class LzssdCompression : IConverter<BinaryFormat, BinaryFormat>
     {
+        private const int MaxDistance = (1 << 11) - 1;
+        private const int MinSequenceLength = 2;
+        private const int MaxSequenceLength = ((1 << 4) + MinSequenceLength) - 1;
+        private const int MaxRawLength = (1 << 7) - 1;
+
         /// <summary>
         /// Compress a LZSS-DENC compressed stream.
         /// </summary>
@@ -54,78 +59,102 @@ namespace SceneGate.Games.ProfessorLayton.Containers
 
             // So far, only small files use this encoding (few KB).
             // For performance reasons, it will be faster if we load the full file into memory.
+            int inputLen = (int)source.Length;
+            int inputPos = 0;
+            var input = new byte[inputLen];
+            source.Position = 0;
+            source.Read(input);
+
             // Worst case is every byte encoded individually as raw (not going to happen)
             // that would take twice the size (token + byte).
-            int outPos = 0;
-            byte[] output = new byte[source.Length * 2];
-
-            int inPos = 0;
-            byte[] input = new byte[source.Length];
-            source.Position = 0;
-            source.Read(input, 0, input.Length);
+            int outputPos = 0;
+            var output = new byte[inputLen * 2];
 
             int currentRawSequence = 0;
-            while (inPos < input.Length) {
-                (int index, int length) = FindSequence(input, inPos);
-                if (length >= 2) {
+            while (inputPos < inputLen) {
+                (int sequencePos, int sequenceLen) = FindSequence(input, inputPos);
+                if (sequenceLen >= MinSequenceLength) {
                     if (currentRawSequence > 0) {
-                        output[outPos++] = (byte)(currentRawSequence << 1);
-                        for (int i = 0; i < currentRawSequence; i++) {
-                            output[outPos++] = input[inPos - currentRawSequence + i];
-                        }
-
+                        EncodeRaw(input, inputPos, output, ref outputPos, currentRawSequence);
                         currentRawSequence = 0;
                     }
 
-                    int flags = ((length - 2) << 12) | (index << 1) | 1;
-                    output[outPos++] = (byte)(flags & 0xFF);
-                    output[outPos++] = (byte)(flags >> 8);
-                    inPos += length;
+                    EncodeCopy(output, ref outputPos, sequencePos, sequenceLen);
+                    inputPos += sequenceLen;
                 } else {
                     currentRawSequence++;
-                    inPos++;
+                    inputPos++;
 
-                    if (currentRawSequence == 127) {
-                        output[outPos++] = (byte)(currentRawSequence << 1);
-                        for (int i = 0; i < currentRawSequence; i++) {
-                            output[outPos++] = input[inPos - currentRawSequence + i];
-                        }
-
+                    if (currentRawSequence == MaxRawLength) {
+                        EncodeRaw(input, inputPos, output, ref outputPos, currentRawSequence);
                         currentRawSequence = 0;
                     }
                 }
             }
 
             if (currentRawSequence > 0) {
-                output[outPos++] = (byte)(currentRawSequence << 1);
-                for (int i = 0; i < currentRawSequence; i++) {
-                    output[outPos++] = input[inPos - currentRawSequence + i];
-                }
+                EncodeRaw(input, inputPos, output, ref outputPos, currentRawSequence);
             }
 
-            return DataStreamFactory.FromArray(output, 0, outPos);
+            return DataStreamFactory.FromArray(output, 0, outputPos);
         }
 
-        private (int, int) FindSequence(byte[] input, int inPos)
+        private static (int pos, int length) FindSequence(ReadOnlySpan<byte> input, int inputPos)
         {
-            int distance = (inPos > 2047) ? 2047 : inPos;
-            int bestLength = 0;
-            int bestPos = 0;
-            for (int i = 1; i <= distance; i++) {
-                int j = 0;
-                for (; j < 17 && inPos + j < input.Length; j++) {
-                    if (input[inPos + j] != input[inPos - i + j]) {
+            int inputLen = input.Length;
+
+            int maxPattern = (inputPos + MaxSequenceLength > inputLen)
+                ? (inputLen - inputPos)
+                : MaxSequenceLength;
+            if (maxPattern < MinSequenceLength) {
+                return (-1, -1);
+            }
+
+            int windowPos = (inputPos > MaxDistance) ? inputPos - MaxDistance : 0;
+            int windowLen = (windowPos + MaxDistance > inputPos)
+                ? (inputPos - windowPos)
+                : MaxDistance;
+            if (windowLen == 0) {
+                return (-1, -1);
+            }
+
+            var window = input.Slice(windowPos, windowLen + (maxPattern - 1));
+            var pattern = input.Slice(inputPos, maxPattern);
+            int bestLength = -1;
+            int bestPos = -1;
+            for (int pos = windowLen - 1; pos >= 0; pos--) {
+                int length = 0;
+                for (; length < maxPattern; length++) {
+                    if (pattern[length] != window[pos + length]) {
                         break;
                     }
                 }
 
-                if (j > bestLength) {
-                    bestLength = j;
-                    bestPos = i;
+                if (length > bestLength) {
+                    bestLength = length;
+                    bestPos = pos;
+                    if (length == MaxSequenceLength) {
+                        return (windowLen - bestPos, bestLength);
+                    }
                 }
             }
 
-            return (bestPos, bestLength);
+            return (windowLen - bestPos, bestLength);
+        }
+
+        private void EncodeRaw(ReadOnlySpan<byte> input, int inputPos, Span<byte> output, ref int outputPos, int sequenceLength)
+        {
+            output[outputPos++] = (byte)(sequenceLength << 1);
+            for (int i = 0; i < sequenceLength; i++) {
+                output[outputPos++] = input[inputPos + i - sequenceLength];
+            }
+        }
+
+        private void EncodeCopy(Span<byte> output, ref int outputPos, int copyPos, int copyLength)
+        {
+            int flags = ((copyLength - MinSequenceLength) << 12) | (copyPos << 1) | 1;
+            output[outputPos++] = (byte)(flags & 0xFF);
+            output[outputPos++] = (byte)(flags >> 8);
         }
     }
 }

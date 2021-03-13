@@ -8,6 +8,9 @@ tools/
 
 # Test results
 test_results/
+BenchmarkDotNet.Artifacts/
+*.nettrace
+*.speedscope.json
 
 # Documentation output
 docs/_site
