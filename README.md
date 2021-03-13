@@ -24,7 +24,7 @@ Formats:
 
 - **`DARC` containers**: read and write.
 - **`DENC` containers**: read.
-- **`LZSS` compression**: decompress.
+- **`LZSS` compression**: decompress and compress.
 
 ## Documentation
 
