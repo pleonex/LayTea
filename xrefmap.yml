@@ -51,6 +51,31 @@ references:
   isSpec: "True"
   fullName: SceneGate.Games.ProfessorLayton.Containers.DencDecompression.Convert
   nameWithType: DencDecompression.Convert
+- uid: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression
+  name: LzssdCompression
+  href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Containers.LzssdCompression
+  fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression
+  nameWithType: LzssdCompression
+- uid: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert(BinaryFormat)
+  name: Convert(BinaryFormat)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.html#SceneGate_Games_ProfessorLayton_Containers_LzssdCompression_Convert_BinaryFormat_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert(BinaryFormat)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert(BinaryFormat)
+  nameWithType: LzssdCompression.Convert(BinaryFormat)
+- uid: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert(DataStream)
+  name: Convert(DataStream)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.html#SceneGate_Games_ProfessorLayton_Containers_LzssdCompression_Convert_DataStream_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert(DataStream)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert(DataStream)
+  nameWithType: LzssdCompression.Convert(DataStream)
+- uid: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert*
+  name: Convert
+  href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.html#SceneGate_Games_ProfessorLayton_Containers_LzssdCompression_Convert_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert
+  nameWithType: LzssdCompression.Convert
 - uid: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression
   name: LzssdDecompression
   href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html

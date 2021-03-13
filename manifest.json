@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "CONTRIBUTING.html",
-          "hash": "6TuGuARr9j/9T/Fo+cBf1w=="
+          "hash": "WXF4rVv2fsKHfTpgzr1ICg=="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "plmoU+A0k5YQJ9RcLW9HdA=="
+          "hash": "KJNgcksKHL3o7RgLz2Jm0w=="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2Container.html",
-          "hash": "JShYLD1jspirRhbW4TF46Q=="
+          "hash": "hXjnVaPrhOfW2gBcfEOHXQ=="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,19 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.DencDecompression.html",
-          "hash": "l+jf+VdxcZgy6rAnGlfKBA=="
+          "hash": "mu7hWKGJuYOF0pM9xPmYFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.html",
+          "hash": "I+m+xbTofF0DAKPGW+Qmlw=="
         }
       },
       "is_incremental": false,
@@ -66,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html",
-          "hash": "2OBiHw0YTIDfAp0GsXktXA=="
+          "hash": "ShVizHljrOZ50sYOob2ICg=="
         }
       },
       "is_incremental": false,
@@ -78,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.NodeContainer2BinaryDarc.html",
-          "hash": "Fc/62rqX4UFcGJuI8pWXvA=="
+          "hash": "FKBcf6sfYP3SRsYpwvIUMg=="
         }
       },
       "is_incremental": false,
@@ -90,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.html",
-          "hash": "Eb/36X1sZrxE2wW/WpQjdg=="
+          "hash": "OM+l0l9qF6zyd+rsIJuB9g=="
         }
       },
       "is_incremental": false,
@@ -102,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "pega+pHW1G63v9PGrQlvcQ=="
+          "hash": "Hnq32GRBYNj5VHybbO7T5Q=="
         }
       },
       "is_incremental": false,
@@ -114,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/toc.html",
-          "hash": "JaOvmuygNYzScj4R+Ll+sQ=="
+          "hash": "sf5aWQNqysLgG9KvtVZ/Xw=="
         }
       },
       "is_incremental": false,
@@ -126,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/Contributing.html",
-          "hash": "/cwkctsoNJqiXLHZcmei2g=="
+          "hash": "w0U1dRNbmOt3Lz1KZKZeEA=="
         }
       },
       "is_incremental": false,
@@ -138,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/ACB.html",
-          "hash": "fAwM6wGmAU6m3VNogbP2gA=="
+          "hash": "Dn0E/ud/kGETkkPky9ngTQ=="
         }
       },
       "is_incremental": false,
@@ -150,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/ACE.html",
-          "hash": "SXz/uIeCMQrRLGFKuTeEzQ=="
+          "hash": "t75ozt5a7OLgsT5Tw3/kNQ=="
         }
       },
       "is_incremental": false,
@@ -162,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/ACL.html",
-          "hash": "7hkyT8S8WSqPCWz2CAMyXA=="
+          "hash": "5cR5wkQvwWhiJDERG2PnDQ=="
         }
       },
       "is_incremental": false,
@@ -174,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/ACP.html",
-          "hash": "cj5sYS5YfpHeXJZ+cfIXnQ=="
+          "hash": "xf+aYXxF4IZ4n24Tuz/fMQ=="
         }
       },
       "is_incremental": false,
@@ -186,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/ANAG.html",
-          "hash": "xJELDLycdwEDClokSVZJyA=="
+          "hash": "Kljz9TPyj0NDurFJ1R9jMA=="
         }
       },
       "is_incremental": false,
@@ -198,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/ARCHIVE.html",
-          "hash": "ZWqX7alMMRspAeDnECN6pQ=="
+          "hash": "+G8RGX5tryTzLhnRAKaSgw=="
         }
       },
       "is_incremental": false,
@@ -210,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/ASC.html",
-          "hash": "0cI8Iu4VELX5ps5kyCSAiw=="
+          "hash": "ABOLNMial/Rbuv7+Uvk4lA=="
         }
       },
       "is_incremental": false,
@@ -222,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/DARC.html",
-          "hash": "ByhXVo6yeKsXKDJdQWHi7A=="
+          "hash": "XKygitd0R6Nv4vZSv34F7g=="
         }
       },
       "is_incremental": false,
@@ -234,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/DENC.html",
-          "hash": "e44whnh8tfNB2LBfp9+P1Q=="
+          "hash": "88oB7W+yidRTIrX0gpHG/w=="
         }
       },
       "is_incremental": false,
@@ -246,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/MSG.html",
-          "hash": "llHD9RUOXICcUFdvpZJ1WQ=="
+          "hash": "W7ho2CSJW4ExGbH8SDd+dA=="
         }
       },
       "is_incremental": false,
@@ -258,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/NCCG.html",
-          "hash": "NmfapZ02ONuzia+srgokxw=="
+          "hash": "WQ/9QxkGfj/bLaF7+7q21Q=="
         }
       },
       "is_incremental": false,
@@ -270,7 +282,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/NCCL.html",
-          "hash": "es0v16xaOwdX0rG2b8FDPg=="
+          "hash": "GkpGkLAc8zWd4RrLZnfReQ=="
         }
       },
       "is_incremental": false,
@@ -282,7 +294,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/NCOB.html",
-          "hash": "6KxDUrX3f0VwIs2C+i8rDQ=="
+          "hash": "OCL/1WPnINg5jQcUFsj6pw=="
         }
       },
       "is_incremental": false,
@@ -294,7 +306,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/NCSC.html",
-          "hash": "eewKCIDaFA8I3GiH+o1l4Q=="
+          "hash": "v9tmhXQ6gE/VTVu720jnsA=="
         }
       },
       "is_incremental": false,
@@ -306,7 +318,7 @@
       "output": {
         ".html": {
           "relative_path": "guides/games/london_life/summary.html",
-          "hash": "BwiFUwThf+NAXFlppWkuwg=="
+          "hash": "GKxUIvQVF/sWJOyKnc7IXQ=="
         }
       },
       "is_incremental": false,
@@ -374,7 +386,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "AU/rjo6xE8f1J9s9jlJ07A=="
+          "hash": "FGNOUJ94zi90khzlmVAItw=="
         }
       },
       "is_incremental": false,
@@ -413,7 +425,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 5,
+          "total_file_count": 6,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
