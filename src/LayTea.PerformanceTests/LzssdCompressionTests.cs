@@ -43,6 +43,7 @@ namespace SceneGate.Games.ProfessorLayton.PerformanceTests
                     for (int i = 0; i < 800 * 1024; i++) {
                         stream.WriteByte((byte)random.Next(256));
                     }
+
                     break;
 
                 case TestStreamType.MsgText:
