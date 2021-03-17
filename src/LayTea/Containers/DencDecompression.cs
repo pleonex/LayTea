@@ -56,14 +56,14 @@ namespace SceneGate.Games.ProfessorLayton.Containers
             string algorithm = reader.ReadString(4);
             uint compressedLength = reader.ReadUInt32();
 
-            var substream = new DataStream(source.Stream, HeaderLength, compressedLength);
+            using var substream = new DataStream(source.Stream, HeaderLength, compressedLength);
             return GetDecompressedBinary(substream, algorithm);
         }
 
         private BinaryFormat GetDecompressedBinary(DataStream stream, string algorithm)
         {
             DataStream decompressed = algorithm switch {
-                "NULL" => stream,
+                "NULL" => new DataStream(stream, 0, stream.Length),
                 "LZSS" => new LzssdDecompression().Convert(stream),
                 _ => throw new NotImplementedException($"'{algorithm}' not implemented")
             };

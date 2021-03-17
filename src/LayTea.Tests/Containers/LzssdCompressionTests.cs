@@ -19,6 +19,7 @@
 // SOFTWARE.
 namespace SceneGate.Games.ProfessorLayton.Tests.Containers
 {
+    using System;
     using System.Collections;
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Containers;
@@ -34,7 +35,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
         private LzssdDecompression decompression;
         private LzssdCompression compression;
 
-        [OneTimeSetUp]
+        [SetUp]
         public void SetUpFixture()
         {
             decompression = new LzssdDecompression();
@@ -46,6 +47,16 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
         {
             Assert.That(() => compression.Convert((BinaryFormat)null), Throws.ArgumentNullException);
             Assert.That(() => compression.Convert((DataStream)null), Throws.ArgumentNullException);
+        }
+
+        [Test]
+        public void InvalidStreamInitializationThrows()
+        {
+            Assert.That(() => compression.Initialize(null), Throws.ArgumentNullException);
+
+            var stream = new DataStream();
+            stream.Dispose();
+            Assert.That(() => compression.Initialize(stream), Throws.InstanceOf<ObjectDisposedException>());
         }
 
         [TestCaseSource(nameof(GetCompressedFiles))]
@@ -73,6 +84,37 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
             }
 
             Assert.That(DataStream.ActiveStreams, Is.EqualTo(initialStreams), "Missing stream disposes");
+        }
+
+        [Test]
+        public void WriteInInitializeStream()
+        {
+            using var input = new DataStream();
+            input.Write(new byte[] { 0xCA, 0xFE }, 0, 2);
+
+            using var expectedOutput = new DataStream();
+            compression.Initialize(expectedOutput);
+
+            using var actualOutput = compression.Convert(input);
+
+            Assert.That(actualOutput, Is.SameAs(expectedOutput));
+            Assert.That(actualOutput.Length, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void WriteInNewStreamAfterConversion()
+        {
+            using var input = new DataStream();
+            input.Write(new byte[] { 0xCA, 0xFE }, 0, 2);
+
+            using var firstOutput = new DataStream();
+            compression.Initialize(firstOutput);
+
+            compression.Convert(input);
+            using var secondOutput = compression.Convert(input);
+
+            Assert.That(firstOutput, Is.Not.SameAs(secondOutput));
+            Assert.That(secondOutput.Length, Is.EqualTo(3));
         }
 
         [Test]
