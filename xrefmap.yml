@@ -32,6 +32,69 @@ references:
   isSpec: "True"
   fullName: SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2Container.Convert
   nameWithType: BinaryDarc2Container.Convert
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompression
+  name: DencCompression
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompression.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Containers.DencCompression
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompression
+  nameWithType: DencCompression
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompression.#ctor
+  name: DencCompression()
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompression.html#SceneGate_Games_ProfessorLayton_Containers_DencCompression__ctor
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.DencCompression.#ctor
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompression.DencCompression()
+  nameWithType: DencCompression.DencCompression()
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompression.#ctor*
+  name: DencCompression
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompression.html#SceneGate_Games_ProfessorLayton_Containers_DencCompression__ctor_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Containers.DencCompression.#ctor
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompression.DencCompression
+  nameWithType: DencCompression.DencCompression
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompression.Convert(BinaryFormat)
+  name: Convert(BinaryFormat)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompression.html#SceneGate_Games_ProfessorLayton_Containers_DencCompression_Convert_BinaryFormat_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.DencCompression.Convert(BinaryFormat)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompression.Convert(BinaryFormat)
+  nameWithType: DencCompression.Convert(BinaryFormat)
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompression.Convert*
+  name: Convert
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompression.html#SceneGate_Games_ProfessorLayton_Containers_DencCompression_Convert_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Containers.DencCompression.Convert
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompression.Convert
+  nameWithType: DencCompression.Convert
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompression.Initialize(SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind)
+  name: Initialize(DencCompressionKind)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompression.html#SceneGate_Games_ProfessorLayton_Containers_DencCompression_Initialize_SceneGate_Games_ProfessorLayton_Containers_DencCompressionKind_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.DencCompression.Initialize(SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompression.Initialize(SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind)
+  nameWithType: DencCompression.Initialize(DencCompressionKind)
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompression.Initialize*
+  name: Initialize
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompression.html#SceneGate_Games_ProfessorLayton_Containers_DencCompression_Initialize_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Containers.DencCompression.Initialize
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompression.Initialize
+  nameWithType: DencCompression.Initialize
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind
+  name: DencCompressionKind
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind
+  nameWithType: DencCompressionKind
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.Lzss
+  name: Lzss
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.html#SceneGate_Games_ProfessorLayton_Containers_DencCompressionKind_Lzss
+  commentId: F:SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.Lzss
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.Lzss
+  nameWithType: DencCompressionKind.Lzss
+- uid: SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.None
+  name: None
+  href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.html#SceneGate_Games_ProfessorLayton_Containers_DencCompressionKind_None
+  commentId: F:SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.None
+  fullName: SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.None
+  nameWithType: DencCompressionKind.None
 - uid: SceneGate.Games.ProfessorLayton.Containers.DencDecompression
   name: DencDecompression
   href: api/SceneGate.Games.ProfessorLayton.Containers.DencDecompression.html
@@ -76,6 +139,19 @@ references:
   isSpec: "True"
   fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Convert
   nameWithType: LzssdCompression.Convert
+- uid: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Initialize(DataStream)
+  name: Initialize(DataStream)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.html#SceneGate_Games_ProfessorLayton_Containers_LzssdCompression_Initialize_DataStream_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Initialize(DataStream)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Initialize(DataStream)
+  nameWithType: LzssdCompression.Initialize(DataStream)
+- uid: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Initialize*
+  name: Initialize
+  href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.html#SceneGate_Games_ProfessorLayton_Containers_LzssdCompression_Initialize_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Initialize
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.Initialize
+  nameWithType: LzssdCompression.Initialize
 - uid: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression
   name: LzssdDecompression
   href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html
