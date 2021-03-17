@@ -26,12 +26,34 @@ namespace SceneGate.Games.ProfessorLayton.Containers
     /// <summary>
     /// Compression algorithm for LZSS variant found in DENC formats.
     /// </summary>
-    public class LzssdCompression : IConverter<BinaryFormat, BinaryFormat>
+    public class LzssdCompression :
+        IInitializer<DataStream>, IConverter<BinaryFormat, BinaryFormat>
     {
         private const int MaxDistance = (1 << 11) - 1;
         private const int MinSequenceLength = 2;
         private const int MaxSequenceLength = ((1 << 4) + MinSequenceLength) - 1;
         private const int MaxRawLength = (1 << 7) - 1;
+
+        private DataStream requestedOutput;
+
+        /// <summary>
+        /// Initializes the converter with the output stream to write the
+        /// compressed data.
+        /// </summary>
+        /// <param name="parameters">The output stream.</param>
+        /// <remarks>
+        /// <p>The given output stream is only used once in the following call
+        /// to Convert. Following calls will use a new default (memory) stream.</p>
+        /// </remarks>
+        public void Initialize(DataStream parameters)
+        {
+            if (parameters == null)
+                throw new ArgumentNullException(nameof(parameters));
+            if (parameters.Disposed)
+                throw new ObjectDisposedException(nameof(parameters));
+
+            requestedOutput = parameters;
+        }
 
         /// <summary>
         /// Compress a LZSS-DENC compressed stream.
@@ -96,7 +118,18 @@ namespace SceneGate.Games.ProfessorLayton.Containers
                 EncodeRaw(input, inputPos, output, ref outputPos, currentRawSequence);
             }
 
-            return DataStreamFactory.FromArray(output, 0, outputPos);
+            DataStream outputStream;
+            if (requestedOutput != null) {
+                outputStream = requestedOutput;
+                outputStream.Write(output, 0, outputPos);
+
+                // Don't use it in the next conversion.
+                requestedOutput = null;
+            } else {
+                outputStream = DataStreamFactory.FromArray(output, 0, outputPos);
+            }
+
+            return outputStream;
         }
 
         private static (int pos, int length) FindSequence(ReadOnlySpan<byte> input, int inputPos)
