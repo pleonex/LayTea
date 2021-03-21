@@ -59,14 +59,14 @@ The known control codes are:
 | ID       | Arguments  | Mnemonic    | Description                         |
 | -------- | ---------- | ----------- | ----------------------------------- |
 | `0x00F0` | None       | `\n`        | New line                            |
-| `0x00F1` | None       | split entry | End of dialog, press button `A`     |
+| `0x00F1` | None       | `next_box`  | End of dialog, press button `A`     |
 | `0x00F2` | `short`    | `color`     | Change text color                   |
 | `0x00F3` | `short`    | `wait`      | Wait a specific time                |
 | `0x00F4` | `short`    | `name`      | Print a name                        |
 | `0x00F5` | `string[]` | `question`  | Ask a question                      |
 | `0x00F9` | `short`    | `variable`  | Print a variable                    |
 | `0x00FA` | `short`    | `unk_FA`    | Unknown                             |
-| `0x00FB` | None       | `bg_work`   | Wait for a task (saving or loading) |
+| `0x00FB` | None       | `save_load` | Wait for a task (saving or loading) |
 | `0x00FC` | None       | `unk_FC`    | Unknown                             |
 
 ## Sections

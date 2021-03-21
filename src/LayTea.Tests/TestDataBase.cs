@@ -47,11 +47,9 @@ namespace SceneGate.Games.ProfessorLayton.Tests
         public static void IgnoreIfFileDoesNotExist(string file)
         {
             if (!File.Exists(file)) {
-                TestContext.Progress.WriteLine(
-                    "[{0}] Missing resource file: {1}",
-                    TestContext.CurrentContext.Test.ClassName,
-                    file);
-                Assert.Ignore();
+                string msg = $"[{TestContext.CurrentContext.Test.ClassName}] Missing resource file: {file}";
+                TestContext.Progress.WriteLine(msg);
+                Assert.Ignore(msg);
             }
         }
 
