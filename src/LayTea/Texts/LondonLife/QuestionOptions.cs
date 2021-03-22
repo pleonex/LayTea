@@ -29,7 +29,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
         /// <summary>
         /// Gets the collection of options to select.
         /// </summary>
-        public Collection<string> Options { get; } = new Collection<string>();
+        public Collection<(int, string)> Options { get; } = new Collection<(int, string)>();
 
         /// <summary>
         /// Gets or sets the index to the option pre-selected.

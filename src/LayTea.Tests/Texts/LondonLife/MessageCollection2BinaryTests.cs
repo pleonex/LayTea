@@ -19,7 +19,6 @@
 // SOFTWARE.
 namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
 {
-    using System;
     using System.IO;
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Containers;
@@ -28,27 +27,17 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
     using Yarhl.IO;
 
     [TestFixture]
-    public class Binary2MessageCollectionTests
+    public class MessageCollection2BinaryTests
     {
         [Test]
         public void NullBinaryThrows()
         {
-            var converter = new Binary2MessageCollection();
+            var converter = new MessageCollection2Binary();
             Assert.That(() => converter.Convert(null), Throws.ArgumentNullException);
         }
 
         [Test]
-        public void InvalidStampThrows()
-        {
-            var converter = new Binary2MessageCollection();
-            using var binary = new BinaryFormat();
-            binary.Stream.Write(new byte[] { 0x30, 0x31, 0x32, 0x33 }, 0, 4);
-
-            Assert.That(() => converter.Convert(binary), Throws.InstanceOf<FormatException>());
-        }
-
-        [Test]
-        public void ConvertFileSucceeds()
+        public void ThreeWaysConversionIsEqual()
         {
             const int offset = 292;
             const int length = 384261;
@@ -63,29 +52,19 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
                 Assert.Ignore("Failed to decompress");
             }
 
-            Assert.That(() => node.TransformWith<Binary2MessageCollection>(), Throws.Nothing);
+            BinaryFormat expected = node.GetFormatAs<BinaryFormat>();
+            MessageCollection messages = null;
+            try {
+                var deserializer = new Binary2MessageCollection();
+                messages = deserializer.Convert(expected);
+            } catch {
+                Assert.Ignore("Failed to read");
+            }
 
-            var msg = node.GetFormatAs<MessageCollection>();
-            Assert.That(msg.Messages, Has.Count.EqualTo(11_103));
+            var serializer = new MessageCollection2Binary();
+            using BinaryFormat actual = serializer.Convert(messages);
 
-            // Tricky message with code-points matching function IDs.
-            // Also it contains a script end inside a text block.
-            Assert.That(
-                ((MessageRawText)msg.Messages[8606].Content[0]).Text,
-                Is.EqualTo(".*F[cku?Üüû][©c??k][k???].*"));
-
-            // Question with random IDs
-            Assert.That(msg.Messages[8083].QuestionOptions.DefaultIndex, Is.EqualTo(2));
-            Assert.That(msg.Messages[8083].QuestionOptions.PreSelectedIndex, Is.EqualTo(0));
-            Assert.That(msg.Messages[8083].QuestionOptions.Options[0].Item1, Is.EqualTo(3));
-            Assert.That(msg.Messages[8083].QuestionOptions.Options[0].Item2, Is.EqualTo("????"));
-            Assert.That(msg.Messages[8083].QuestionOptions.Options[1].Item1, Is.EqualTo(1));
-            Assert.That(msg.Messages[8083].QuestionOptions.Options[1].Item2, Is.EqualTo("Ingrid's room"));
-            Assert.That(msg.Messages[8083].QuestionOptions.Options[2].Item1, Is.EqualTo(5));
-            Assert.That(msg.Messages[8083].QuestionOptions.Options[2].Item2, Is.EqualTo("Cancel"));
-
-            // The end script byte is in the text block shared with func arg
-            Assert.That(msg.Messages[2338].Content, Has.Count.EqualTo(5));
+            Assert.That(actual.Stream.Compare(expected.Stream), Is.True, "Different streams");
         }
     }
 }

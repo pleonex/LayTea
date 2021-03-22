@@ -90,7 +90,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
                         currentText.Clear();
                     }
 
-                    ReadFunction(reader, block, entry);
+                    foundEnd = ReadFunction(reader, block, entry, currentText);
                 }
             }
 
@@ -124,24 +124,29 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
             return false;
         }
 
-        private void ReadFunction(DataReader reader, byte[] block, Message entry)
+        private bool ReadFunction(DataReader reader, byte[] block, Message entry, StringBuilder currentText)
         {
             int id = block[0] | (block[1] << 8);
             int funcLength = block[2] | (block[3] << 8);
 
+            bool foundEnd = false;
             if (id == QuestionId) {
                 entry.QuestionOptions = ReadQuestionOptions(reader);
+                return true;
             } else {
                 // Only short values are present in the known functions.
                 short? arg = null;
                 if (funcLength == 4) {
                     arg = reader.ReadInt16();
-                    reader.Stream.Position += 2; // skip two padding bytes of the new block.
+
+                    foundEnd = AppendText(reader.ReadBytes(2), currentText);
                 }
 
                 var function = MessageFunction.FromId(id, arg);
                 entry.Add(function);
             }
+
+            return foundEnd;
         }
 
         private QuestionOptions ReadQuestionOptions(DataReader reader)
@@ -156,10 +161,10 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
                 int pointer = reader.ReadUInt16();
 
                 reader.Stream.Position = pointerPos + pointer;
-                reader.ReadUInt32(); // ID, sequential so no need
+                int id = reader.ReadInt32();
                 int length = reader.ReadInt32();
                 string option = reader.ReadString(length, Encoding.Latin1);
-                question.Options.Add(option);
+                question.Options.Add((id, option));
 
                 reader.Stream.Position = pointerPos + 2;
             }
