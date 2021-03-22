@@ -16,6 +16,9 @@ Binary format that encode the game text.
 - The text is mixed with formatting and script functions (control codes).
 - The encoding is `ISO/IEC 8859-1` (`Latin-1`).
 - Script ends with null-terminator character (`\0`).
+  - The null-terminator may appear in any place a text character can appear.
+    This includes text blocks and remaining bytes from a function argument
+    block.
 - Padding to multiple of 4 with byte `0x00`.
 
 The script consists of blocks of 4 bytes. A block contains text _or_ control
@@ -39,7 +42,7 @@ There are three type of arguments:
 
 - No arguments (length is _2_).
 - One signed 16-bits (length is _4_).
-- A list of strings (length is bigger than _4_).
+- Question options (length is bigger than _4_).
 
 The format of the latter is:
 
@@ -50,9 +53,13 @@ The format of the latter is:
 | 0x04   | 0x04 | Number of strings                           |
 | 0x08   | x    | 16-bits string pointers from their position |
 | ...    | ...  | For each string...                          |
-| 0x00   | 0x04 | String ID                                   |
+| 0x00   | 0x04 | String ID (not sequential always)           |
 | 0x04   | 0x08 | String length                               |
 | 0x08   | x    | String no null-terminated                   |
+
+In the case of one signed 16-bits arguments, after the argument (2 bytes of a
+new 4-bytes block) text characters can be stored, including the script
+null-terminator.
 
 The known control codes are:
 
@@ -63,7 +70,7 @@ The known control codes are:
 | `0x00F2` | `short`    | `color`     | Change text color                   |
 | `0x00F3` | `short`    | `wait`      | Wait a specific time                |
 | `0x00F4` | `short`    | `name`      | Print a name                        |
-| `0x00F5` | `string[]` | `question`  | Ask a question                      |
+| `0x00F5` | `string[]` | `question`  | Select options. Always at the end.  |
 | `0x00F9` | `short`    | `variable`  | Print a variable                    |
 | `0x00FA` | `short`    | `unk_FA`    | Unknown                             |
 | `0x00FB` | None       | `save_load` | Wait for a task (saving or loading) |
