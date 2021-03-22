@@ -18,7 +18,8 @@
         "yzhang.markdown-all-in-one",
         "davidanson.vscode-markdownlint",
         "eamodio.gitlens",
-        "ms-vscode.hexeditor"
+        "ms-vscode.hexeditor",
+        "mrorz.language-gettext"
     ],
 
     "remoteUser": "vscode",
