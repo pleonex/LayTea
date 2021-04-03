@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <Product>SceneGate.Ekona.Games.ProfessorLayton</Product>
+        <Product>SceneGate.Games.ProfessorLayton</Product>
         <Authors>pleonex</Authors>
         <Copyright>Copyright (C) 2020 pleonex</Copyright>
 

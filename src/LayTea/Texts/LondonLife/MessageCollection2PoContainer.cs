@@ -20,14 +20,20 @@
 namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
 {
     using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
     using System.Text;
+    using YamlDotNet.Serialization;
+    using YamlDotNet.Serialization.NamingConventions;
     using Yarhl.FileFormat;
+    using Yarhl.FileSystem;
     using Yarhl.Media.Text;
 
     /// <summary>
     /// Converter for a message collection into PO.
     /// </summary>
-    public sealed class MessageCollection2Po : IConverter<MessageCollection, Po>
+    public sealed class MessageCollection2PoContainer : IConverter<MessageCollection, NodeContainerFormat>
     {
         private const int NextBoxId = 0xF1;
 
@@ -36,36 +42,69 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
         /// </summary>
         /// <param name="source">The messages to convert.</param>
         /// <returns>The PO with the messages.</returns>
-        public Po Convert(MessageCollection source)
+        public NodeContainerFormat Convert(MessageCollection source)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
 
-            var po = new Po(new PoHeader("london-life", "SceneGate", "en"));
+            var container = new NodeContainerFormat();
 
+            IEnumerable<MessageSection> sections = LoadSectionInfo();
+
+            MessageSection currentSection = sections.First();
+            Po currentPo = null;
             var text = new StringBuilder();
             for (int i = 0; i < source.Messages.Count; i++) {
-                Message msg = source.Messages[i];
-                int boxCount = 0;
-                foreach (var element in msg.Content) {
-                    if (element is MessageRawText rawText) {
-                        AppendRawText(text, rawText.Text);
-                    } else if (element is MessageFunction { Id: NextBoxId }) {
-                        // Split entries with the function next box too.
-                        FlushEntry(po, i, boxCount++, text);
-                    } else if (element is MessageFunction function) {
-                        AppendFunctions(text, function);
-                    }
+                var matchSection = sections.FirstOrDefault(s => s.Start == i);
+                if (matchSection != null) {
+                    currentSection = matchSection;
+                    currentPo = new Po(new PoHeader("london-life", "SceneGate", "en"));
+                    container.Root.Add(new Node(matchSection.Name, currentPo));
                 }
 
-                if (msg.QuestionOptions != null) {
-                    AppendOptions(text, msg.QuestionOptions);
-                }
-
-                FlushEntry(po, i, boxCount, text);
+                AddMessage(currentPo, source.Messages[i], i, text, currentSection);
             }
 
-            return po;
+            return container;
+        }
+
+        private static IEnumerable<MessageSection> LoadSectionInfo()
+        {
+            string resourceName = "SceneGate.Games.ProfessorLayton.Texts.LondonLife.msg_sections.yml";
+            var assembly = typeof(MessageCollection2PoContainer).Assembly;
+            using var stream = assembly.GetManifestResourceStream(resourceName);
+            if (stream == null) {
+                throw new InvalidOperationException("Missing section YML");
+            }
+
+            using var reader = new StreamReader(stream);
+            return new DeserializerBuilder()
+                .WithNamingConvention(LowerCaseNamingConvention.Instance)
+                .Build()
+                .Deserialize<IEnumerable<MessageSection>>(reader);
+        }
+
+        private static void AddMessage(Po po, Message msg, int index, StringBuilder text, MessageSection section)
+        {
+            text.Clear();
+            int boxCount = 0;
+
+            foreach (var element in msg.Content) {
+                if (element is MessageRawText rawText) {
+                    AppendRawText(text, rawText.Text);
+                } else if (element is MessageFunction { Id: NextBoxId }) {
+                    // Split entries with the function next box too.
+                    FlushEntry(po, index, boxCount++, text, section);
+                } else if (element is MessageFunction function) {
+                    AppendFunctions(text, function);
+                }
+            }
+
+            if (msg.QuestionOptions != null) {
+                AppendOptions(text, msg.QuestionOptions);
+            }
+
+            FlushEntry(po, index, boxCount, text, section);
         }
 
         private static void AppendRawText(StringBuilder builder, string raw)
@@ -101,15 +140,22 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
             }
         }
 
-        private static void FlushEntry(Po po, int msgId, int boxCount, StringBuilder text)
+        private static void FlushEntry(Po po, int msgId, int boxCount, StringBuilder text, MessageSection section)
         {
             if (text.Length == 0) {
                 return;
             }
 
+            string entryType = null;
+            if (section.Entries.Count > 0) {
+                int itemIdx = (msgId - section.Start) % section.Entries.Count;
+                entryType = section.Entries[itemIdx];
+            }
+
             var entry = new PoEntry {
                 Context = $"{msgId}:{boxCount}",
                 Original = text.ToString(),
+                ExtractedComments = entryType,
             };
             po.Add(entry);
             text.Clear();

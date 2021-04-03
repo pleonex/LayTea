@@ -6,12 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Texts/LondonLife/msg_sections.yml" />
+
     <None Include="../../docs/images/favicon-128.png" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Yarhl" />
     <PackageReference Include="Yarhl.Media" />
+    <PackageReference Include="YamlDotNet" />
   </ItemGroup>
 
 </Project>
