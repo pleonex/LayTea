@@ -85,6 +85,9 @@ different fields. These are the known sections:
 | Index | Fields | Description                                               |
 | ----- | ------ | --------------------------------------------------------- |
 | 0     | 6      | static dialogs ([character dialogs](#character-dialogs))  |
+| 714   | 6      | special dialogs                                           |
+| 1404  | 6      | special dialogs 2                                         |
+| 1482  | 1      | roommate dialogs                                          |
 | 1527  | 2      | requests title and description                            |
 | 2073  | 1      | weird expressions                                         |
 | 2078  | 1      | requests info                                             |
@@ -108,43 +111,12 @@ different fields. These are the known sections:
 | 10629 | 7      | profession titles                                         |
 | 10678 | 1      | crossing and directions                                   |
 | 10729 | 4      | train dialogs: buy, thanks and 2x failed messages         |
-| 10849 | 2      | characters name and description                           |
+| 10865 | 2      | characters name and description                           |
 
 ### Character dialogs
 
-The information to correlate the speaker name with their dialog is in the
-`overlay48`. Each speaker has an ID that goes from 0 to 255. For each speaker,
-there are 6 dialogs, divided en 2 groups according to the current event. At
-`0x020E3D48` there is a table that gives the address to the information entry
-for the speaker. Each entry of this main table is 12 bytes and has the following
-format:
+There are 6 dialogs per character. The order of the character's dialogs match
+with the order of the character's names.
 
-| Offset | Size | Description        |
-| ------ | ---- | ------------------ |
-| 0x00   | 1    | Speaker minimum ID |
-| 0x01   | 1    | Speaker maximum ID |
-| 0x02   | 2    | Reserved           |
-| 0x04   | 4    | Base address       |
-| 0x08   | 4    | Entry size         |
-
-The name of the speakers are in order of ID starting at `10849` in the message
-sections.
-
-To calculate the address to the speaker information given its ID, iterate the
-table finding an entry where the ID is in the range minimum and maximum ID.
-Then, calculate the relative ID from the minimum value, multiply by the entry
-size and add the base address. The size of the character info changes depending
-the speaker category, but the second byte gives always the internal ID. This
-second ID is also the index to the character static dialog texts.
-
-There is a second table at `0x020DC03C` with more information about the
-character. To access, use the internal ID, each entry has a constant size of 12
-bytes. This information is divided in 2 groups of 3 values of 16-bits.
-
-Internally, there aren't scripts. The game iterates over all characters,
-deciding if they appear in the current map or not. This happens in the
-subroutine `0x020EC6C4`. If they happen, then the game creates a new dialog
-event assigning the speaker ID and the text index.
-
-It is not possible to get the speaker of script dialogs since the speaker ID and
-text index are hard-coded in code for each case.
+It is not possible to get the speaker of script dialogs and other dialogs since
+the speaker ID and text index are hard-coded in code for each case.
