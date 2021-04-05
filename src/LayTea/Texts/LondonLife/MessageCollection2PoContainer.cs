@@ -21,6 +21,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -62,7 +63,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
                     container.Root.Add(new Node(matchSection.Name, currentPo));
                 }
 
-                AddMessage(currentPo, source.Messages[i], i, text, currentSection);
+                AddMessage(currentPo, source.Messages, i, text, currentSection);
             }
 
             return container;
@@ -84,27 +85,27 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
                 .Deserialize<IEnumerable<MessageSection>>(reader);
         }
 
-        private static void AddMessage(Po po, Message msg, int index, StringBuilder text, MessageSection section)
+        private static void AddMessage(Po po, Collection<Message> messages, int index, StringBuilder text, MessageSection section)
         {
             text.Clear();
             int boxCount = 0;
 
-            foreach (var element in msg.Content) {
+            foreach (var element in messages[index].Content) {
                 if (element is MessageRawText rawText) {
                     AppendRawText(text, rawText.Text);
                 } else if (element is MessageFunction { Id: NextBoxId }) {
                     // Split entries with the function next box too.
-                    FlushEntry(po, index, boxCount++, text, section);
+                    FlushEntry(po, index, boxCount++, text, section, messages);
                 } else if (element is MessageFunction function) {
                     AppendFunctions(text, function);
                 }
             }
 
-            if (msg.QuestionOptions != null) {
-                AppendOptions(text, msg.QuestionOptions);
+            if (messages[index].QuestionOptions != null) {
+                AppendOptions(text, messages[index].QuestionOptions);
             }
 
-            FlushEntry(po, index, boxCount, text, section);
+            FlushEntry(po, index, boxCount, text, section, messages);
         }
 
         private static void AppendRawText(StringBuilder builder, string raw)
@@ -140,7 +141,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
             }
         }
 
-        private static void FlushEntry(Po po, int msgId, int boxCount, StringBuilder text, MessageSection section)
+        private static void FlushEntry(Po po, int msgId, int boxCount, StringBuilder text, MessageSection section, Collection<Message> messages)
         {
             if (text.Length == 0) {
                 return;
@@ -150,6 +151,12 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
             if (section.Entries.Count > 0) {
                 int itemIdx = (msgId - section.Start) % section.Entries.Count;
                 entryType = section.Entries[itemIdx];
+            }
+
+            if (section.Start == 0) {
+                int nameIdx = 10865 + ((msgId / 6) * 2);
+                string name = (messages[nameIdx].Content[0] as MessageRawText).Text;
+                entryType = $"Name: {name}, {entryType}";
             }
 
             var entry = new PoEntry {

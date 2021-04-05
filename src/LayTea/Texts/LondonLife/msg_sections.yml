@@ -1,12 +1,33 @@
 - start: 0
   name: "Character dialogs"
   entries:
-    - "Event 0, dialog 1"
-    - "Event 0, dialog 2"
-    - "Event 0, dialog 3"
     - "Event 1, dialog 1"
     - "Event 1, dialog 2"
     - "Event 1, dialog 3"
+    - "Event 2, dialog 1"
+    - "Event 2, dialog 2"
+    - "Event 2, dialog 3"
+- start: 714
+  name: "Special dialogs 1"
+  entries:
+    - "Dialog 1"
+    - "Dialog 2"
+    - "Dialog 3"
+    - "Dialog 4"
+    - "Dialog 5"
+    - "Dialog 6"
+- start: 1404
+  name: "Special dialogs 2"
+  entries:
+    - "Event 1, dialog 1"
+    - "Event 1, dialog 2"
+    - "Event 1, dialog 3"
+    - "Event 2, dialog 1"
+    - "Event 2, dialog 2"
+    - "Event 2, dialog 3"
+- start: 1482
+  name: "Roommate dialogs"
+  entries: []
 - start: 1527
   name: "Requests"
   entries:
@@ -98,12 +119,12 @@
   name: "Jobs"
   entries:
     - "Name"
-    - "Level 0"
     - "Level 1"
     - "Level 2"
     - "Level 3"
     - "Level 4"
     - "Level 5"
+    - "Level 6"
 - start: 10678
   name: "Train stations"
   entries: []
@@ -114,7 +135,7 @@
     - "Thank"
     - "Wrong name"
     - "Timeout"
-- start: 10849
+- start: 10865
   name: "Characters"
   entries:
     - "Name"
