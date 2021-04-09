@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Texts/LondonLife/msg_sections.yml" />
+    <EmbeddedResource Include="Texts/LondonLife/*.yml" />
 
     <None Include="../../docs/images/favicon-128.png" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>

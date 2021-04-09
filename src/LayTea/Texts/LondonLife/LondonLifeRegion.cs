@@ -19,26 +19,24 @@
 // SOFTWARE.
 namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
 {
-    using System.Collections.ObjectModel;
-
     /// <summary>
-    /// Information about a section in the big collection of messages.
+    /// Region for London Life minigame.
     /// </summary>
-    internal class MessageSection
+    public enum LondonLifeRegion
     {
         /// <summary>
-        /// Gets or sets the index of the first message of the section.
+        /// Japan region.
         /// </summary>
-        public int Start { get; set; }
+        Japan,
 
         /// <summary>
-        /// Gets or sets the section's name.
+        /// USA region.
         /// </summary>
-        public string Name { get; set; }
+        Usa,
 
         /// <summary>
-        /// Gets or sets the collection of entry names for the section.
+        /// Australia region.
         /// </summary>
-        public Collection<string> Entries { get; set; } = new Collection<string>();
+        Australia,
     }
 }

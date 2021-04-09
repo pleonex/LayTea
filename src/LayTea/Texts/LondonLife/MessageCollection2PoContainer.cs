@@ -22,11 +22,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Linq;
     using System.Text;
-    using YamlDotNet.Serialization;
-    using YamlDotNet.Serialization.NamingConventions;
     using Yarhl.FileFormat;
     using Yarhl.FileSystem;
     using Yarhl.Media.Text;
@@ -34,9 +30,21 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
     /// <summary>
     /// Converter for a message collection into PO.
     /// </summary>
-    public sealed class MessageCollection2PoContainer : IConverter<MessageCollection, NodeContainerFormat>
+    public sealed class MessageCollection2PoContainer :
+        IInitializer<LondonLifeRegion>, IConverter<MessageCollection, NodeContainerFormat>
     {
-        private const int NextBoxId = 0xF1;
+        private readonly StringBuilder contextBuilder = new StringBuilder();
+        private readonly MessageTextSerializer textParser = new MessageTextSerializer();
+        private MessageContextProvider contextProvider;
+
+        /// <summary>
+        /// Initializes the converter with the game region.
+        /// </summary>
+        /// <param name="parameters">The game region.</param>
+        public void Initialize(LondonLifeRegion parameters)
+        {
+            contextProvider = new MessageContextProvider(parameters);
+        }
 
         /// <summary>
         /// Convert a message collection into PO.
@@ -47,125 +55,77 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
+            if (contextProvider == null)
+                throw new InvalidOperationException("Missing initialization");
 
             var container = new NodeContainerFormat();
 
-            IEnumerable<MessageSection> sections = LoadSectionInfo();
-
-            MessageSection currentSection = sections.First();
+            var sections = contextProvider.Sections;
+            int sectionIdx = -1;
+            int endDialog = -1;
             Po currentPo = null;
-            var text = new StringBuilder();
             for (int i = 0; i < source.Messages.Count; i++) {
-                var matchSection = sections.FirstOrDefault(s => s.Start == i);
-                if (matchSection != null) {
-                    currentSection = matchSection;
+                if (i > endDialog) {
+                    sectionIdx++;
+
+                    bool isLastSection = (sectionIdx + 1) == sections.Count;
+                    endDialog = isLastSection
+                        ? source.Messages.Count
+                        : sections[sectionIdx + 1].Start - 1;
+
                     currentPo = new Po(new PoHeader("london-life", "SceneGate", "en"));
-                    container.Root.Add(new Node(matchSection.Name, currentPo));
+                    container.Root.Add(new Node(sections[sectionIdx].Name, currentPo));
                 }
 
-                AddMessage(currentPo, source.Messages, i, text, currentSection);
+                var entries = CreateEntries(source.Messages, i, sections[sectionIdx]);
+                currentPo?.Add(entries);
             }
 
             return container;
         }
 
-        private static IEnumerable<MessageSection> LoadSectionInfo()
+        private IEnumerable<PoEntry> CreateEntries(Collection<Message> messages, int index, MessageSection section)
         {
-            string resourceName = "SceneGate.Games.ProfessorLayton.Texts.LondonLife.msg_sections.yml";
-            var assembly = typeof(MessageCollection2PoContainer).Assembly;
-            using var stream = assembly.GetManifestResourceStream(resourceName);
-            if (stream == null) {
-                throw new InvalidOperationException("Missing section YML");
-            }
-
-            using var reader = new StreamReader(stream);
-            return new DeserializerBuilder()
-                .WithNamingConvention(LowerCaseNamingConvention.Instance)
-                .Build()
-                .Deserialize<IEnumerable<MessageSection>>(reader);
-        }
-
-        private static void AddMessage(Po po, Collection<Message> messages, int index, StringBuilder text, MessageSection section)
-        {
-            text.Clear();
             int boxCount = 0;
-
-            foreach (var element in messages[index].Content) {
-                if (element is MessageRawText rawText) {
-                    AppendRawText(text, rawText.Text);
-                } else if (element is MessageFunction { Id: NextBoxId }) {
-                    // Split entries with the function next box too.
-                    FlushEntry(po, index, boxCount++, text, section, messages);
-                } else if (element is MessageFunction function) {
-                    AppendFunctions(text, function);
+            foreach (string dialogText in textParser.Serialize(messages[index]))
+            {
+                if (dialogText.Length == 0) {
+                    continue;
                 }
-            }
 
-            if (messages[index].QuestionOptions != null) {
-                AppendOptions(text, messages[index].QuestionOptions);
-            }
-
-            FlushEntry(po, index, boxCount, text, section, messages);
-        }
-
-        private static void AppendRawText(StringBuilder builder, string raw)
-        {
-            // Escape the tokens we use for function definitions
-            // And invalid PO chars.
-            raw = raw
-                .Replace("{", "{{").Replace("}", "}}")
-                .Replace(@"\", @"\\");
-            builder.Append(raw);
-        }
-
-        private static void AppendFunctions(StringBuilder builder, MessageFunction function)
-        {
-            if (function.Argument.HasValue) {
-                builder.AppendFormat("{{{0}({1})}}", function.Mnemonic, function.Argument.Value);
-            } else {
-                builder.AppendFormat("{{{0}()}}", function.Mnemonic);
+                yield return CreateEntry(dialogText, index, boxCount++, section, messages);
             }
         }
 
-        private static void AppendOptions(StringBuilder builder, QuestionOptions options)
+        private PoEntry CreateEntry(string text, int msgId, int boxCount, MessageSection section, Collection<Message> messages)
         {
-            builder.AppendFormat(
-                "{{options(default:{0},selected={1})}}",
-                options.DefaultIndex,
-                options.PreSelectedIndex);
-            builder.AppendLine();
-
-            foreach (var option in options.Options) {
-                builder.AppendFormat("- {0}: {1}", option.Item1, option.Item2);
-                builder.AppendLine();
-            }
+            return new PoEntry {
+                Context = $"{msgId}:{boxCount}",
+                Original = text,
+                ExtractedComments = GetEntryContext(msgId, section, messages),
+            };
         }
 
-        private static void FlushEntry(Po po, int msgId, int boxCount, StringBuilder text, MessageSection section, Collection<Message> messages)
+        private string GetEntryContext(int msgId, MessageSection section, Collection<Message> messages)
         {
-            if (text.Length == 0) {
-                return;
+            contextBuilder.Clear();
+
+            int numEntries = section.Entries.Count > 0 ? section.Entries.Count : 1;
+            int textIdx = (msgId - section.Start) / numEntries;
+            contextBuilder.AppendFormat("Text: {0}", textIdx);
+
+            int nameIdx = contextProvider.GetNameIndex(msgId);
+            if (nameIdx != -1) {
+                string name = (messages[nameIdx].Content[0] as MessageRawText).Text;
+                contextBuilder.AppendFormat(", Name: {0}", name);
             }
 
-            string entryType = null;
             if (section.Entries.Count > 0) {
                 int itemIdx = (msgId - section.Start) % section.Entries.Count;
-                entryType = section.Entries[itemIdx];
+                contextBuilder.AppendFormat(", {0}", section.Entries[itemIdx]);
             }
 
-            if (section.Start == 0) {
-                int nameIdx = 10865 + ((msgId / 6) * 2);
-                string name = (messages[nameIdx].Content[0] as MessageRawText).Text;
-                entryType = $"Name: {name}, {entryType}";
-            }
-
-            var entry = new PoEntry {
-                Context = $"{msgId}:{boxCount}",
-                Original = text.ToString(),
-                ExtractedComments = entryType,
-            };
-            po.Add(entry);
-            text.Clear();
+            return contextBuilder.ToString();
         }
     }
 }
