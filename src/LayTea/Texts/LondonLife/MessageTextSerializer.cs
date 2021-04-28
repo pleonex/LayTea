@@ -63,7 +63,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
         /// </summary>
         /// <param name="text">The text to deserialize.</param>
         /// <returns>The deserialized message.</returns>
-        public Message Deserialize(string text)
+        public Message Deserialize(IEnumerable<string> text)
         {
             throw new NotImplementedException();
         }
@@ -90,7 +90,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
         private void AppendOptions(QuestionOptions options)
         {
             textBuilder.AppendFormat(
-                "{{options(default:{0},selected={1})}}",
+                "{{options(default:{0},selected:{1})}}",
                 options.DefaultIndex,
                 options.PreSelectedIndex);
             textBuilder.AppendLine();

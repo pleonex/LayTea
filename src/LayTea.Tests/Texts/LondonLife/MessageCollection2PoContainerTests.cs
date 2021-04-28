@@ -37,6 +37,14 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
         }
 
         [Test]
+        public void MissingInitializerThrows()
+        {
+            var messages = new MessageCollection();
+            var converter = new MessageCollection2PoContainer();
+            Assert.That(() => converter.Convert(messages), Throws.InvalidOperationException);
+        }
+
+        [Test]
         public void ConvertFileSucceeds()
         {
             string commonPath = Path.Combine(TestDataBase.RootFromOutputPath, "containers", "ll_common.darc");

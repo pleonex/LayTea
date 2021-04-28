@@ -52,12 +52,8 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
             Sections = new ReadOnlyCollection<MessageSection>(LoadInfo(region));
 
             var nameSection = Sections.FirstOrDefault(s => s.Name == CharacterSection);
-            if (nameSection == null) {
-                throw new FormatException($"Section file missing {CharacterSection} section");
-            }
-
-            firstNameIdx = nameSection.Start;
-            nameEntriesPerCharacter = nameSection.Entries.Count;
+            firstNameIdx = nameSection?.Start ?? -1;
+            nameEntriesPerCharacter = nameSection?.Entries.Count ?? 0;
 
             lastNamedDialogIdx = (Sections.Skip(1).FirstOrDefault()?.Start - 1) ?? int.MaxValue;
             dialogsPerCharacter = Sections.FirstOrDefault()?.Entries.Count ?? 1;
@@ -93,11 +89,8 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
             string resourceName = ResourceInfo[region];
             string resourcePath = $"{typeof(MessageContextProvider).Namespace}.{resourceName}";
             var assembly = typeof(MessageCollection2PoContainer).Assembly;
-            using var stream = assembly.GetManifestResourceStream(resourcePath);
-            if (stream == null) {
-                throw new InvalidOperationException("Missing section YML");
-            }
 
+            using var stream = assembly.GetManifestResourceStream(resourcePath);
             using var reader = new StreamReader(stream);
             return new DeserializerBuilder()
                 .WithNamingConvention(LowerCaseNamingConvention.Instance)
