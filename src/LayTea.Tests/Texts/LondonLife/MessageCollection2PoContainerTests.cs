@@ -53,7 +53,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
                 Assert.Ignore("Failed to obtain messages");
             }
 
-            Assert.That(() => msgNode.TransformWith<MessageCollection2PoContainer>(), Throws.Nothing);
+            Assert.That(() => msgNode.TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(LondonLifeRegion.Usa), Throws.Nothing);
             foreach (var child in msgNode.Children) {
                 Assert.That(child.Format, Is.InstanceOf<Po>(), child.Name);
             }

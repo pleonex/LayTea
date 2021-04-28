@@ -55,7 +55,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
                     int.Parse(info[2]),
                     int.Parse(info[3]),
                     Path.Combine(ContainersResources, info[0]))
-                    .SetName($"{{m}}({info[1]})");
+                    .SetName($"{{m}}({info[0]})");
             }
         }
     }
