@@ -57,7 +57,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
         {
             var message = new Message();
             message.Add("{hello\\ world}\ntest!");
-            AssertSerialization(message, "{{hello\\ world}}" + Environment.NewLine + "test!");
+            AssertSerialization(message, "{{hello\\ world}}\ntest!");
         }
 
         [Test]
@@ -81,10 +81,10 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
             message.QuestionOptions.Options.Add((0, "Answer 2"));
             message.QuestionOptions.Options.Add((2, "Answer 3"));
 
-            string text = "{@options(default:1,selected:2)" + Environment.NewLine +
-                "- 1: Answer 1" + Environment.NewLine +
-                "- 0: Answer 2" + Environment.NewLine +
-                "- 2: Answer 3" + Environment.NewLine + "}";
+            string text = "{@options(default:1,selected:2)\n" +
+                "- 1: Answer 1\n" +
+                "- 0: Answer 2\n" +
+                "- 2: Answer 3\n}";
             AssertSerialization(message, text);
         }
 
@@ -101,10 +101,10 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
             };
             message.QuestionOptions.Options.Add((0, "Answer 1"));
 
-            string text = "{{hello\\ world}}{@color(1)}" + Environment.NewLine +
+            string text = "{{hello\\ world}}{@color(1)}\n" +
                 "test" +
-                "{@options(default:0,selected:0)" + Environment.NewLine +
-                "- 0: Answer 1" + Environment.NewLine + "}";
+                "{@options(default:0,selected:0)\n" +
+                "- 0: Answer 1\n}";
             AssertSerialization(message, text);
         }
 
