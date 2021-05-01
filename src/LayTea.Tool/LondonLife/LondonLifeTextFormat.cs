@@ -1,15 +1,15 @@
-﻿// Copyright (c) 2020 Benito Palacios Sánchez
-//
+// Copyright (c) 2021 SceneGate
+
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-//
+
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-//
+
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -17,25 +17,21 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace SceneGate.Games.ProfessorLayton.Tool
+namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
 {
-    using System.CommandLine;
-
     /// <summary>
-    /// Main program class.
+    /// Format of the London Life binary text file.
     /// </summary>
-    public static class Program
+    public enum LondonLifeTextFormat
     {
         /// <summary>
-        /// Main entry-point.
+        /// Common DARC container: "ll_common.darc".
         /// </summary>
-        /// <param name="args">Application arguments.</param>
-        /// <returns>The return code.</returns>
-        public static int Main(string[] args)
-        {
-            return new RootCommand("Convert files from Professor Layton games") {
-                LondonLife.CommandLine.CreateCommand(),
-            }.Invoke(args);
-        }
+        CommonDarc,
+
+        /// <summary>
+        /// Binary message file inside DARC container.
+        /// </summary>
+        MessageBinary,
     }
 }
