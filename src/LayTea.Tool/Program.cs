@@ -36,11 +36,6 @@ namespace SceneGate.Games.ProfessorLayton.Tool
         /// <param name="args">Application arguments.</param>
         public static void Main(string[] args)
         {
-            args = new[] {
-                "/workspaces/ProfessorLayton/src/LayTea.Tests/Resources/containers/ll_common.darc",
-                "/workspaces/ProfessorLayton/artifacts/output",
-            };
-
             if (args.Length != 2) {
                 Console.WriteLine("Invalid number of arguments");
                 return;
