@@ -21,6 +21,7 @@ namespace SceneGate.Games.ProfessorLayton.Tool
 {
     using System;
     using SceneGate.Games.ProfessorLayton.Containers;
+    using SceneGate.Games.ProfessorLayton.Texts;
     using SceneGate.Games.ProfessorLayton.Texts.LondonLife;
     using Yarhl.FileSystem;
     using Yarhl.Media.Text;
@@ -44,16 +45,23 @@ namespace SceneGate.Games.ProfessorLayton.Tool
             string input = args[0];
             string output = args[1];
 
+            var region = LondonLifeRegion.Usa;
+            var replacerParams = new PoTableReplacerParams {
+                Replacer = ReplacerFactory.GetReplacer(region),
+                TransformForward = true,
+            };
+
             var textNodes = NodeFactory.FromFile(input)
                 .TransformWith<BinaryDarc2Container>()
                 .Children[2]
                 .TransformWith<DencDecompression>()
                 .TransformWith<Binary2MessageCollection>()
-                .TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(LondonLifeRegion.Usa)
+                .TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(region)
                 .Children;
             foreach (var node in textNodes) {
-                node.TransformWith<Po2Binary>()
-                .Stream.WriteTo($"{output}/{node.Name}.po");
+                node.TransformWith<PoTableReplacer, PoTableReplacerParams>(replacerParams)
+                    .TransformWith<Po2Binary>()
+                    .Stream.WriteTo($"{output}/{node.Name}.po");
             }
         }
     }
