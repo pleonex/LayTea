@@ -23,6 +23,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
     using System.Linq;
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Containers;
+    using SceneGate.Games.ProfessorLayton.Texts;
     using SceneGate.Games.ProfessorLayton.Texts.LondonLife;
     using Yarhl.FileSystem;
     using Yarhl.IO;
@@ -105,14 +106,25 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
 
             using var expected = new DataStream(msgNode.Stream, 0, msgNode.Stream.Length);
             try {
+                var replacerFParams = new PoTableReplacerParams {
+                    Replacer = ReplacerFactory.GetReplacer(LondonLifeRegion.Usa),
+                    TransformForward = true,
+                };
+                var replacerBParams = new PoTableReplacerParams {
+                    Replacer = ReplacerFactory.GetReplacer(LondonLifeRegion.Usa),
+                    TransformForward = false,
+                };
+
                 msgNode.TransformWith<Binary2MessageCollection>()
                     .TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(LondonLifeRegion.Usa)
                     .Children
+                    .Select(c => c.TransformWith<PoTableReplacer, PoTableReplacerParams>(replacerFParams))
                     .Select(c => c.TransformWith<Po2Binary>())
                     .Select(c => {
                         c.Stream.Position = 0; // we need to fix this bug in Yarhl...
                         return c.TransformWith<Binary2Po>();
                     })
+                    .Select(c => c.TransformWith<PoTableReplacer, PoTableReplacerParams>(replacerBParams))
                     .First().Parent
                     .TransformWith<PoContainer2MessageCollection>();
             } catch {
