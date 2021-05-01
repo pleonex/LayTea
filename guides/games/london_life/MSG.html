@@ -211,7 +211,13 @@
 <ul>
 <li>The text is mixed with formatting and script functions (control codes).</li>
 <li>The encoding is <code>ISO/IEC 8859-1</code> (<code>Latin-1</code>).</li>
-<li>Script ends with null-terminator character (<code>\0</code>).</li>
+<li>Script ends with null-terminator character (<code>\0</code>).
+<ul>
+<li>The null-terminator may appear in any place a text character can appear.
+This includes text blocks and remaining bytes from a function argument
+block.</li>
+</ul>
+</li>
 <li>Padding to multiple of 4 with byte <code>0x00</code>.</li>
 </ul>
 <p>The script consists of blocks of 4 bytes. A block contains text <em>or</em> control
@@ -231,7 +237,7 @@ the byte <code>0xFF</code>, so it is not detected as a control code block.</p>
 <ul>
 <li>No arguments (length is <em>2</em>).</li>
 <li>One signed 16-bits (length is <em>4</em>).</li>
-<li>A list of strings (length is bigger than <em>4</em>).</li>
+<li>Question options (length is bigger than <em>4</em>).</li>
 </ul>
 <p>The format of the latter is:</p>
 <table>
@@ -271,7 +277,7 @@ the byte <code>0xFF</code>, so it is not detected as a control code block.</p>
 <tr>
 <td>0x00</td>
 <td>0x04</td>
-<td>String ID</td>
+<td>String ID (not sequential always)</td>
 </tr>
 <tr>
 <td>0x04</td>
@@ -285,6 +291,9 @@ the byte <code>0xFF</code>, so it is not detected as a control code block.</p>
 </tr>
 </tbody>
 </table>
+<p>In the case of one signed 16-bits arguments, after the argument (2 bytes of a
+new 4-bytes block) text characters can be stored, including the script
+null-terminator.</p>
 <p>The known control codes are:</p>
 <table>
 <thead>
@@ -305,7 +314,7 @@ the byte <code>0xFF</code>, so it is not detected as a control code block.</p>
 <tr>
 <td><code>0x00F1</code></td>
 <td>None</td>
-<td>split entry</td>
+<td><code>next_box</code></td>
 <td>End of dialog, press button <code>A</code></td>
 </tr>
 <tr>
@@ -330,7 +339,7 @@ the byte <code>0xFF</code>, so it is not detected as a control code block.</p>
 <td><code>0x00F5</code></td>
 <td><code>string[]</code></td>
 <td><code>question</code></td>
-<td>Ask a question</td>
+<td>Select options. Always at the end.</td>
 </tr>
 <tr>
 <td><code>0x00F9</code></td>
@@ -347,7 +356,7 @@ the byte <code>0xFF</code>, so it is not detected as a control code block.</p>
 <tr>
 <td><code>0x00FB</code></td>
 <td>None</td>
-<td><code>bg_work</code></td>
+<td><code>save_load</code></td>
 <td>Wait for a task (saving or loading)</td>
 </tr>
 <tr>
@@ -375,6 +384,21 @@ different fields. These are the known sections:</p>
 <td>0</td>
 <td>6</td>
 <td>static dialogs (<a href="#character-dialogs">character dialogs</a>)</td>
+</tr>
+<tr>
+<td>714</td>
+<td>6</td>
+<td>special dialogs</td>
+</tr>
+<tr>
+<td>1404</td>
+<td>6</td>
+<td>special dialogs 2</td>
+</tr>
+<tr>
+<td>1482</td>
+<td>1</td>
+<td>roommate dialogs</td>
 </tr>
 <tr>
 <td>1527</td>
@@ -492,72 +516,17 @@ different fields. These are the known sections:</p>
 <td>train dialogs: buy, thanks and 2x failed messages</td>
 </tr>
 <tr>
-<td>10849</td>
+<td>10865</td>
 <td>2</td>
 <td>characters name and description</td>
 </tr>
 </tbody>
 </table>
 <h3 id="character-dialogs">Character dialogs</h3>
-<p>The information to correlate the speaker name with their dialog is in the
-<code>overlay48</code>. Each speaker has an ID that goes from 0 to 255. For each speaker,
-there are 6 dialogs, divided en 2 groups according to the current event. At
-<code>0x020E3D48</code> there is a table that gives the address to the information entry
-for the speaker. Each entry of this main table is 12 bytes and has the following
-format:</p>
-<table>
-<thead>
-<tr>
-<th>Offset</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0x00</td>
-<td>1</td>
-<td>Speaker minimum ID</td>
-</tr>
-<tr>
-<td>0x01</td>
-<td>1</td>
-<td>Speaker maximum ID</td>
-</tr>
-<tr>
-<td>0x02</td>
-<td>2</td>
-<td>Reserved</td>
-</tr>
-<tr>
-<td>0x04</td>
-<td>4</td>
-<td>Base address</td>
-</tr>
-<tr>
-<td>0x08</td>
-<td>4</td>
-<td>Entry size</td>
-</tr>
-</tbody>
-</table>
-<p>The name of the speakers are in order of ID starting at <code>10849</code> in the message
-sections.</p>
-<p>To calculate the address to the speaker information given its ID, iterate the
-table finding an entry where the ID is in the range minimum and maximum ID.
-Then, calculate the relative ID from the minimum value, multiply by the entry
-size and add the base address. The size of the character info changes depending
-the speaker category, but the second byte gives always the internal ID. This
-second ID is also the index to the character static dialog texts.</p>
-<p>There is a second table at <code>0x020DC03C</code> with more information about the
-character. To access, use the internal ID, each entry has a constant size of 12
-bytes. This information is divided in 2 groups of 3 values of 16-bits.</p>
-<p>Internally, there aren't scripts. The game iterates over all characters,
-deciding if they appear in the current map or not. This happens in the
-subroutine <code>0x020EC6C4</code>. If they happen, then the game creates a new dialog
-event assigning the speaker ID and the text index.</p>
-<p>It is not possible to get the speaker of script dialogs since the speaker ID and
-text index are hard-coded in code for each case.</p>
+<p>There are 6 dialogs per character. The order of the character's dialogs match
+with the order of the character's names.</p>
+<p>It is not possible to get the speaker of script dialogs and other dialogs since
+the speaker ID and text index are hard-coded in code for each case.</p>
 </article>
           </div>
           
