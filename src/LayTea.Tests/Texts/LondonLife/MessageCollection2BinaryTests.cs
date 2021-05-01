@@ -20,11 +20,13 @@
 namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
 {
     using System.IO;
+    using System.Linq;
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Containers;
     using SceneGate.Games.ProfessorLayton.Texts.LondonLife;
     using Yarhl.FileSystem;
     using Yarhl.IO;
+    using Yarhl.Media.Text;
 
     [TestFixture]
     public class MessageCollection2BinaryTests
@@ -37,22 +39,40 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
         }
 
         [Test]
+        public void MessageStartingWithSpecialSerializesTwoWaysCorrectly()
+        {
+            var expectedCollection = new MessageCollection();
+            var expectedMessage = new Message();
+            expectedMessage.Add("ñú");
+            expectedCollection.Messages.Add(expectedMessage);
+
+            var serializer = new MessageCollection2Binary();
+            using var binary = serializer.Convert(expectedCollection);
+
+            var deserializer = new Binary2MessageCollection();
+            var actualCollection = deserializer.Convert(binary);
+
+            Assert.That(actualCollection.Messages, Has.Count.EqualTo(1));
+            actualCollection.Messages[0].AssertIsEquivalent(expectedMessage);
+        }
+
+        [Test]
         public void ThreeWaysConversionIsEqual()
         {
-            const int offset = 292;
-            const int length = 384261;
             string commonPath = Path.Combine(TestDataBase.RootFromOutputPath, "containers", "ll_common.darc");
             TestDataBase.IgnoreIfFileDoesNotExist(commonPath);
 
-            using var commonStream = DataStreamFactory.FromFile(commonPath, FileOpenMode.Read);
-            using Node node = NodeFactory.FromSubstream("msg", commonStream, offset, length);
+            using Node node = NodeFactory.FromFile(commonPath);
+            Node msgNode = null;
             try {
-                node.TransformWith<LzssdDecompression>();
+                msgNode = node.TransformWith<BinaryDarc2Container>()
+                    .Children[2]
+                    .TransformWith<DencDecompression>();
             } catch {
                 Assert.Ignore("Failed to decompress");
             }
 
-            BinaryFormat expected = node.GetFormatAs<BinaryFormat>();
+            BinaryFormat expected = msgNode.GetFormatAs<BinaryFormat>();
             MessageCollection messages = null;
             try {
                 var deserializer = new Binary2MessageCollection();
@@ -65,6 +85,44 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
             using BinaryFormat actual = serializer.Convert(messages);
 
             Assert.That(actual.Stream.Compare(expected.Stream), Is.True, "Different streams");
+        }
+
+        [Test]
+        public void BinaryPoFullConversionIsEqual()
+        {
+            string commonPath = Path.Combine(TestDataBase.RootFromOutputPath, "containers", "ll_common.darc");
+            TestDataBase.IgnoreIfFileDoesNotExist(commonPath);
+
+            using Node node = NodeFactory.FromFile(commonPath);
+            Node msgNode = null;
+            try {
+                msgNode = node.TransformWith<BinaryDarc2Container>()
+                    .Children[2]
+                    .TransformWith<DencDecompression>();
+            } catch {
+                Assert.Ignore("Failed to decompress");
+            }
+
+            using var expected = new DataStream(msgNode.Stream, 0, msgNode.Stream.Length);
+            try {
+                msgNode.TransformWith<Binary2MessageCollection>()
+                    .TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(LondonLifeRegion.Usa)
+                    .Children
+                    .Select(c => c.TransformWith<Po2Binary>())
+                    .Select(c => {
+                        c.Stream.Position = 0; // we need to fix this bug in Yarhl...
+                        return c.TransformWith<Binary2Po>();
+                    })
+                    .First().Parent
+                    .TransformWith<PoContainer2MessageCollection>();
+            } catch {
+                Assert.Ignore("Failed to convert to/from PO");
+            }
+
+            var serializer = new MessageCollection2Binary();
+            using BinaryFormat actual = serializer.Convert(msgNode.GetFormatAs<MessageCollection>());
+
+            Assert.That(actual.Stream.Compare(expected), Is.True, "Different streams");
         }
     }
 }

@@ -26,7 +26,7 @@ Formats:
 - **`DENC` containers**: read and write.
 - **`LZSS` compression**: decompress and compress.
 - **`MSG` texts**: read and write.
-  - PO export.
+  - PO export and import.
 
 ## Documentation
 

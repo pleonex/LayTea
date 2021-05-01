@@ -22,6 +22,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Text;
     using Yarhl.FileFormat;
     using Yarhl.FileSystem;
@@ -86,24 +87,27 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
 
         private IEnumerable<PoEntry> CreateEntries(Collection<Message> messages, int index, MessageSection section)
         {
+            // Some dialogs ends with "next_box" even when there aren't more boxes
+            // in the dialog. As we split by "next_box" we need to preseve that command
+            // somehow, so we set a flag in the context.
+            bool hasEndStop = (messages[index].Content.Count > 0)
+                && (messages[index].QuestionOptions == null)
+                && (messages[index].Content[^1] is MessageFunction { Id: 0xF1 });
+
+            var textEntries = textParser.Serialize(messages[index]).ToArray();
             int boxCount = 0;
-            foreach (string dialogText in textParser.Serialize(messages[index]))
-            {
-                if (dialogText.Length == 0) {
+            for (int i = 0; i < textEntries.Length; i++) {
+                var text = textEntries[i];
+                if (text.Length == 0) {
                     continue;
                 }
 
-                yield return CreateEntry(dialogText, index, boxCount++, section, messages);
+                yield return new PoEntry {
+                    Context = $"{index}:{boxCount++}:{hasEndStop}",
+                    Original = text,
+                    ExtractedComments = GetEntryContext(index, section, messages),
+                };
             }
-        }
-
-        private PoEntry CreateEntry(string text, int msgId, int boxCount, MessageSection section, Collection<Message> messages)
-        {
-            return new PoEntry {
-                Context = $"{msgId}:{boxCount}",
-                Original = text,
-                ExtractedComments = GetEntryContext(msgId, section, messages),
-            };
         }
 
         private string GetEntryContext(int msgId, MessageSection section, Collection<Message> messages)
