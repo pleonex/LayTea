@@ -82,7 +82,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
                 } else if (block[0] < FirstFunction || block[0] == BlockPadding) {
                     foundEnd = AppendText(block, currentText);
                 } else if (block[0] == NewLineId) {
-                    currentText.AppendLine();
+                    currentText.Append("\n");
                 } else {
                     // Flush current raw text
                     if (currentText.Length > 0) {

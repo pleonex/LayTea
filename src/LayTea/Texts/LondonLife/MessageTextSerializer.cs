@@ -103,11 +103,11 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
                 "{{@options(default:{0},selected:{1})",
                 options.DefaultIndex,
                 options.PreSelectedIndex);
-            textBuilder.AppendLine();
+            textBuilder.Append("\n");
 
             foreach (var option in options.Options) {
                 textBuilder.AppendFormat("- {0}: {1}", option.Item1, option.Item2);
-                textBuilder.AppendLine();
+                textBuilder.Append("\n");
             }
 
             textBuilder.Append("}");
