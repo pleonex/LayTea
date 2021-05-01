@@ -1,0 +1,142 @@
+- start: 0
+  name: "Character dialogs"
+  entries:
+    - "Event 1, dialog 1"
+    - "Event 1, dialog 2"
+    - "Event 1, dialog 3"
+    - "Event 2, dialog 1"
+    - "Event 2, dialog 2"
+    - "Event 2, dialog 3"
+- start: 714
+  name: "Special dialogs 1"
+  entries:
+    - "Dialog 1"
+    - "Dialog 2"
+    - "Dialog 3"
+    - "Dialog 4"
+    - "Dialog 5"
+    - "Dialog 6"
+- start: 1404
+  name: "Special dialogs 2"
+  entries:
+    - "Event 1, dialog 1"
+    - "Event 1, dialog 2"
+    - "Event 1, dialog 3"
+    - "Event 2, dialog 1"
+    - "Event 2, dialog 2"
+    - "Event 2, dialog 3"
+- start: 1482
+  name: "Roommate dialogs"
+  entries: []
+- start: 1527
+  name: "Requests"
+  entries:
+    - "Title"
+    - "Body"
+- start: 2073
+  name: "Expressions"
+  entries: []
+- start: 2078
+  name: "Requests summary"
+  entries: []
+- start: 2328
+  name: "Script dialogs"
+  entries: []
+- start: 2759
+  name: "Items"
+  entries:
+    - "Name"
+    - "Description"
+    - "Article"
+- start: 4973
+  name: "Colors"
+  entries: []
+- start: 4984
+  name: "Numbers"
+  entries: []
+- start: 5011
+  name: "Styles"
+  entries: []
+- start: 5020
+  name: "House items"
+  entries:
+    - "Name"
+    - "Description"
+- start: 5044
+  name: "Furniture style"
+  entries: []
+- start: 5058
+  name: "Map areas"
+  entries:
+    - "Name"
+    - "Description"
+- start: 5604
+  name: "Map dialogs"
+  entries:
+    - "Name"
+    - "Dialog"
+- start: 7650
+  name: "Reserved names"
+  entries: []
+- start: 7659
+  name: "Miscellaneous"
+  entries: []
+- start: 8230
+  name: "Keyboard 1"
+  entries: []
+- start: 8302
+  name: "Keyboard 2"
+  entries: []
+- start: 8602
+  name: "Ban names"
+  entries: []
+- start: 8950
+  name: "Quests"
+  entries:
+    - "Start"
+    - "Accept"
+    - "Cancel"
+    - "Running"
+    - "Achieve 1"
+    - "Achieve 2"
+- start: 10474
+  name: "Quest questions"
+  entries:
+    - "Question"
+    - "Wrong answer"
+- start: 10554
+  name: "Traits"
+  entries:
+    - "Trait"
+    - "Dialog 1"
+    - "Dialog 2"
+    - "Dialog 3"
+    - "Birthday appeal"
+    - "Birthday blessing"
+    - "Dialog 4"
+    - "Dialog 5"
+- start: 10629
+  name: "Jobs"
+  entries:
+    - "Name"
+    - "Level 1"
+    - "Level 2"
+    - "Level 3"
+    - "Level 4"
+    - "Level 5"
+    - "Level 6"
+- start: 10678
+  name: "Train stations"
+  entries: []
+- start: 10729
+  name: "Train dialogs"
+  entries:
+    - "Buy"
+    - "Thank"
+    - "Wrong name"
+    - "Timeout"
+- start: 10865
+  name: "Characters"
+  entries:
+    - "Name"
+    - "Description"

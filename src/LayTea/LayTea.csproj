@@ -6,11 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Texts/LondonLife/*.yml" />
+
     <None Include="../../docs/images/favicon-128.png" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Yarhl" />
+    <PackageReference Include="Yarhl.Media" />
+    <PackageReference Include="YamlDotNet" />
+
+    <InternalsVisibleTo Include="LayTea.Tests" />
   </ItemGroup>
 
 </Project>

@@ -17,9 +17,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace SceneGate.Ekona.Games.ProfessorLayton.Tool
+namespace SceneGate.Games.ProfessorLayton.Tool
 {
     using System;
+    using SceneGate.Games.ProfessorLayton.Containers;
+    using SceneGate.Games.ProfessorLayton.Texts.LondonLife;
+    using Yarhl.FileSystem;
+    using Yarhl.Media.Text;
 
     /// <summary>
     /// Main program class.
@@ -32,7 +36,25 @@ namespace SceneGate.Ekona.Games.ProfessorLayton.Tool
         /// <param name="args">Application arguments.</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello world");
+            if (args.Length != 2) {
+                Console.WriteLine("Invalid number of arguments");
+                return;
+            }
+
+            string input = args[0];
+            string output = args[1];
+
+            var textNodes = NodeFactory.FromFile(input)
+                .TransformWith<BinaryDarc2Container>()
+                .Children[2]
+                .TransformWith<DencDecompression>()
+                .TransformWith<Binary2MessageCollection>()
+                .TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(LondonLifeRegion.Usa)
+                .Children;
+            foreach (var node in textNodes) {
+                node.TransformWith<Po2Binary>()
+                .Stream.WriteTo($"{output}/{node.Name}.po");
+            }
         }
     }
 }
