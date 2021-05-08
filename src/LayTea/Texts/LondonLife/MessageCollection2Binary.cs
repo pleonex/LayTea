@@ -83,16 +83,20 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
 
         private void WriteText(DataWriter writer, MessageRawText text)
         {
-            if (text.Text[0] >= FirstFunction) {
-                writer.Write(BlockPadding);
-            }
-
             foreach (char ch in text.Text) {
                 if (ch == '\n') {
                     writer.WritePadding(BlockPadding, 4);
                     writer.Write(NewLineId);
                     writer.Write((ushort)0x02); // func length is only this field
                 } else {
+                    // Make sure that if we write a char in the function range
+                    // and it's the beginning of a block, we have the escape token.
+                    // Theoretically this is possible and the original MSG.BIN use it
+                    // but in practice, in most script parts the game crashes anyway.
+                    if (ch >= FirstFunction && ((writer.Stream.Position % 4) == 0)) {
+                        writer.Write(BlockPadding);
+                    }
+
                     // Text is Latin-1, we need to convert to C# char (UTF-16).
                     // Latin-1 match the range of UTF-16 so casting is fast.
                     writer.Write((byte)ch);
