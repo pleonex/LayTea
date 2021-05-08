@@ -35,18 +35,20 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
         {
             var exportLondonLife = new Command("export-text", "Export the text") {
                 new Option<string>("--input", "the game file", ArgumentArity.ExactlyOne),
+                new Option<string>("--table", "optional path to the table file", ArgumentArity.ZeroOrOne),
                 new Option<LondonLifeTextFormat>("--format", "the format of the input file", ArgumentArity.ExactlyOne),
                 new Option<string>("--output", "the output folder for the text files", ArgumentArity.ExactlyOne),
             };
-            exportLondonLife.Handler = CommandHandler.Create<string, LondonLifeTextFormat, string>(TextCommands.Export);
+            exportLondonLife.Handler = CommandHandler.Create<string, string, LondonLifeTextFormat, string>(TextCommands.Export);
 
             var importLondonLife = new Command("import-text", "Import the text") {
                 new Option<string>("--input", "the input folder with the text files", ArgumentArity.ExactlyOne),
+                new Option<string>("--table", "optional path to the table file", ArgumentArity.ZeroOrOne),
                 new Option<string>("--original-darc", "the original ll_common.darc file if the output format is CommonDarc", ArgumentArity.ZeroOrOne),
                 new Option<string>("--output", "the new game file", ArgumentArity.ExactlyOne),
                 new Option<LondonLifeTextFormat>("--format", "the format of the output file", ArgumentArity.ExactlyOne),
             };
-            importLondonLife.Handler = CommandHandler.Create<string, string, string, LondonLifeTextFormat>(TextCommands.Import);
+            importLondonLife.Handler = CommandHandler.Create<string, string, string, string, LondonLifeTextFormat>(TextCommands.Import);
 
             return new Command("londonlife", "Professor Layton London Life (US only)") {
                 exportLondonLife,

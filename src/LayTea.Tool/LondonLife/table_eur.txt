@@ -1,0 +1,100 @@
+# This is the original US font table plus some modifications to adapt it for
+# other Latin-1 languages.
+
+# Several texts use these char replacement for button and gender symbols
+# We shouldn't re-arrange as the original text already use these code-points.
+# Font 6 has the button symbols shifted 1 but it looks like a bug.
+¤=Ⓐ
+À=Ⓑ
+Á=Ⓧ
+Â=Ⓨ
+¸=♂
+¹=♀
+
+# The rest of original replacements are only used in corrupted "ban names" and the keyword
+# so we take the freedom to arrange all chars we don't plan to use to include all our European chars.
+# We need to map the characters in the function range: ðñòóôõö÷øùúûüýþÿ
+# and the three characters replaced for the button symbols: ÀÁÂ
+# We also unmap some European symbols needed like: ªº«»
+# We keep symbols as the original game for fancy player names.
+
+# Move to their correct place existing characters.
+\=\
+¥=¥
+×=×
+
+# Unmap symbols required
+»=»
+«=«
+ª=ª
+º=º
+
+# Rearrange already mapped but needed chars
+§=À
+¨=Á
+©=Â
+
+# European chars in the function range
+¬=ñ
+®=ò
+¯=ó
+°=ô
+±=õ
+²=ö
+³=ø
+µ=ù
+¶=ú
+·=û
+¼=ü
+½=ÿ
+
+# Not mapped as non-planned translations into languages using them
+# =ð
+# =ý
+# =þ
+
+# Keep cool symbols
+´=÷
+¾=♪
+`=☆
+~=★
+
+# Keep ellipsis since it's cool
+¦=…
+
+# Keep some symbols just in case
+¢=¢
+£=£
+
+# Free replacements characters with their original font mapping
+#~=~ # map
+#`=` # map
+#\=¥ # rearrange
+#¢=  # reserved just in case
+#£=  # reserved just in case
+# Code-point for button A above
+#¥=  # rearrange
+#¦=… # keep
+#§=× # map
+#¨=÷ # map
+#©=∞ # map
+#ª=♭ # keep
+#«=♪ # keep
+#¬=\ # map
+#®=☆ # map
+#¯=○ # map
+#°=△ # map
+#±=□ # map
+#²=「 # map
+#³=」 # map
+#´=『 # map
+#µ=』 # map
+#¶=【 # map
+#·=】 # map
+# Code-points already take for gender symbols at the top
+#º=★ # keep
+#»=● # keep
+#¼=▲ # map
+#½=■ # map
+#¾=  # map
+#×=  # keep

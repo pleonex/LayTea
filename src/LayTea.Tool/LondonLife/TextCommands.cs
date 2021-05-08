@@ -37,9 +37,10 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
         /// Export the message file into a directory of PO files.
         /// </summary>
         /// <param name="input">The input binary message file.</param>
+        /// <param name="table">The optional path to the table file.</param>
         /// <param name="format">The format of the message file.</param>
         /// <param name="output">The output directory.</param>
-        public static void Export(string input, LondonLifeTextFormat format, string output)
+        public static void Export(string input, string table, LondonLifeTextFormat format, string output)
         {
             var region = LondonLifeRegion.Usa;
             using Node node = NodeFactory.FromFile(input, FileOpenMode.Read);
@@ -64,8 +65,16 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
             messageNode.TransformWith<Binary2MessageCollection>()
                 .TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(region);
 
+            Replacer replacer;
+            if (string.IsNullOrEmpty(table)) {
+                replacer = ReplacerFactory.GetReplacer(region);
+            } else {
+                using var tableNode = NodeFactory.FromFile(table, FileOpenMode.Read);
+                replacer = new ReplacerDeserializer().Convert(tableNode.GetFormatAs<BinaryFormat>());
+            }
+
             var replacerParams = new PoTableReplacerParams {
-                Replacer = ReplacerFactory.GetReplacer(region),
+                Replacer = replacer,
                 TransformForward = true,
             };
             foreach (var children in messageNode.Children) {
@@ -79,11 +88,17 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
         /// Import a directory of PO files into a binary message file.
         /// </summary>
         /// <param name="input">The input directory of PO files.</param>
+        /// <param name="table">The optional path to the table file.</param>
         /// <param name="originalDarc">The path to the original ll_common.darc container when the output format is DARC.</param>
         /// <param name="output">The new binary message file.</param>
         /// <param name="format">The format of the output file.</param>
         /// <returns>A return code of the operation.</returns>
-        public static int Import(string input, string originalDarc, string output, LondonLifeTextFormat format)
+        public static int Import(
+            string input,
+            string table,
+            string originalDarc,
+            string output,
+            LondonLifeTextFormat format)
         {
             if (format == LondonLifeTextFormat.CommonDarc && !File.Exists(originalDarc)) {
                 Console.WriteLine(
@@ -93,8 +108,17 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
             }
 
             var region = LondonLifeRegion.Usa;
+
+            Replacer replacer;
+            if (string.IsNullOrEmpty(table)) {
+                replacer = ReplacerFactory.GetReplacer(region);
+            } else {
+                using var tableNode = NodeFactory.FromFile(table, FileOpenMode.Read);
+                replacer = new ReplacerDeserializer().Convert(tableNode.GetFormatAs<BinaryFormat>());
+            }
+
             var replacerParams = new PoTableReplacerParams {
-                Replacer = ReplacerFactory.GetReplacer(region),
+                Replacer = replacer,
                 TransformForward = false,
             };
 
