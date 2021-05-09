@@ -44,7 +44,9 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
         {
             var expectedCollection = new MessageCollection();
             var expectedMessage = new Message();
-            expectedMessage.Add("ñú");
+            expectedMessage.Add("ñ23" + "aú34" + "ú24");
+            expectedMessage.Add(MessageFunction.FromId(0xF1, null));
+            expectedMessage.Add("ñu");
             expectedCollection.Messages.Add(expectedMessage);
 
             var serializer = new MessageCollection2Binary();

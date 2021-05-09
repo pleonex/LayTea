@@ -16,6 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="LondonLife/*.txt" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="../LayTea/LayTea.csproj" />
     <PackageReference Include="System.CommandLine" />
   </ItemGroup>
