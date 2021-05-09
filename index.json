@@ -132,7 +132,7 @@
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
     "title": "vNext (January 01, 2021) | Modding tools for 'Professor Layton' games",
-    "keywords": "vNext (January 01, 2021) As part of this release we had 9 issues closed. Documentation #2 Document London Life files and formats Enhancements #9 Implement a CLI for LondonLife text files #8 Implement replacement table for London Life US #7 Implement reading and writing MSG format and exporting and importing as PO #6 Implement DENC container compression #5 Implement LZSS compression and bump build system #4 Implement DENC containers and LZSS compression #3 Implement DARC containers #1 Initialize the project"
+    "keywords": "vNext (January 01, 2021) As part of this release we had 10 issues closed. Documentation #2 Document London Life files and formats Enhancements #10 Support external table for LondonLife and add custom table for EUR translations #9 Implement a CLI for LondonLife text files #8 Implement replacement table for London Life US #7 Implement reading and writing MSG format and exporting and importing as PO #6 Implement DENC container compression #5 Implement LZSS compression and bump build system #4 Implement DENC containers and LZSS compression #3 Implement DARC containers #1 Initialize the project"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
