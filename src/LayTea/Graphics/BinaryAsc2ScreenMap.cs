@@ -20,24 +20,21 @@
 namespace SceneGate.Games.ProfessorLayton.Graphics
 {
     using System;
-    using Texim.Colors;
-    using Texim.Palettes;
+    using Texim.Compressions.Nitro;
     using Yarhl.FileFormat;
     using Yarhl.IO;
 
     /// <summary>
-    /// Converter for binary ACL palettes into a model.
+    /// Converter for binary ASC into a screen map model.
     /// </summary>
-    public class Acl2PaletteCollection : IConverter<IBinary, IPaletteCollection>
+    public class BinaryAsc2ScreenMap : IConverter<IBinary, ScreenMap>
     {
-        private const string Stamp = "ACL ";
-
         /// <summary>
-        /// Convert a binary ACL palette into a model.
+        /// Convert a binary ASC stream into a model.
         /// </summary>
-        /// <param name="source">The binary ACL palette stream.</param>
-        /// <returns>The new palette collection model.</returns>
-        public IPaletteCollection Convert(IBinary source)
+        /// <param name="source">The ASC stream to convert.</param>
+        /// <returns>The new screen map model.</returns>
+        public ScreenMap Convert(IBinary source)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -46,26 +43,27 @@ namespace SceneGate.Games.ProfessorLayton.Graphics
             var reader = new DataReader(source.Stream);
 
             string stamp = reader.ReadString(4);
-            if (stamp != Stamp) {
+            if (stamp != "ASC ") {
                 throw new FormatException($"Invalid stamp: {stamp}");
             }
 
-            var collection = new PaletteCollection();
-            int numPalettes = reader.ReadInt32();
-            for (int i = 0; i < numPalettes; i++) {
-                long pointerPos = source.Stream.Position;
-                long pointer = reader.ReadUInt16() + pointerPos;
+            int width = reader.ReadInt16();
+            int height = reader.ReadInt16();
 
-                source.Stream.PushToPosition(pointer);
-                int numColors = reader.ReadInt32();
-                var colors = reader.ReadColors<Bgr555>(numColors);
-                source.Stream.PopPosition();
-
-                var palette = new Palette(colors);
-                collection.Palettes.Add(palette);
+            int numMaps = reader.ReadInt16();
+            if (numMaps != 1) {
+                throw new FormatException($"Num maps is not 1? {numMaps}");
             }
 
-            return collection;
+            int mapOffset = reader.ReadUInt16();
+            int mapSize = reader.ReadInt32();
+
+            reader.Stream.Position = mapOffset;
+            var maps = reader.ReadMapInfos(mapSize / 2);
+
+            return new ScreenMap(width, height) {
+                Maps = maps,
+            };
         }
     }
 }
