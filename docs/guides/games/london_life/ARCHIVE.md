@@ -1,8 +1,7 @@
 # Format ARCHIVE
 
 Binary format that contains files without name. Files are typically compressed
-using Nintendo DS BIOS compression algorithms and formats: _LZSS_, _Huffman_ and
-_RLE_.
+using Nintendo DS BIOS compression algorithm and format for _LZSS_.
 
 ## Specification
 

@@ -25,6 +25,7 @@ Formats:
 - Professor Layton - London Life (US only):
   - **`DARC` containers**: read and write.
   - **`DENC` containers**: read and write.
+  - **`ARCHIVE` containers**: read and write.
   - **`LZSS` compression**: decompress and compress.
   - **`MSG` texts**: read and write.
     - PO export and import.
