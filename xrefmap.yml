@@ -13,6 +13,25 @@ references:
   commentId: N:SceneGate.Games.ProfessorLayton.Containers
   fullName: SceneGate.Games.ProfessorLayton.Containers
   nameWithType: SceneGate.Games.ProfessorLayton.Containers
+- uid: SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container
+  name: BinaryArchive2Container
+  href: api/SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container
+  fullName: SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container
+  nameWithType: BinaryArchive2Container
+- uid: SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.Convert(IBinary)
+  name: Convert(IBinary)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.html#SceneGate_Games_ProfessorLayton_Containers_BinaryArchive2Container_Convert_IBinary_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.Convert(IBinary)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.Convert(IBinary)
+  nameWithType: BinaryArchive2Container.Convert(IBinary)
+- uid: SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.Convert*
+  name: Convert
+  href: api/SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.html#SceneGate_Games_ProfessorLayton_Containers_BinaryArchive2Container_Convert_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.Convert
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.Convert
+  nameWithType: BinaryArchive2Container.Convert
 - uid: SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2Container
   name: BinaryDarc2Container
   href: api/SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2Container.html
@@ -32,6 +51,25 @@ references:
   isSpec: "True"
   fullName: SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2Container.Convert
   nameWithType: BinaryDarc2Container.Convert
+- uid: SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive
+  name: Container2BinaryArchive
+  href: api/SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive
+  fullName: SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive
+  nameWithType: Container2BinaryArchive
+- uid: SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.Convert(NodeContainerFormat)
+  name: Convert(NodeContainerFormat)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.html#SceneGate_Games_ProfessorLayton_Containers_Container2BinaryArchive_Convert_NodeContainerFormat_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.Convert(NodeContainerFormat)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.Convert(NodeContainerFormat)
+  nameWithType: Container2BinaryArchive.Convert(NodeContainerFormat)
+- uid: SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.Convert*
+  name: Convert
+  href: api/SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.html#SceneGate_Games_ProfessorLayton_Containers_Container2BinaryArchive_Convert_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.Convert
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.Convert
+  nameWithType: Container2BinaryArchive.Convert
 - uid: SceneGate.Games.ProfessorLayton.Containers.DencCompression
   name: DencCompression
   href: api/SceneGate.Games.ProfessorLayton.Containers.DencCompression.html
