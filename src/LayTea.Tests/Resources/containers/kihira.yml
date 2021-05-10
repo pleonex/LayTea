@@ -1,0 +1,28 @@
+name: NodeContainerRoot
+format_type: null
+tags:
+check_children: false
+children:
+  - name: file0
+    format_type: Yarhl.IO.BinaryFormat
+    stream_offset: 0x2900
+    stream_length: 76
+    tags:
+    check_children: true
+    children:
+
+  - name: file1
+    format_type: Yarhl.IO.BinaryFormat
+    stream_offset: 0x294C
+    stream_length: 2034
+    tags:
+    check_children: true
+    children:
+
+  - name: file2
+    format_type: Yarhl.IO.BinaryFormat
+    stream_offset: 0x313E
+    stream_length: 4332
+    tags:
+    check_children: true
+    children:
