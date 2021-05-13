@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Format ACE (A? Character E?) | Modding tools for 'Professor Layton' games </title>
+    <title>Container town | Modding tools for 'Professor Layton' games </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Format ACE (A? Character E?) | Modding tools for 'Professor Layton' games ">
+    <meta name="title" content="Container town | Modding tools for 'Professor Layton' games ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../../images/favicon.ico">
@@ -114,8 +114,8 @@
                                 <li class="">
                                   <a href="../../games/london_life/DARC.html" title="Containers DARC" class="">Containers DARC</a>
                                 </li>
-                                <li class="">
-                                  <a href="../../games/london_life/ll_town.html" title="Container town" class="">Container town</a>
+                                <li class="active">
+                                  <a href="../../games/london_life/ll_town.html" title="Container town" class="active">Container town</a>
                                 </li>
                                 <li class="">
                                   <a href="../../games/london_life/ll_save.html" title="Container save" class="">Container save</a>
@@ -150,8 +150,8 @@
                                 <li class="">
                                   <a href="../../games/london_life/ACP.html" title="Sprites ACP" class="">Sprites ACP</a>
                                 </li>
-                                <li class="active">
-                                  <a href="../../games/london_life/ACE.html" title="Sprites ACE" class="active">Sprites ACE</a>
+                                <li class="">
+                                  <a href="../../games/london_life/ACE.html" title="Sprites ACE" class="">Sprites ACE</a>
                                 </li>
                                 <li class="">
                                   <a href="../../games/london_life/summary.html" title="(TODO) Animations ANM" class="">(TODO) Animations ANM</a>
@@ -178,42 +178,100 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="format-ace-a-character-e">Format ACE (A? Character E?)</h1>
+<h1 id="container-town">Container town</h1>
 
-<p>Binary format that contains unknown data related to images.</p>
-<h2 id="specification">Specification</h2>
-<table>
-<thead>
-<tr>
-<th>Offset</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0x00</td>
-<td>0x04</td>
-<td>Stamp <code>ACE </code></td>
-</tr>
-<tr>
-<td>0x04</td>
-<td>0x04</td>
-<td>Number of sections</td>
-</tr>
-<tr>
-<td>0x08</td>
-<td>-</td>
-<td>16-bits pointers relative to their position</td>
-</tr>
-<tr>
-<td>-</td>
-<td>-</td>
-<td>Sprites definition</td>
-</tr>
-</tbody>
-</table>
-<p>TODO: sprite definition similar but not equal to <a href="ACP.html">ACP</a>.</p>
+<p>The file is inside the folder <code>ll/town</code> and contains images with formats:</p>
+<ul>
+<li>Palette: <a href="ACL.html">ACL</a></li>
+<li>Pixel: <a href="ACB.html">ACB and ACG</a></li>
+<li>Map: <a href="ASC.html">ASC</a></li>
+<li>Sprite: <a href="ACP.html">ACP</a> and <a href="ACE.html">ACE</a></li>
+<li>Animation: [ANM]</li>
+</ul>
+<h2 id="files">Files</h2>
+<p>The different parts of an image are split in different groups. These are the
+known groups with their file index:</p>
+<ul>
+<li>Image 1
+<ul>
+<li>Palette: 4524</li>
+<li>Pixels: 466</li>
+<li>Sprite: 462</li>
+<li>Animation: 464</li>
+</ul>
+</li>
+<li>Image 2
+<ul>
+<li>Palette: ?</li>
+<li>Pixels: 2382</li>
+<li>Sprite: 468</li>
+<li>Animation: 1425</li>
+</ul>
+</li>
+<li>Maps
+<ul>
+<li>For <code>i</code> in <code>[0,52]</code></li>
+<li>Palette: 3339 + (i * 2) + K, where <code>K=0</code> at day and <code>K=1</code> at night.
+<ul>
+<li>Also 3445 + K + Z, for unknown Z and unknown usage.</li>
+</ul>
+</li>
+<li>Pixels: 398 + i</li>
+<li>Maps: (i * 2) + K, where <code>K</code> can be 0 or 1 for the two map layers.
+<ul>
+<li>Also 106 + i, but what it seems to be the collision map but unknown tiles
+and palette.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Background menu
+<ul>
+<li>Palette: 4523</li>
+<li>Pixels: 451</li>
+<li>Map: 159</li>
+</ul>
+</li>
+<li>Minimaps
+<ul>
+<li>For <code>i</code> in <code>[0,9]</code></li>
+<li>Palette: 4525 + i</li>
+<li>Pixels: 452 + i</li>
+<li>Maps: 160 + i</li>
+</ul>
+</li>
+<li>Room decoration
+<ul>
+<li>For <code>i</code> in <code>[0,113]</code></li>
+<li>Palette: 4256 + i</li>
+<li>Pixels: 284 + i
+<ul>
+<li>It looks like some width values are incorrect here.</li>
+</ul>
+</li>
+<li>Maps: 170 + i</li>
+</ul>
+</li>
+<li>Group 1
+<ul>
+<li>For <code>i</code> in <code>[0,803]</code></li>
+<li>Palettes: 3450 + i</li>
+<li>Pixels: 2383 + i</li>
+<li>Sprites: 469 + i</li>
+<li>Animations: 1426 + i</li>
+</ul>
+</li>
+<li>Group 2
+<ul>
+<li>For <code>i</code> in <code>[0,152]</code></li>
+<li>Palettes: 4370 + i</li>
+<li>Pixels: 3186 + i</li>
+<li>Sprites: 1272 + i</li>
+<li>Animations: 2229 + i</li>
+</ul>
+</li>
+<li>Unknown palettes: 4254, 4255, 4535</li>
+</ul>
 </article>
           </div>
           
@@ -222,7 +280,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/pleonex/LayTea/blob/main/docs/guides/games/london_life/ACE.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/pleonex/LayTea/blob/main/docs/guides/games/london_life/ll_town.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

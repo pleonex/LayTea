@@ -115,6 +115,12 @@
                                   <a href="../../games/london_life/DARC.html" title="Containers DARC" class="active">Containers DARC</a>
                                 </li>
                                 <li class="">
+                                  <a href="../../games/london_life/ll_town.html" title="Container town" class="">Container town</a>
+                                </li>
+                                <li class="">
+                                  <a href="../../games/london_life/ll_save.html" title="Container save" class="">Container save</a>
+                                </li>
+                                <li class="">
                                   <a href="../../games/london_life/DENC.html" title="Compression DENC" class="">Compression DENC</a>
                                 </li>
                                 <li class="">
@@ -210,6 +216,29 @@ the format <a href="DENC.html"><code>DENC</code></a>.</p>
 </table>
 <p>The first four bytes of the file data is a 32-bits value (<code>uint</code>) with the file
 size. Then it follows the file data.</p>
+<h2 id="subroutines">Subroutines</h2>
+<p>The following subroutines get a file inside the <code>DARC</code> container, decompressing
+the <code>DENC</code> data. The access is via index in <code>R1</code>. The main subroutine that gets
+any file is at <code>0x020D527C</code>. Then, there is a wrapper per file type:</p>
+<ul>
+<li><code>darc_getAsc</code>: 0x020D5088</li>
+<li><code>darc_getAcg</code>: 0x020D50AC</li>
+<li><code>darc_getAcl</code>: 0x020D50D0</li>
+<li><code>darc_getAce</code>: 0x020D50F4</li>
+<li><code>darc_getAnm</code>: 0x020D5118</li>
+<li><code>darc_getAcp</code>: 0x020D513C</li>
+<li><code>darc_getAcb</code>: 0x020D5160</li>
+<li><code>darc_getNftr</code>: 0x020D5184</li>
+<li><code>darc_getMsg</code>: 0x020D51A8</li>
+<li><code>darc_getSedl</code>: 0x020D51CC</li>
+<li><code>darc_getSmdl</code>: 0x020D51F8</li>
+<li><code>darc_getSwdl</code>: 0x020D5224</li>
+<li><code>darc_getUnk8</code>: 0x020D5250
+<ul>
+<li>This is the file 8 from <code>ll_common.darc</code> that has size 0.</li>
+</ul>
+</li>
+</ul>
 </article>
           </div>
           

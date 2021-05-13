@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Format ACE (A? Character E?) | Modding tools for 'Professor Layton' games </title>
+    <title>Container save | Modding tools for 'Professor Layton' games </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Format ACE (A? Character E?) | Modding tools for 'Professor Layton' games ">
+    <meta name="title" content="Container save | Modding tools for 'Professor Layton' games ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../../../images/favicon.ico">
@@ -117,8 +117,8 @@
                                 <li class="">
                                   <a href="../../games/london_life/ll_town.html" title="Container town" class="">Container town</a>
                                 </li>
-                                <li class="">
-                                  <a href="../../games/london_life/ll_save.html" title="Container save" class="">Container save</a>
+                                <li class="active">
+                                  <a href="../../games/london_life/ll_save.html" title="Container save" class="active">Container save</a>
                                 </li>
                                 <li class="">
                                   <a href="../../games/london_life/DENC.html" title="Compression DENC" class="">Compression DENC</a>
@@ -150,8 +150,8 @@
                                 <li class="">
                                   <a href="../../games/london_life/ACP.html" title="Sprites ACP" class="">Sprites ACP</a>
                                 </li>
-                                <li class="active">
-                                  <a href="../../games/london_life/ACE.html" title="Sprites ACE" class="active">Sprites ACE</a>
+                                <li class="">
+                                  <a href="../../games/london_life/ACE.html" title="Sprites ACE" class="">Sprites ACE</a>
                                 </li>
                                 <li class="">
                                   <a href="../../games/london_life/summary.html" title="(TODO) Animations ANM" class="">(TODO) Animations ANM</a>
@@ -178,42 +178,44 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="format-ace-a-character-e">Format ACE (A? Character E?)</h1>
+<h1 id="container-save">Container save</h1>
 
-<p>Binary format that contains unknown data related to images.</p>
-<h2 id="specification">Specification</h2>
-<table>
-<thead>
-<tr>
-<th>Offset</th>
-<th>Size</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0x00</td>
-<td>0x04</td>
-<td>Stamp <code>ACE </code></td>
-</tr>
-<tr>
-<td>0x04</td>
-<td>0x04</td>
-<td>Number of sections</td>
-</tr>
-<tr>
-<td>0x08</td>
-<td>-</td>
-<td>16-bits pointers relative to their position</td>
-</tr>
-<tr>
-<td>-</td>
-<td>-</td>
-<td>Sprites definition</td>
-</tr>
-</tbody>
-</table>
-<p>TODO: sprite definition similar but not equal to <a href="ACP.html">ACP</a>.</p>
+<p>The file is inside the folder <code>ll/save</code> and contains images with formats:</p>
+<ul>
+<li>Palette: <a href="ACL.html">ACL</a></li>
+<li>Pixel: <a href="ACB.html">ACB and ACG</a></li>
+<li>Map: <a href="ASC.html">ASC</a></li>
+<li>Sprite: <a href="ACP.html">ACP</a> and <a href="ACE.html">ACE</a></li>
+<li>Animation: [ANM]</li>
+</ul>
+<h2 id="files">Files</h2>
+<p>The different parts of an image are split in different groups. These are the
+known groups with their file index:</p>
+<ul>
+<li>Background 0
+<ul>
+<li>Palette: 1678</li>
+<li>Pixels: 2</li>
+<li>Map: 0</li>
+</ul>
+</li>
+<li>Background 1
+<ul>
+<li>Palette: 1679</li>
+<li>Pixels: 3</li>
+<li>Map: 1</li>
+</ul>
+</li>
+<li>Group 1
+<ul>
+<li>For <code>i</code> in <code>[0, ?]</code></li>
+<li>Palette: 1258 + i, also 1674, 1675 and 1676</li>
+<li>Pixels: 842 + i</li>
+<li>Sprite: 10</li>
+<li>Animation: 426 + i</li>
+</ul>
+</li>
+</ul>
 </article>
           </div>
           
@@ -222,7 +224,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/pleonex/LayTea/blob/main/docs/guides/games/london_life/ACE.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/pleonex/LayTea/blob/main/docs/guides/games/london_life/ll_save.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
