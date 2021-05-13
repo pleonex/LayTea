@@ -17,13 +17,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+using FluentAssertions;
+using NUnit.Framework;
+using Yarhl.FileFormat;
+using Yarhl.FileSystem;
+using Yarhl.IO;
+
 namespace SceneGate.Games.ProfessorLayton.Tests.Containers
 {
-    using NUnit.Framework;
-    using Yarhl.FileFormat;
-    using Yarhl.FileSystem;
-    using Yarhl.IO;
-
     public abstract class Binary2ContainerTests
     {
         private int initialStreams;
@@ -79,10 +80,10 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
         {
             // Check nodes are expected
             using var nodes = containerConverter.Convert(original);
-            CheckNode(containerInfo, nodes.Root);
+            nodes.Root.Should().MatchInfo(containerInfo);
 
             // Check everything is virtual node (only the binary stream)
-            Assert.That(DataStream.ActiveStreams, Is.EqualTo(initialStreams + 1));
+            DataStream.ActiveStreams.Should().Be(initialStreams + 1);
         }
 
         [Test]
@@ -105,36 +106,5 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
         protected abstract IConverter<BinaryFormat, NodeContainerFormat> GetToContainerConverter();
 
         protected abstract IConverter<NodeContainerFormat, BinaryFormat> GetToBinaryConverter();
-
-        private static void CheckNode(NodeContainerInfo info, Node node)
-        {
-            Assert.That(node, Is.Not.Null, $"Missing node '{info.Name}'");
-            TestContext.WriteLine(node.Path);
-            Assert.That(node.Name, Is.EqualTo(info.Name));
-            Assert.That(node.Format?.GetType().FullName, Is.EqualTo(info.FormatType));
-
-            if (info.Tags != null) {
-                // YAML deserializer always gets the value as a string
-                foreach (var entry in info.Tags) {
-                    Assert.That(node.Tags.ContainsKey(entry.Key), Is.True, $"Missing tag '{entry.Key}'");
-                    Assert.That(node.Tags[entry.Key].ToString(), Is.EqualTo(entry.Value));
-                }
-            }
-
-            if (info.StreamLength > 0) {
-                Assert.That(node.Stream.Offset, Is.EqualTo(info.StreamOffset));
-                Assert.That(node.Stream.Length, Is.EqualTo(info.StreamLength));
-            }
-
-            int expectedCount = info.Children?.Count ?? 0;
-            if (info.CheckChildren) {
-                Assert.That(expectedCount, Is.EqualTo(node.Children.Count));
-            }
-
-            for (int i = 0; i < expectedCount; i++) {
-                var expectedNode = info.Children[i];
-                CheckNode(expectedNode, node.Children[expectedNode.Name]);
-            }
-        }
     }
 }

@@ -56,8 +56,8 @@ The image encoding depends on their container.
     - Sprite: [NCOB](NCOB.md)
 - [DARC](DARC.md):
   - Files:
-    - `ll/save/ll_save.darc`
-    - `ll/town/ll_town.darc`
+    - [`ll/save/ll_save.darc`](ll_save.md)
+    - [`ll/town/ll_town.darc`](ll_town.md)
   - Formats:
     - Palette: [ACL](ACL.md)
     - Pixel: [ACB and ACG](ACB.md)

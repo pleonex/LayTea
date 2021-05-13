@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="../LayTea/LayTea.csproj" />
 
+    <PackageReference Include="FluentAssertions" />
     <PackageReference Include="nunit" />
     <PackageReference Include="NUnit3TestAdapter" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />

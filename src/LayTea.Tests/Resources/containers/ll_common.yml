@@ -5,24 +5,27 @@ check_children: false
 children:
   - name: file0.denc
     format_type: Yarhl.IO.BinaryFormat
-    stream_offset: 0x8C
-    stream_length: 64
+    stream:
+      offset: 0x8C
+      length: 64
     tags:
     check_children: true
     children:
 
   - name: file1.denc
     format_type: Yarhl.IO.BinaryFormat
-    stream_offset: 0xD0
-    stream_length: 64
+    stream:
+      offset: 0xD0
+      length: 64
     tags:
     check_children: true
     children:
 
   - name: file2.denc
     format_type: Yarhl.IO.BinaryFormat
-    stream_offset: 0x114
-    stream_length: 384277
+    stream:
+      offset: 0x114
+      length: 384277
     tags:
     check_children: true
     children:
