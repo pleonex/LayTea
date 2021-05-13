@@ -29,6 +29,10 @@ Formats:
   - **`LZSS` compression**: decompress and compress.
   - **`MSG` texts**: read and write.
     - PO export and import.
+  - **`ACL` palettes**: read.
+  - **`ACG` and `ACB` pixels**: read.
+  - **`ASC` screen maps**: read.
+  - **`NCCL` palettes**: read.
 
 ## Documentation
 
