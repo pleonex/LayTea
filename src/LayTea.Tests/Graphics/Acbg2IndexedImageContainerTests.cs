@@ -39,6 +39,10 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
         public static IEnumerable GetImages()
         {
             var savePath = Path.Combine(TestDataBase.RootFromOutputPath, "containers", "ll_save.darc");
+            if (!File.Exists(savePath)) {
+                yield break;
+            }
+
             Node save = NodeFactory.FromFile(savePath, FileOpenMode.Read)
                 .TransformWith<BinaryDarc2Container>();
 

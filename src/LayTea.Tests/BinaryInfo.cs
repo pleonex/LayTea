@@ -17,37 +17,27 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace SceneGate.Games.ProfessorLayton.Tests.Containers
+using System.IO;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
+
+namespace SceneGate.Games.ProfessorLayton.Tests
 {
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using YamlDotNet.Serialization;
-    using YamlDotNet.Serialization.NamingConventions;
-
-    public class NodeContainerInfo
+    public class BinaryInfo
     {
-        public string Name { get; set; }
+        public long Offset { get; set; }
 
-        public string FormatType { get; set; }
+        public long Length { get; set; }
 
-        public long StreamOffset { get; set; }
+        public string Sha256 { get; set; }
 
-        public long StreamLength { get; set; }
-
-        public Dictionary<string, object> Tags { get; set; }
-
-        public bool CheckChildren { get; set; }
-
-        public Collection<NodeContainerInfo> Children { get; set; }
-
-        public static NodeContainerInfo FromYaml(string path)
+        public static BinaryInfo FromYaml(string path)
         {
             string yaml = File.ReadAllText(path);
             return new DeserializerBuilder()
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)
                 .Build()
-                .Deserialize<NodeContainerInfo>(yaml);
+                .Deserialize<BinaryInfo>(yaml);
         }
     }
 }

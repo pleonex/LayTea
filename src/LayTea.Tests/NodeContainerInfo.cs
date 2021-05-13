@@ -17,45 +17,35 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace SceneGate.Games.ProfessorLayton.Tests.Containers
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
+
+namespace SceneGate.Games.ProfessorLayton.Tests
 {
-    using System;
-    using System.IO;
-    using System.Security.Cryptography;
-    using NUnit.Framework;
-    using YamlDotNet.Serialization;
-    using YamlDotNet.Serialization.NamingConventions;
-    using Yarhl.IO;
-
-    public class BinaryInfo
+    public class NodeContainerInfo
     {
-        public long Offset { get; set; }
+        public string Name { get; set; }
 
-        public long Length { get; set; }
+        public string FormatType { get; set; }
 
-        public string Sha256 { get; set; }
+        public BinaryInfo Stream { get; set; }
 
-        public static BinaryInfo FromYaml(string path)
+        public Dictionary<string, object> Tags { get; set; }
+
+        public bool CheckChildren { get; set; }
+
+        public Collection<NodeContainerInfo> Children { get; set; }
+
+        public static NodeContainerInfo FromYaml(string path)
         {
             string yaml = File.ReadAllText(path);
             return new DeserializerBuilder()
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)
                 .Build()
-                .Deserialize<BinaryInfo>(yaml);
-        }
-
-        public void AssertIsEqual(IBinary decompressed)
-        {
-            Assert.That(decompressed.Stream.Offset, Is.EqualTo(Offset));
-            Assert.That(decompressed.Stream.Length, Is.EqualTo(Length));
-
-            using var sha256 = SHA256.Create();
-            decompressed.Stream.Position = 0;
-            sha256.ComputeHash(decompressed.Stream);
-            string actualHash = BitConverter.ToString(sha256.Hash)
-                .Replace("-", string.Empty)
-                .ToLowerInvariant();
-            Assert.That(actualHash, Is.EqualTo(Sha256));
+                .Deserialize<NodeContainerInfo>(yaml);
         }
     }
 }

@@ -17,13 +17,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+using System.Collections;
+using FluentAssertions;
+using NUnit.Framework;
+using SceneGate.Games.ProfessorLayton.Containers;
+using Yarhl.IO;
+
 namespace SceneGate.Games.ProfessorLayton.Tests.Containers
 {
-    using System.Collections;
-    using NUnit.Framework;
-    using SceneGate.Games.ProfessorLayton.Containers;
-    using Yarhl.IO;
-
     [TestFixture]
     public class LzssdDecompressionTests
     {
@@ -55,13 +56,14 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
             int initialStreams = DataStream.ActiveStreams;
             BinaryFormat decompressed = null;
             try {
-                Assert.That(() => decompressed = decompression.Convert(input), Throws.Nothing);
-                expected.AssertIsEqual(decompressed);
+                decompression.Invoking(converter => decompressed = converter.Convert(input))
+                    .Should().NotThrow();
+                decompressed.Should().MatchInfo(expected);
             } finally {
                 decompressed?.Dispose();
             }
 
-            Assert.That(DataStream.ActiveStreams, Is.EqualTo(initialStreams), "Missing stream disposes");
+            DataStream.ActiveStreams.Should().Be(initialStreams);
         }
 
         [Test]
