@@ -59,9 +59,8 @@ namespace SceneGate.Games.ProfessorLayton.Tests
                 return Array.Empty<string>();
 
             return File.ReadAllLines(filePath)
-                .Where(line => !string.IsNullOrWhiteSpace(line))
                 .Select(line => line.Trim())
-                .Where(line => !line.StartsWith("#"));
+                .Where(line => !string.IsNullOrWhiteSpace(line) && !line.StartsWith('#'));
         }
     }
 }

@@ -81,8 +81,10 @@ namespace SceneGate.Games.ProfessorLayton.Graphics
                         collection.Palettes.Add(new Palette(colors));
                     }
                 } else if (id == "CMNT") {
-                    reader.Stream.Position += 4; // unknown, 0?
-                    throw new FormatException("Oh check this out!");
+                    var comment = reader.ReadString();
+                    if (!string.IsNullOrEmpty(comment)) {
+                        throw new FormatException("Oh check this out!");
+                    }
                 } else {
                     reader.Stream.Position += size - 8;
                     throw new FormatException("Oh check this out!");

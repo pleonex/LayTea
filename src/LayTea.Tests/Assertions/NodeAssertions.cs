@@ -18,6 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 using Yarhl.FileSystem;
 
@@ -58,8 +59,10 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Assertions
 
             for (int i = 0; i < expectedCount; i++) {
                 NodeContainerInfo expectedNode = info.Children[i];
-                Subject.Children.Should().Contain(n => n.Name == expectedNode.Name);
-                Subject.Children[expectedNode.Name].Should().MatchInfo(expectedNode);
+                using (new AssertionScope(expectedNode.Name)) {
+                    Subject.Children.Should().Contain(n => n.Name == expectedNode.Name);
+                    Subject.Children[expectedNode.Name].Should().MatchInfo(expectedNode);
+                }
             }
 
             return new AndConstraint<NodeAssertions>(this);
