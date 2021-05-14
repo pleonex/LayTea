@@ -322,25 +322,298 @@ references:
   isSpec: "True"
   fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryAsc2ScreenMap.Convert
   nameWithType: BinaryAsc2ScreenMap.Convert
-- uid: SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection
-  name: Nccl2PaletteCollection
-  href: api/SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.html
-  commentId: T:SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection
-  fullName: SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection
-  nameWithType: Nccl2PaletteCollection
-- uid: SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert(IBinary)
-  name: Convert(IBinary)
-  href: api/SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.html#SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_Convert_IBinary_
-  commentId: M:SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert(IBinary)
-  fullName: SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert(IBinary)
-  nameWithType: Nccl2PaletteCollection.Convert(IBinary)
-- uid: SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert*
-  name: Convert
-  href: api/SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.html#SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_Convert_
-  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage
+  name: BinaryNccg2IndexedImage
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage
+  nameWithType: BinaryNccg2IndexedImage
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.ReadSection(DataReader,IndexedImage,System.String,System.Int32)
+  name: ReadSection(DataReader, IndexedImage, String, Int32)
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccg2IndexedImage_ReadSection_DataReader_IndexedImage_System_String_System_Int32_
+  commentId: M:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.ReadSection(DataReader,IndexedImage,System.String,System.Int32)
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.ReadSection(DataReader, IndexedImage, System.String, System.Int32)
+  nameWithType: BinaryNccg2IndexedImage.ReadSection(DataReader, IndexedImage, String, Int32)
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.ReadSection*
+  name: ReadSection
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccg2IndexedImage_ReadSection_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.ReadSection
   isSpec: "True"
-  fullName: SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert
-  nameWithType: Nccl2PaletteCollection.Convert
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.ReadSection
+  nameWithType: BinaryNccg2IndexedImage.ReadSection
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.Stamp
+  name: Stamp
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccg2IndexedImage_Stamp
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.Stamp
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.Stamp
+  nameWithType: BinaryNccg2IndexedImage.Stamp
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.Stamp*
+  name: Stamp
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccg2IndexedImage_Stamp_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.Stamp
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.Stamp
+  nameWithType: BinaryNccg2IndexedImage.Stamp
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.SupportedVersion
+  name: SupportedVersion
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccg2IndexedImage_SupportedVersion
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.SupportedVersion
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.SupportedVersion
+  nameWithType: BinaryNccg2IndexedImage.SupportedVersion
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.SupportedVersion*
+  name: SupportedVersion
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccg2IndexedImage_SupportedVersion_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.SupportedVersion
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.SupportedVersion
+  nameWithType: BinaryNccg2IndexedImage.SupportedVersion
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection
+  name: BinaryNccl2PaletteCollection
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection
+  nameWithType: BinaryNccl2PaletteCollection
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.ReadSection(DataReader,PaletteCollection,System.String,System.Int32)
+  name: ReadSection(DataReader, PaletteCollection, String, Int32)
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccl2PaletteCollection_ReadSection_DataReader_PaletteCollection_System_String_System_Int32_
+  commentId: M:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.ReadSection(DataReader,PaletteCollection,System.String,System.Int32)
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.ReadSection(DataReader, PaletteCollection, System.String, System.Int32)
+  nameWithType: BinaryNccl2PaletteCollection.ReadSection(DataReader, PaletteCollection, String, Int32)
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.ReadSection*
+  name: ReadSection
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccl2PaletteCollection_ReadSection_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.ReadSection
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.ReadSection
+  nameWithType: BinaryNccl2PaletteCollection.ReadSection
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.Stamp
+  name: Stamp
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccl2PaletteCollection_Stamp
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.Stamp
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.Stamp
+  nameWithType: BinaryNccl2PaletteCollection.Stamp
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.Stamp*
+  name: Stamp
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccl2PaletteCollection_Stamp_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.Stamp
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.Stamp
+  nameWithType: BinaryNccl2PaletteCollection.Stamp
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.SupportedVersion
+  name: SupportedVersion
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccl2PaletteCollection_SupportedVersion
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.SupportedVersion
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.SupportedVersion
+  nameWithType: BinaryNccl2PaletteCollection.SupportedVersion
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.SupportedVersion*
+  name: SupportedVersion
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNccl2PaletteCollection_SupportedVersion_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.SupportedVersion
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.SupportedVersion
+  nameWithType: BinaryNccl2PaletteCollection.SupportedVersion
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap
+  name: BinaryNcsc2ScreenMap
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap
+  nameWithType: BinaryNcsc2ScreenMap
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.ReadSection(DataReader,SceneGate.Games.ProfessorLayton.Graphics.Ncsc,System.String,System.Int32)
+  name: ReadSection(DataReader, Ncsc, String, Int32)
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNcsc2ScreenMap_ReadSection_DataReader_SceneGate_Games_ProfessorLayton_Graphics_Ncsc_System_String_System_Int32_
+  commentId: M:SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.ReadSection(DataReader,SceneGate.Games.ProfessorLayton.Graphics.Ncsc,System.String,System.Int32)
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.ReadSection(DataReader, SceneGate.Games.ProfessorLayton.Graphics.Ncsc, System.String, System.Int32)
+  nameWithType: BinaryNcsc2ScreenMap.ReadSection(DataReader, Ncsc, String, Int32)
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.ReadSection*
+  name: ReadSection
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNcsc2ScreenMap_ReadSection_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.ReadSection
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.ReadSection
+  nameWithType: BinaryNcsc2ScreenMap.ReadSection
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.Stamp
+  name: Stamp
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNcsc2ScreenMap_Stamp
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.Stamp
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.Stamp
+  nameWithType: BinaryNcsc2ScreenMap.Stamp
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.Stamp*
+  name: Stamp
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNcsc2ScreenMap_Stamp_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.Stamp
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.Stamp
+  nameWithType: BinaryNcsc2ScreenMap.Stamp
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.SupportedVersion
+  name: SupportedVersion
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNcsc2ScreenMap_SupportedVersion
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.SupportedVersion
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.SupportedVersion
+  nameWithType: BinaryNcsc2ScreenMap.SupportedVersion
+- uid: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.SupportedVersion*
+  name: SupportedVersion
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.html#SceneGate_Games_ProfessorLayton_Graphics_BinaryNcsc2ScreenMap_SupportedVersion_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.SupportedVersion
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.SupportedVersion
+  nameWithType: BinaryNcsc2ScreenMap.SupportedVersion
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc
+  name: Ncsc
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Graphics.Ncsc
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc
+  nameWithType: Ncsc
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.#ctor
+  name: Ncsc()
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc__ctor
+  commentId: M:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.#ctor
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Ncsc()
+  nameWithType: Ncsc.Ncsc()
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.#ctor(System.Int32,System.Int32,MapInfo[])
+  name: Ncsc(Int32, Int32, MapInfo[])
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc__ctor_System_Int32_System_Int32_MapInfo___
+  commentId: M:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.#ctor(System.Int32,System.Int32,MapInfo[])
+  name.vb: Ncsc(Int32, Int32, MapInfo())
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Ncsc(System.Int32, System.Int32, MapInfo[])
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Ncsc(System.Int32, System.Int32, MapInfo())
+  nameWithType: Ncsc.Ncsc(Int32, Int32, MapInfo[])
+  nameWithType.vb: Ncsc.Ncsc(Int32, Int32, MapInfo())
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.#ctor*
+  name: Ncsc
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc__ctor_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.#ctor
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Ncsc
+  nameWithType: Ncsc.Ncsc
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Height
+  name: Height
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc_Height
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Height
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Height
+  nameWithType: Ncsc.Height
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Height*
+  name: Height
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc_Height_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Height
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Height
+  nameWithType: Ncsc.Height
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.ImageName
+  name: ImageName
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc_ImageName
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.ImageName
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.ImageName
+  nameWithType: Ncsc.ImageName
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.ImageName*
+  name: ImageName
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc_ImageName_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.ImageName
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.ImageName
+  nameWithType: Ncsc.ImageName
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Maps
+  name: Maps
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc_Maps
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Maps
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Maps
+  nameWithType: Ncsc.Maps
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Maps*
+  name: Maps
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc_Maps_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Maps
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Maps
+  nameWithType: Ncsc.Maps
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Width
+  name: Width
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc_Width
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Width
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Width
+  nameWithType: Ncsc.Width
+- uid: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Width*
+  name: Width
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html#SceneGate_Games_ProfessorLayton_Graphics_Ncsc_Width_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Width
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.Ncsc.Width
+  nameWithType: Ncsc.Width
+- uid: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1
+  name: NDeserializer<T>
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1
+  name.vb: NDeserializer(Of T)
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer<T>
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer(Of T)
+  nameWithType: NDeserializer<T>
+  nameWithType.vb: NDeserializer(Of T)
+- uid: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Convert(IBinary)
+  name: Convert(IBinary)
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html#SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Convert_IBinary_
+  commentId: M:SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Convert(IBinary)
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer<T>.Convert(IBinary)
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer(Of T).Convert(IBinary)
+  nameWithType: NDeserializer<T>.Convert(IBinary)
+  nameWithType.vb: NDeserializer(Of T).Convert(IBinary)
+- uid: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Convert*
+  name: Convert
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html#SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Convert_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Convert
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer<T>.Convert
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer(Of T).Convert
+  nameWithType: NDeserializer<T>.Convert
+  nameWithType.vb: NDeserializer(Of T).Convert
+- uid: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.ReadSection(DataReader,`0,System.String,System.Int32)
+  name: ReadSection(DataReader, T, String, Int32)
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html#SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_ReadSection_DataReader__0_System_String_System_Int32_
+  commentId: M:SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.ReadSection(DataReader,`0,System.String,System.Int32)
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer<T>.ReadSection(DataReader, T, System.String, System.Int32)
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer(Of T).ReadSection(DataReader, T, System.String, System.Int32)
+  nameWithType: NDeserializer<T>.ReadSection(DataReader, T, String, Int32)
+  nameWithType.vb: NDeserializer(Of T).ReadSection(DataReader, T, String, Int32)
+- uid: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.ReadSection*
+  name: ReadSection
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html#SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_ReadSection_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.ReadSection
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer<T>.ReadSection
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer(Of T).ReadSection
+  nameWithType: NDeserializer<T>.ReadSection
+  nameWithType.vb: NDeserializer(Of T).ReadSection
+- uid: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Stamp
+  name: Stamp
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html#SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Stamp
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Stamp
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer<T>.Stamp
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer(Of T).Stamp
+  nameWithType: NDeserializer<T>.Stamp
+  nameWithType.vb: NDeserializer(Of T).Stamp
+- uid: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Stamp*
+  name: Stamp
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html#SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Stamp_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Stamp
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer<T>.Stamp
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer(Of T).Stamp
+  nameWithType: NDeserializer<T>.Stamp
+  nameWithType.vb: NDeserializer(Of T).Stamp
+- uid: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.SupportedVersion
+  name: SupportedVersion
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html#SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_SupportedVersion
+  commentId: P:SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.SupportedVersion
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer<T>.SupportedVersion
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer(Of T).SupportedVersion
+  nameWithType: NDeserializer<T>.SupportedVersion
+  nameWithType.vb: NDeserializer(Of T).SupportedVersion
+- uid: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.SupportedVersion*
+  name: SupportedVersion
+  href: api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html#SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_SupportedVersion_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.SupportedVersion
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer<T>.SupportedVersion
+  fullName.vb: SceneGate.Games.ProfessorLayton.Graphics.NDeserializer(Of T).SupportedVersion
+  nameWithType: NDeserializer<T>.SupportedVersion
+  nameWithType.vb: NDeserializer(Of T).SupportedVersion
 - uid: SceneGate.Games.ProfessorLayton.Texts
   name: SceneGate.Games.ProfessorLayton.Texts
   href: api/SceneGate.Games.ProfessorLayton.Texts.html

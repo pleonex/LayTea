@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Nccl2PaletteCollection
+    <title>Class NDeserializer&lt;T&gt;
    | Modding tools for 'Professor Layton' games </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Nccl2PaletteCollection
+    <meta name="title" content="Class NDeserializer&lt;T&gt;
    | Modding tools for 'Professor Layton' games ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -156,7 +156,19 @@
                                   <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Graphics.BinaryAsc2ScreenMap.html" title="BinaryAsc2ScreenMap" class="">BinaryAsc2ScreenMap</a>
                                 </li>
                                 <li class="">
-                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.html" title="Nccl2PaletteCollection" class="">Nccl2PaletteCollection</a>
+                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.html" title="BinaryNccg2IndexedImage" class="">BinaryNccg2IndexedImage</a>
+                                </li>
+                                <li class="">
+                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.html" title="BinaryNccl2PaletteCollection" class="">BinaryNccl2PaletteCollection</a>
+                                </li>
+                                <li class="">
+                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.html" title="BinaryNcsc2ScreenMap" class="">BinaryNcsc2ScreenMap</a>
+                                </li>
+                                <li class="">
+                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Graphics.Ncsc.html" title="Ncsc" class="">Ncsc</a>
+                                </li>
+                                <li class="">
+                                  <a href="../dev/../api/SceneGate.Games.ProfessorLayton.Graphics.NDeserializer-1.html" title="NDeserializer&lt;T&gt;" class="">NDeserializer&lt;T&gt;</a>
                                 </li>
                               </ul>  </li>
                           <li class="">
@@ -224,42 +236,125 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection">
+            <article class="content wrap" id="_content" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1">
   
   
-  <h1 id="SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection" data-uid="SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection" class="text-break">Class Nccl2PaletteCollection
+  <h1 id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1" class="text-break">Class NDeserializer&lt;T&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Converter for NCCL binary palettes into a model.</p>
+  <div class="markdown level0 summary"><p>Generic binary deserializer for graphic formats starting with N.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">Nccl2PaletteCollection</span></div>
+    <div class="level1"><span class="xref">NDeserializer&lt;T&gt;</span></div>
+      <div class="level2"><a class="xref" href="SceneGate.Games.ProfessorLayton.Graphics.BinaryNccg2IndexedImage.html">BinaryNccg2IndexedImage</a></div>
+      <div class="level2"><a class="xref" href="SceneGate.Games.ProfessorLayton.Graphics.BinaryNccl2PaletteCollection.html">BinaryNccl2PaletteCollection</a></div>
+      <div class="level2"><a class="xref" href="SceneGate.Games.ProfessorLayton.Graphics.BinaryNcsc2ScreenMap.html">BinaryNcsc2ScreenMap</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SceneGate.Games.ProfessorLayton.Graphics.html">SceneGate.Games.ProfessorLayton.Graphics</a></h6>
   <h6><strong>Assembly</strong>: LayTea.dll</h6>
-  <h5 id="SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_syntax">Syntax</h5>
+  <h5 id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Nccl2PaletteCollection : IConverter&lt;IBinary, PaletteCollection&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class NDeserializer&lt;T&gt; : IConverter&lt;IBinary, T&gt; where T : new()</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The output type of the deserialization.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_Convert_IBinary_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert(IBinary)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Stamp.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Graphics.NDeserializer%601.Stamp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Graphics/Nccl2PaletteCollection.cs/#L43">View Source</a>
+    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Graphics/NDeserializer.cs/#L40">View Source</a>
   </span>
-  <a id="SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_Convert_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert*"></a>
-  <h4 id="SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_Convert_IBinary_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert(IBinary)">Convert(IBinary)</h4>
-  <div class="markdown level1 summary"><p>Convert a binary palette into a palette collection model.</p>
+  <a id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Stamp_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Stamp*"></a>
+  <h4 id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Stamp" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Stamp">Stamp</h4>
+  <div class="markdown level1 summary"><p>Gets the stamp of the binary format.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PaletteCollection Convert(IBinary source)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract string Stamp { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_SupportedVersion.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Graphics.NDeserializer%601.SupportedVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Graphics/NDeserializer.cs/#L45">View Source</a>
+  </span>
+  <a id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_SupportedVersion_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.SupportedVersion*"></a>
+  <h4 id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_SupportedVersion" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.SupportedVersion">SupportedVersion</h4>
+  <div class="markdown level1 summary"><p>Gets the supported version of the deserializer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract int SupportedVersion { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Convert_IBinary_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Graphics.NDeserializer%601.Convert(IBinary)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Graphics/NDeserializer.cs/#L52">View Source</a>
+  </span>
+  <a id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Convert_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Convert*"></a>
+  <h4 id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_Convert_IBinary_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.Convert(IBinary)">Convert(IBinary)</h4>
+  <div class="markdown level1 summary"><p>Converts a binary stream into a model.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T Convert(IBinary source)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -274,7 +369,7 @@
       <tr>
         <td><span class="xref">IBinary</span></td>
         <td><span class="parametername">source</span></td>
-        <td><p>The binary palette stream.</p>
+        <td><p>The stream to deserialize.</p>
 </td>
       </tr>
     </tbody>
@@ -289,8 +384,76 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">PaletteCollection</span></td>
-        <td><p>The new palette collection model.</p>
+        <td><span class="xref">T</span></td>
+        <td><p>The new model.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_ReadSection_DataReader__0_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Graphics.NDeserializer%601.ReadSection(DataReader%2C%600%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Graphics/NDeserializer.cs/#L85">View Source</a>
+  </span>
+  <a id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_ReadSection_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.ReadSection*"></a>
+  <h4 id="SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1_ReadSection_DataReader__0_System_String_System_Int32_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.NDeserializer`1.ReadSection(DataReader,`0,System.String,System.Int32)">ReadSection(DataReader, T, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Read a section of the binary stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract T ReadSection(DataReader reader, T model, string id, int size)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DataReader</span></td>
+        <td><span class="parametername">reader</span></td>
+        <td><p>The reader of the binary stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">model</span></td>
+        <td><p>The new model.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the section.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>The size of the section.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>The same or new model after reading a section.</p>
 </td>
       </tr>
     </tbody>
@@ -303,10 +466,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Graphics_NDeserializer_1.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Graphics.NDeserializer%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Graphics/Nccl2PaletteCollection.cs/#L31" class="contribution-link">View Source</a>
+                    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Graphics/NDeserializer.cs/#L31" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
