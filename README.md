@@ -26,7 +26,8 @@ Formats:
   - **`DARC` containers**: read and write.
   - **`DENC` containers**: read and write.
   - **`ARCHIVE` containers**: read and write.
-  - **`LZSS` compression**: decompress and compress.
+  - **`DENC-LZSS` compression**: decompress and compress.
+  - **`LZX` compression**: decompress.
   - **`MSG` texts**: read and write.
     - PO export and import.
   - **`ACL` palettes**: read.
