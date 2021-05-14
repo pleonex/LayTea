@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Nccl2PaletteCollection
+    <title>Class NitroLzxDecompression
    | Modding tools for 'Professor Layton' games </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Nccl2PaletteCollection
+    <meta name="title" content="Class NitroLzxDecompression
    | Modding tools for 'Professor Layton' games ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -224,42 +224,46 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection">
+            <article class="content wrap" id="_content" data-uid="SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression">
   
   
-  <h1 id="SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection" data-uid="SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection" class="text-break">Class Nccl2PaletteCollection
+  <h1 id="SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression" data-uid="SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression" class="text-break">Class NitroLzxDecompression
   </h1>
-  <div class="markdown level0 summary"><p>Converter for NCCL binary palettes into a model.</p>
+  <div class="markdown level0 summary"><p>Decompression algorithm for LZX implemented in N devices.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">Nccl2PaletteCollection</span></div>
+    <div class="level1"><span class="xref">NitroLzxDecompression</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="SceneGate.Games.ProfessorLayton.Graphics.html">SceneGate.Games.ProfessorLayton.Graphics</a></h6>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IConverter</span>&lt;<span class="xref">Stream</span>, <span class="xref">Stream</span>&gt;</div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SceneGate.Games.ProfessorLayton.Containers.html">SceneGate.Games.ProfessorLayton.Containers</a></h6>
   <h6><strong>Assembly</strong>: LayTea.dll</h6>
-  <h5 id="SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_syntax">Syntax</h5>
+  <h5 id="SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Nccl2PaletteCollection : IConverter&lt;IBinary, PaletteCollection&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class NitroLzxDecompression : IConverter&lt;IBinary, BinaryFormat&gt;, IConverter&lt;Stream, Stream&gt;</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_Convert_IBinary_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert(IBinary)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_Convert_IBinary_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(IBinary)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Graphics/Nccl2PaletteCollection.cs/#L43">View Source</a>
+    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/NitroLzxDecompression.cs/#L42">View Source</a>
   </span>
-  <a id="SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_Convert_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert*"></a>
-  <h4 id="SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection_Convert_IBinary_" data-uid="SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.Convert(IBinary)">Convert(IBinary)</h4>
-  <div class="markdown level1 summary"><p>Convert a binary palette into a palette collection model.</p>
+  <a id="SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_Convert_" data-uid="SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert*"></a>
+  <h4 id="SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_Convert_IBinary_" data-uid="SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(IBinary)">Convert(IBinary)</h4>
+  <div class="markdown level1 summary"><p>Decompress a LZSS-compressed stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PaletteCollection Convert(IBinary source)</code></pre>
+    <pre><code class="lang-csharp hljs">public BinaryFormat Convert(IBinary source)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -274,7 +278,7 @@
       <tr>
         <td><span class="xref">IBinary</span></td>
         <td><span class="parametername">source</span></td>
-        <td><p>The binary palette stream.</p>
+        <td><p>The stream to convert.</p>
 </td>
       </tr>
     </tbody>
@@ -289,12 +293,66 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">PaletteCollection</span></td>
-        <td><p>The new palette collection model.</p>
+        <td><span class="xref">BinaryFormat</span></td>
+        <td><p>The decompressed in-memory stream.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_Convert_Stream_.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/NitroLzxDecompression.cs/#L56">View Source</a>
+  </span>
+  <a id="SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_Convert_" data-uid="SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert*"></a>
+  <h4 id="SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_Convert_Stream_" data-uid="SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(Stream)">Convert(Stream)</h4>
+  <div class="markdown level1 summary"><p>Decompress a LZSS-compressed stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Stream Convert(Stream source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The stream to convert.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td><p>The decompressed in-memory stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IConverter&lt;, &gt;</span>
+  </div>
 </article>
           </div>
           
@@ -303,10 +361,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Graphics_Nccl2PaletteCollection.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/pleonex/LayTea/new/main/docs/apidoc/new?filename=SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression.md&amp;value=---%0Auid%3A%20SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Graphics/Nccl2PaletteCollection.cs/#L31" class="contribution-link">View Source</a>
+                    <a href="https://github.com/pleonex/LayTea/blob/main/src/LayTea/Containers/NitroLzxDecompression.cs/#L30" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

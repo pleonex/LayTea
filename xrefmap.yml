@@ -196,18 +196,18 @@ references:
   commentId: T:SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression
   fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression
   nameWithType: LzssdDecompression
-- uid: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(BinaryFormat)
-  name: Convert(BinaryFormat)
-  href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html#SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_BinaryFormat_
-  commentId: M:SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(BinaryFormat)
-  fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(BinaryFormat)
-  nameWithType: LzssdDecompression.Convert(BinaryFormat)
 - uid: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(DataStream)
   name: Convert(DataStream)
   href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html#SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_DataStream_
   commentId: M:SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(DataStream)
   fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(DataStream)
   nameWithType: LzssdDecompression.Convert(DataStream)
+- uid: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(IBinary)
+  name: Convert(IBinary)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html#SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_IBinary_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(IBinary)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert(IBinary)
+  nameWithType: LzssdDecompression.Convert(IBinary)
 - uid: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert*
   name: Convert
   href: api/SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html#SceneGate_Games_ProfessorLayton_Containers_LzssdDecompression_Convert_
@@ -215,6 +215,31 @@ references:
   isSpec: "True"
   fullName: SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.Convert
   nameWithType: LzssdDecompression.Convert
+- uid: SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression
+  name: NitroLzxDecompression
+  href: api/SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.html
+  commentId: T:SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression
+  fullName: SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression
+  nameWithType: NitroLzxDecompression
+- uid: SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(IBinary)
+  name: Convert(IBinary)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.html#SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_Convert_IBinary_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(IBinary)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(IBinary)
+  nameWithType: NitroLzxDecompression.Convert(IBinary)
+- uid: SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(Stream)
+  name: Convert(Stream)
+  href: api/SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.html#SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_Convert_Stream_
+  commentId: M:SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(Stream)
+  fullName: SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert(Stream)
+  nameWithType: NitroLzxDecompression.Convert(Stream)
+- uid: SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert*
+  name: Convert
+  href: api/SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.html#SceneGate_Games_ProfessorLayton_Containers_NitroLzxDecompression_Convert_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.Convert
+  nameWithType: NitroLzxDecompression.Convert
 - uid: SceneGate.Games.ProfessorLayton.Containers.NodeContainer2BinaryDarc
   name: NodeContainer2BinaryDarc
   href: api/SceneGate.Games.ProfessorLayton.Containers.NodeContainer2BinaryDarc.html

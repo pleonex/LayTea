@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "nFdmRie1zHCP4Rq/ZNBXdg=="
+          "hash": "9vKP4TB2tcRfQ+zd3Q8S8A=="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.BinaryArchive2Container.html",
-          "hash": "17U932GjpiZb0yinTfUaoQ=="
+          "hash": "CjcFX+i8LSFGazSmOxdHow=="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.BinaryDarc2Container.html",
-          "hash": "dGF2Vq/JCfIK3sREIep4pA=="
+          "hash": "ZFzBpTfA6gZeFMCovLbDDA=="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.Container2BinaryArchive.html",
-          "hash": "DTTlPi8CT7YGV11vMb795Q=="
+          "hash": "PTaaWV+Kkhxyit0SlUN6Xg=="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.DencCompression.html",
-          "hash": "TUgVS316+4cBL2L/Qtt0YA=="
+          "hash": "2Vx34tYBnfRU19daGkYdEg=="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.DencCompressionKind.html",
-          "hash": "mLTbEJ5n3SaBK4pqfeXIBw=="
+          "hash": "2voFm24c5p1V/hPrBDgGqw=="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.DencDecompression.html",
-          "hash": "7tuBikKonGlLVYw5fSNDww=="
+          "hash": "8HoyLFZKXQ9gERSR4tnY9Q=="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.LzssdCompression.html",
-          "hash": "c7A3xN+7aFdMpLRsMnek/w=="
+          "hash": "V7C5iPjwr5QuURKJCaqO9w=="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,19 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.LzssdDecompression.html",
-          "hash": "UhCsIDlqvTScc3Ng9KBwwg=="
+          "hash": "iKXR9Z3N9an3Ict8v7Mptw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.NitroLzxDecompression.html",
+          "hash": "oXaUOngIiDkTYZzMjVCiCg=="
         }
       },
       "is_incremental": false,
@@ -138,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.NodeContainer2BinaryDarc.html",
-          "hash": "2wqRgETggnBuPyggOGs/Cg=="
+          "hash": "KyRyAEf6nrnsha85Lq8Etw=="
         }
       },
       "is_incremental": false,
@@ -150,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Containers.html",
-          "hash": "lOCBw4QuyMihBl2FyRAFHg=="
+          "hash": "PC9Vyt2rdKUYz8sKGkS9Mw=="
         }
       },
       "is_incremental": false,
@@ -162,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Graphics.Acbg2IndexedImageContainer.html",
-          "hash": "InB7IQGUsa4U3Hiat5JhWg=="
+          "hash": "IzwnrcCdMiM2xoIs+qgurA=="
         }
       },
       "is_incremental": false,
@@ -174,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Graphics.Acl2PaletteCollection.html",
-          "hash": "gc1eieDRfqfLj8LIFNHZmQ=="
+          "hash": "d30YLph7hUB70N9Wj2NXYw=="
         }
       },
       "is_incremental": false,
@@ -186,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Graphics.BinaryAsc2ScreenMap.html",
-          "hash": "/T2kcAhzJCaiKRk+zpRTtw=="
+          "hash": "99a7wehTkpMdSbtzmCB6sA=="
         }
       },
       "is_incremental": false,
@@ -198,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Graphics.Nccl2PaletteCollection.html",
-          "hash": "ZG6MbrnoD+01mWMjcZ09qw=="
+          "hash": "8jdpdRkD9ZQ8hOZZMOR5Vw=="
         }
       },
       "is_incremental": false,
@@ -210,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Graphics.html",
-          "hash": "gVKdt6OldgNuORIjFssIcw=="
+          "hash": "QjSq3xvNG0kNgtW6zQ/+RA=="
         }
       },
       "is_incremental": false,
@@ -222,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.Binary2MessageCollection.html",
-          "hash": "7rayOPDvLM6nVrLXXzNSoQ=="
+          "hash": "JpCt3WfMmMTn3hNDJNTIug=="
         }
       },
       "is_incremental": false,
@@ -234,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.IMessageElement.html",
-          "hash": "+i26UofwrHiCsIoTbZHm2g=="
+          "hash": "vW3vK2BPNKVxn0LuzIQkLA=="
         }
       },
       "is_incremental": false,
@@ -246,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.LondonLifeRegion.html",
-          "hash": "2O9w3oDTa6LZlNsVl25sgQ=="
+          "hash": "Bt0FLQ0WuI7DIahFyQBBQw=="
         }
       },
       "is_incremental": false,
@@ -258,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.Message.html",
-          "hash": "SbPj9qlAdCM5MiduNeVfww=="
+          "hash": "er3tCiZ8ois0zIc+qZgxnA=="
         }
       },
       "is_incremental": false,
@@ -270,7 +282,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection.html",
-          "hash": "OG3noR/X6VcPJJpwjhcgLQ=="
+          "hash": "LthzxJzZ0FSj80jRqQjJiw=="
         }
       },
       "is_incremental": false,
@@ -282,7 +294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2Binary.html",
-          "hash": "ech+roF+Vp6HUdlNsbJ88w=="
+          "hash": "vWs1ZU6KuLBhIeA6LkGgNg=="
         }
       },
       "is_incremental": false,
@@ -294,7 +306,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.html",
-          "hash": "pI0MMnrgrFieWr91e/KwuQ=="
+          "hash": "uA4uvtCXE66gdt42/Kr73A=="
         }
       },
       "is_incremental": false,
@@ -306,7 +318,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageFunction.html",
-          "hash": "ZxJ4ZeqrEDGNwX4OuLe6+A=="
+          "hash": "S1uOBdMpGJWS/naHBtBY5w=="
         }
       },
       "is_incremental": false,
@@ -318,7 +330,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageRawText.html",
-          "hash": "YwxgYNvNfH3LXEGbuRjcRg=="
+          "hash": "nAQV7Lg/iHMzSNvtC7mcbA=="
         }
       },
       "is_incremental": false,
@@ -330,7 +342,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.PoContainer2MessageCollection.html",
-          "hash": "SdRsBCWUdKL6jXsC+qtw+Q=="
+          "hash": "Uzc2VggZYQhNrDIkDMGE0Q=="
         }
       },
       "is_incremental": false,
@@ -342,7 +354,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.QuestionOptions.html",
-          "hash": "+XDhoCwImrAqI7+60y2vOg=="
+          "hash": "4sORVLPrlVGEvaVmEqNMtg=="
         }
       },
       "is_incremental": false,
@@ -354,7 +366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.ReplacerFactory.html",
-          "hash": "QSs2bI2NdMNhKJoVeQhmdg=="
+          "hash": "fHmsD+l482nIHu6gS7h+YA=="
         }
       },
       "is_incremental": false,
@@ -366,7 +378,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.html",
-          "hash": "CREnMfA60AZG5L3o8PRw6A=="
+          "hash": "lL9JFLsoiSc7AoDphpe03w=="
         }
       },
       "is_incremental": false,
@@ -378,7 +390,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.html",
-          "hash": "d74EWFmwElcugTJq3KzbLg=="
+          "hash": "gydTjQWOc+ChC24z+QAuNw=="
         }
       },
       "is_incremental": false,
@@ -390,7 +402,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.PoTableReplacerParams.html",
-          "hash": "vBMzyGIZKuQ3ZnTCEpDx+w=="
+          "hash": "gV5QbIaulrVjzyLeaS6mjg=="
         }
       },
       "is_incremental": false,
@@ -402,7 +414,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.ReplacerDeserializer.html",
-          "hash": "8HIT289+XLOMiPinhbUw4g=="
+          "hash": "cli4SRxA0iwm+durGEI0Ug=="
         }
       },
       "is_incremental": false,
@@ -414,7 +426,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SceneGate.Games.ProfessorLayton.Texts.html",
-          "hash": "42JdLK4Nn/VXZOHqIGibsg=="
+          "hash": "oann4wE37l+arO8XnIxudw=="
         }
       },
       "is_incremental": false,
@@ -426,7 +438,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "+lKXV8kJSN/HEH6hlBHHrA=="
+          "hash": "n+GoudNL01TNdqS0NCfy/g=="
         }
       },
       "is_incremental": false,
@@ -438,7 +450,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/toc.html",
-          "hash": "74ktuUhXaAHt/s5Hlzt5mQ=="
+          "hash": "Tr+76Tr8MmV20v8VCUx8gA=="
         }
       },
       "is_incremental": false,
@@ -722,7 +734,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "vAp6GLLUlMSBsQHTZEne1g=="
+          "hash": "rXvbQ906yPilwg8ntZ3rjw=="
         }
       },
       "is_incremental": false,
@@ -761,7 +773,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 32,
+          "total_file_count": 33,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
