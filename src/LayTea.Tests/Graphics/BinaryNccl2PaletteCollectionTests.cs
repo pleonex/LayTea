@@ -29,7 +29,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
     using Yarhl.IO;
 
     [TestFixture]
-    public class Nccl2PaletteCollectionTests
+    public class BinaryNccl2PaletteCollectionTests
     {
         public static IEnumerable GetFiles()
         {
@@ -46,7 +46,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
         [Test]
         public void Guards()
         {
-            var converter = new Nccl2PaletteCollection();
+            var converter = new BinaryNccl2PaletteCollection();
             Assert.That(() => converter.Convert(null), Throws.ArgumentNullException);
         }
 
@@ -58,7 +58,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
 
             var info = NodeContainerInfo.FromYaml(infoPath);
             NodeFactory.FromFile(ncclPath, FileOpenMode.Read)
-                .TransformWith<Nccl2PaletteCollection>()
+                .TransformWith<BinaryNccl2PaletteCollection>()
                 .TransformWith<PaletteCollection2ContainerBitmap>()
                 .Should().MatchInfo(info);
         }

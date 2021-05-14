@@ -34,6 +34,8 @@ Formats:
   - **`ACG` and `ACB` pixels**: read.
   - **`ASC` screen maps**: read.
   - **`NCCL` palettes**: read.
+  - **`NCCG` pixels**: read.
+  - **`NCSC` screen maps**: read.
 
 ## Documentation
 
