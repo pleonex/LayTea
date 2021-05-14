@@ -17,37 +17,75 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+using System;
+using System.IO;
+using Yarhl.FileFormat;
+using Yarhl.IO;
+
 namespace SceneGate.Games.ProfessorLayton.Graphics
 {
-    using System;
-    using Texim.Colors;
-    using Texim.Palettes;
-    using Yarhl.FileFormat;
-    using Yarhl.IO;
-
     /// <summary>
-    /// Converter for NCCL binary palettes into a model.
+    /// Generic binary deserializer for graphic formats starting with N.
     /// </summary>
-    public class Nccl2PaletteCollection : IConverter<IBinary, PaletteCollection>
+    /// <typeparam name="T">The output type of the deserialization.</typeparam>
+    public abstract class NDeserializer<T> : IConverter<IBinary, T>
+        where T : new()
     {
-        private const string Stamp = "NCCL";
         private const ushort LittleEndian = 0xFEFF;
         private const ushort BigEndian = 0xFFFE;
-        private const ushort Version = 0x01_00;
 
         /// <summary>
-        /// Convert a binary palette into a palette collection model.
+        /// Gets the stamp of the binary format.
         /// </summary>
-        /// <param name="source">The binary palette stream.</param>
-        /// <returns>The new palette collection model.</returns>
-        public PaletteCollection Convert(IBinary source)
+        public abstract string Stamp { get; }
+
+        /// <summary>
+        /// Gets the supported version of the deserializer.
+        /// </summary>
+        public abstract int SupportedVersion { get; }
+
+        /// <summary>
+        /// Converts a binary stream into a model.
+        /// </summary>
+        /// <param name="source">The stream to deserialize.</param>
+        /// <returns>The new model.</returns>
+        public T Convert(IBinary source)
         {
-            if (source == null)
+            if (source is null)
                 throw new ArgumentNullException(nameof(source));
 
             source.Stream.Position = 0;
             var reader = new DataReader(source.Stream);
 
+            int numSections = ReadHeader(reader);
+
+            T model = new T();
+            for (int i = 0; i < numSections; i++) {
+                source.Stream.PushCurrentPosition();
+
+                string id = reader.ReadString(4);
+                int size = reader.ReadInt32();
+                model = ReadSection(reader, model, id, size);
+
+                source.Stream.PopPosition();
+                source.Stream.Seek(size, SeekOrigin.Current);
+            }
+
+            return model;
+        }
+
+        /// <summary>
+        /// Read a section of the binary stream.
+        /// </summary>
+        /// <param name="reader">The reader of the binary stream.</param>
+        /// <param name="model">The new model.</param>
+        /// <param name="id">The ID of the section.</param>
+        /// <param name="size">The size of the section.</param>
+        /// <returns>The same or new model after reading a section.</returns>
+        protected abstract T ReadSection(DataReader reader, T model, string id, int size);
+
+        private int ReadHeader(DataReader reader)
+        {
             string stamp = reader.ReadString(4);
             if (stamp != Stamp) {
                 throw new FormatException($"Invalid stamp {stamp}");
@@ -61,37 +99,14 @@ namespace SceneGate.Games.ProfessorLayton.Graphics
             }
 
             ushort version = reader.ReadUInt16();
-            if (version != Version) {
+            if (version != SupportedVersion) {
                 throw new FormatException($"Unknown version: {version:X4}");
             }
 
-            source.Stream.Position += 6; // file size (uint) + header size (ushort)
+            reader.Stream.Position += 6; // file size (uint) + header size (ushort)
 
-            var collection = new PaletteCollection();
             ushort numSections = reader.ReadUInt16();
-            for (int i = 0; i < numSections; i++) {
-                string id = reader.ReadString(4);
-                uint size = reader.ReadUInt32();
-
-                if (id == "PALT") {
-                    int colorsPerPalette = reader.ReadInt32();
-                    int numPalettes = reader.ReadInt32();
-                    for (int j = 0; j < numPalettes; j++) {
-                        var colors = reader.ReadColors<Bgr555>(colorsPerPalette);
-                        collection.Palettes.Add(new Palette(colors));
-                    }
-                } else if (id == "CMNT") {
-                    var comment = reader.ReadString();
-                    if (!string.IsNullOrEmpty(comment)) {
-                        throw new FormatException("Oh check this out!");
-                    }
-                } else {
-                    reader.Stream.Position += size - 8;
-                    throw new FormatException("Oh check this out!");
-                }
-            }
-
-            return collection;
+            return numSections;
         }
     }
 }

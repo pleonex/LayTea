@@ -25,42 +25,52 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Graphics;
     using Texim.Formats;
+    using Texim.Palettes;
     using Yarhl.FileSystem;
     using Yarhl.IO;
 
     [TestFixture]
-    public class Nccl2PaletteCollectionTests
+    public class BinaryNccg2IndexedImageTests
     {
         public static IEnumerable GetFiles()
         {
             string basePath = Path.Combine(TestDataBase.RootFromOutputPath, "graphics");
-            string listPath = Path.Combine(basePath, "nccl.txt");
+            string listPath = Path.Combine(basePath, "nccg.txt");
             return TestDataBase.ReadTestListFile(listPath)
                 .Select(line => line.Split(','))
                 .Select(data => new TestCaseData(
                     Path.Combine(basePath, data[0]),
-                    Path.Combine(basePath, data[1]))
-                    .SetName($"({data[0]}, {data[1]})"));
+                    Path.Combine(basePath, data[1]),
+                    Path.Combine(basePath, data[2]))
+                    .SetName($"({data[0]}, {data[1]}, {data[2]})"));
         }
 
         [Test]
         public void Guards()
         {
-            var converter = new Nccl2PaletteCollection();
+            var converter = new BinaryNccl2PaletteCollection();
             Assert.That(() => converter.Convert(null), Throws.ArgumentNullException);
         }
 
         [TestCaseSource(nameof(GetFiles))]
-        public void DeserializeAndCheckImageHash(string infoPath, string ncclPath)
+        public void DeserializeAndCheckImageHash(string infoPath, string ncclPath, string nccgPath)
         {
             TestDataBase.IgnoreIfFileDoesNotExist(ncclPath);
             TestDataBase.IgnoreIfFileDoesNotExist(infoPath);
 
-            var info = NodeContainerInfo.FromYaml(infoPath);
-            NodeFactory.FromFile(ncclPath, FileOpenMode.Read)
-                .TransformWith<Nccl2PaletteCollection>()
-                .TransformWith<PaletteCollection2ContainerBitmap>()
-                .Should().MatchInfo(info);
+            var info = BinaryInfo.FromYaml(infoPath);
+
+            using var paletteNode = NodeFactory.FromFile(ncclPath, FileOpenMode.Read)
+                .TransformWith<BinaryNccl2PaletteCollection>();
+
+            using var pixelsNode = NodeFactory.FromFile(nccgPath, FileOpenMode.Read)
+                .TransformWith<BinaryNccg2IndexedImage>();
+
+            var bitmapParams = new IndexedImageBitmapParams {
+                Palettes = paletteNode.GetFormatAs<PaletteCollection>(),
+            };
+            pixelsNode.TransformWith<IndexedImage2Bitmap, IndexedImageBitmapParams>(bitmapParams)
+                .Stream.Should().MatchInfo(info);
         }
     }
 }

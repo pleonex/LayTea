@@ -78,9 +78,16 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
             };
             exportSave.Handler = CommandHandler.Create<string, string>(GraphicCommands.ExportSave);
 
+            var exportKihira = new Command("export-kihira", "Export the graphics from kihira.archive") {
+                new Option<string>("--kihira", "the kihira.archive file", ArgumentArity.ExactlyOne),
+                new Option<string>("--output", "the output directory", ArgumentArity.ExactlyOne),
+            };
+            exportKihira.Handler = CommandHandler.Create<string, string>(GraphicCommands.ExportKihira);
+
             return new Command("graphic", "Export/Import graphic files") {
                 exportTown,
                 exportSave,
+                exportKihira,
             };
         }
     }
