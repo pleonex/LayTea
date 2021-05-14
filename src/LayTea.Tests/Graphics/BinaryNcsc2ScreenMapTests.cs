@@ -24,25 +24,27 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
     using System.Linq;
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Graphics;
+    using Texim.Compressions.Nitro;
     using Texim.Formats;
     using Texim.Palettes;
     using Yarhl.FileSystem;
     using Yarhl.IO;
 
     [TestFixture]
-    public class BinaryNccg2IndexedImageTests
+    public class BinaryNcsc2ScreenMapTests
     {
         public static IEnumerable GetFiles()
         {
             string basePath = Path.Combine(TestDataBase.RootFromOutputPath, "graphics");
-            string listPath = Path.Combine(basePath, "nccg.txt");
+            string listPath = Path.Combine(basePath, "ncsc.txt");
             return TestDataBase.ReadTestListFile(listPath)
                 .Select(line => line.Split(','))
                 .Select(data => new TestCaseData(
                     Path.Combine(basePath, data[0]),
                     Path.Combine(basePath, data[1]),
-                    Path.Combine(basePath, data[2]))
-                    .SetName($"({data[0]}, {data[1]}, {data[2]})"));
+                    Path.Combine(basePath, data[2]),
+                    Path.Combine(basePath, data[3]))
+                    .SetName($"({data[0]}, {data[1]}, {data[2]}, {data[3]})"));
         }
 
         [Test]
@@ -53,10 +55,11 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
         }
 
         [TestCaseSource(nameof(GetFiles))]
-        public void DeserializeAndCheckImageHash(string infoPath, string ncclPath, string nccgPath)
+        public void DeserializeAndCheckImageHash(string infoPath, string ncclPath, string nccgPath, string ncscPath)
         {
             TestDataBase.IgnoreIfFileDoesNotExist(ncclPath);
             TestDataBase.IgnoreIfFileDoesNotExist(nccgPath);
+            TestDataBase.IgnoreIfFileDoesNotExist(ncscPath);
             TestDataBase.IgnoreIfFileDoesNotExist(infoPath);
 
             var info = BinaryInfo.FromYaml(infoPath);
@@ -64,13 +67,20 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
             using var paletteNode = NodeFactory.FromFile(ncclPath, FileOpenMode.Read)
                 .TransformWith<BinaryNccl2PaletteCollection>();
 
+            using var mapsNode = NodeFactory.FromFile(ncscPath, FileOpenMode.Read)
+                .TransformWith<BinaryNcsc2ScreenMap>();
+
             using var pixelsNode = NodeFactory.FromFile(nccgPath, FileOpenMode.Read)
                 .TransformWith<BinaryNccg2IndexedImage>();
 
+            var mapsParams = new MapDecompressionParams {
+                Map = mapsNode.GetFormatAs<ScreenMap>(),
+            };
             var bitmapParams = new IndexedImageBitmapParams {
                 Palettes = paletteNode.GetFormatAs<PaletteCollection>(),
             };
-            pixelsNode.TransformWith<IndexedImage2Bitmap, IndexedImageBitmapParams>(bitmapParams)
+            pixelsNode.TransformWith<MapDecompression, MapDecompressionParams>(mapsParams)
+                .TransformWith<IndexedImage2Bitmap, IndexedImageBitmapParams>(bitmapParams)
                 .Stream.Should().MatchInfo(info);
         }
     }

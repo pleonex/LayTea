@@ -1,0 +1,3 @@
+kihira_2.yml,kihira_0.nccl,kihira_1.nccg,kihira_2.ncsc
+kihira_5.yml,kihira_3.nccl,kihira_4.nccg,kihira_5.ncsc
+kihira_6.yml,kihira_3.nccl,kihira_4.nccg,kihira_6.ncsc

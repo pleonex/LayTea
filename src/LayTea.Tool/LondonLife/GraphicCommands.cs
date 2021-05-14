@@ -105,10 +105,13 @@ namespace SceneGate.Games.ProfessorLayton.Tool
             var nodes = kihiraNode.Children;
 
             var bg0Path = Path.Combine(output, "bg0.png");
-            ExportBackgroundN(nodes[0], nodes[1], bg0Path);
+            ExportBackgroundN(nodes[0], nodes[1], nodes[2], bg0Path);
 
             var bg1Path = Path.Combine(output, "bg1.png");
-            ExportBackgroundN(nodes[3], nodes[4], bg1Path);
+            ExportBackgroundN(nodes[3], nodes[4], nodes[5], bg1Path);
+
+            var bg2Path = Path.Combine(output, "bg2.png");
+            ExportBackgroundN(nodes[3], nodes[4], nodes[6], bg2Path);
         }
 
         private static void ExportBackgroundA(Node palette, Node pixels, Node map, string output)
@@ -150,7 +153,7 @@ namespace SceneGate.Games.ProfessorLayton.Tool
             bitmap.Stream.WriteTo(output);
         }
 
-        private static void ExportBackgroundN(Node palette, Node pixels, string output)
+        private static void ExportBackgroundN(Node palette, Node pixels, Node map, string output)
         {
             if (palette.Format is not PaletteCollection) {
                 palette.TransformWith<NitroLzxDecompression>()
@@ -162,7 +165,19 @@ namespace SceneGate.Games.ProfessorLayton.Tool
                     .TransformWith<BinaryNccg2IndexedImage>();
             }
 
-            var indexedImage = pixels.GetFormatAs<IndexedImage>();
+            if (map.Format is not ScreenMap) {
+                map.TransformWith<NitroLzxDecompression>()
+                    .TransformWith<BinaryNcsc2ScreenMap>();
+            }
+
+            // We don't use TransformTo because we may transform the same node
+            // several times with different palettes / maps.
+            var mapParams = new MapDecompressionParams {
+                Map = map.GetFormatAs<ScreenMap>(),
+            };
+            var mapDecompression = new MapDecompression();
+            mapDecompression.Initialize(mapParams);
+            var indexedImage = mapDecompression.Convert(pixels.GetFormatAs<IndexedImage>());
 
             var paletteParams = new IndexedImageBitmapParams {
                 Palettes = palette.GetFormatAs<PaletteCollection>(),
