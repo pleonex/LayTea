@@ -18,36 +18,42 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 using Texim.Compressions.Nitro;
-using Yarhl.IO;
 
 namespace SceneGate.Games.ProfessorLayton.Graphics
 {
     /// <summary>
-    /// Converter for binary NCSC stream into screen map.
+    /// Screen map with format NCSC.
     /// </summary>
-    public class BinaryNcsc2ScreenMap : NDeserializer<Ncsc>
+    public class Ncsc : IScreenMap
     {
-        /// <inheritdoc/>
-        public override string Stamp => "NCSC";
-
-        /// <inheritdoc/>
-        public override int SupportedVersion => 0x01_02;
-
-        /// <inheritdoc/>
-        protected override Ncsc ReadSection(DataReader reader, Ncsc model, string id, int size)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ncsc" /> class.
+        /// </summary>
+        public Ncsc()
         {
-            if (id == "SCRN") {
-                int width = reader.ReadInt32() * 8;
-                int height = reader.ReadInt32() * 8;
-                reader.ReadUInt64(); // 2x unknown uint
-                var maps = reader.ReadMapInfos(width * height / 64);
-
-                return new Ncsc(width, height, maps);
-            } else if (id == "LINK") {
-                model.ImageName = reader.ReadString();
-            }
-
-            return model;
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ncsc" /> class.
+        /// </summary>
+        /// <param name="width">The width of the image.</param>
+        /// <param name="height">The height of the image.</param>
+        /// <param name="maps">The map information.</param>
+        public Ncsc(int width, int height, MapInfo[] maps) =>
+            (Width, Height, Maps) = (width, height, maps);
+
+        /// <inheritdoc/>
+        public MapInfo[] Maps { get; init; }
+
+        /// <inheritdoc/>
+        public int Width { get; init; }
+
+        /// <inheritdoc/>
+        public int Height { get; init; }
+
+        /// <summary>
+        /// Gets or sets the name of the indexed image.
+        /// </summary>
+        public string ImageName { get; set; }
     }
 }

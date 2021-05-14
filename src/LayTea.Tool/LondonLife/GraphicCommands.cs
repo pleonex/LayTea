@@ -21,6 +21,7 @@ namespace SceneGate.Games.ProfessorLayton.Tool
 {
     using System;
     using System.IO;
+    using System.Linq;
     using SceneGate.Games.ProfessorLayton.Containers;
     using SceneGate.Games.ProfessorLayton.Graphics;
     using Texim.Compressions.Nitro;
@@ -102,16 +103,22 @@ namespace SceneGate.Games.ProfessorLayton.Tool
         {
             using var kihiraNode = NodeFactory.FromFile(kihira, FileOpenMode.Read)
                 .TransformWith<BinaryArchive2Container>();
-            var nodes = kihiraNode.Children;
 
-            var bg0Path = Path.Combine(output, "bg0.png");
-            ExportBackgroundN(nodes[0], nodes[1], nodes[2], bg0Path);
+            Node lastPalette = null;
+            Node lastPixels = null;
+            var nodes = kihiraNode.Children.Where(c => c.Stream.Length > 0);
+            foreach (var node in nodes) {
+                node.TransformWith<NitroLzxDecompression>();
+                string id = new DataReader(node.Stream).ReadString(4);
 
-            var bg1Path = Path.Combine(output, "bg1.png");
-            ExportBackgroundN(nodes[3], nodes[4], nodes[5], bg1Path);
-
-            var bg2Path = Path.Combine(output, "bg2.png");
-            ExportBackgroundN(nodes[3], nodes[4], nodes[6], bg2Path);
+                if (id == "NCCL") {
+                    lastPalette = node;
+                } else if (id == "NCCG") {
+                    lastPixels = node;
+                } else if (id == "NCSC") {
+                    ExportBackgroundNWithName(lastPalette, lastPixels, node, output);
+                }
+            }
         }
 
         private static void ExportBackgroundA(Node palette, Node pixels, Node map, string output)
@@ -153,27 +160,44 @@ namespace SceneGate.Games.ProfessorLayton.Tool
             bitmap.Stream.WriteTo(output);
         }
 
+        private static void ExportBackgroundNWithName(Node palette, Node pixels, Node map, string output)
+        {
+            Ncsc ncsc = map.TransformWith<BinaryNcsc2ScreenMap>().GetFormatAs<Ncsc>();
+
+            string path = ncsc.ImageName
+                .Replace("\\", "/")
+                .Replace("..", "parent")
+                .Replace(".ncg", string.Empty);
+            path = Path.Combine(output, path);
+
+            int index = 0;
+            string finalName = path + ".png";
+            while (File.Exists(finalName)) {
+                index++;
+                finalName = path + $"_{index}.png";
+            }
+
+            ExportBackgroundN(palette, pixels, map, finalName);
+        }
+
         private static void ExportBackgroundN(Node palette, Node pixels, Node map, string output)
         {
             if (palette.Format is not PaletteCollection) {
-                palette.TransformWith<NitroLzxDecompression>()
-                    .TransformWith<BinaryNccl2PaletteCollection>();
+                palette.TransformWith<BinaryNccl2PaletteCollection>();
             }
 
             if (pixels.Format is not IndexedImage) {
-                pixels.TransformWith<NitroLzxDecompression>()
-                    .TransformWith<BinaryNccg2IndexedImage>();
+                pixels.TransformWith<BinaryNccg2IndexedImage>();
             }
 
-            if (map.Format is not ScreenMap) {
-                map.TransformWith<NitroLzxDecompression>()
-                    .TransformWith<BinaryNcsc2ScreenMap>();
+            if (map.Format is not Ncsc) {
+                map.TransformWith<BinaryNcsc2ScreenMap>();
             }
 
             // We don't use TransformTo because we may transform the same node
             // several times with different palettes / maps.
             var mapParams = new MapDecompressionParams {
-                Map = map.GetFormatAs<ScreenMap>(),
+                Map = map.GetFormatAs<Ncsc>(),
             };
             var mapDecompression = new MapDecompression();
             mapDecompression.Initialize(mapParams);

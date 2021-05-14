@@ -74,7 +74,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
                 .TransformWith<BinaryNccg2IndexedImage>();
 
             var mapsParams = new MapDecompressionParams {
-                Map = mapsNode.GetFormatAs<ScreenMap>(),
+                Map = mapsNode.GetFormatAs<Ncsc>(),
             };
             var bitmapParams = new IndexedImageBitmapParams {
                 Palettes = paletteNode.GetFormatAs<PaletteCollection>(),
