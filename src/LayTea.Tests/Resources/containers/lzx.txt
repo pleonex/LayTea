@@ -1,0 +1,3 @@
+kihira_0.yml,kihira_0.lzx
+kihira_1.yml,kihira_1.lzx
+kihira_2.yml,kihira_2.lzx

@@ -26,14 +26,16 @@ namespace SceneGate.Games.ProfessorLayton.Containers
     /// <summary>
     /// Decompression algorithm for LZSS variant found in DENC formats.
     /// </summary>
-    public class LzssdDecompression : IConverter<BinaryFormat, BinaryFormat>
+    public class LzssdDecompression :
+        IConverter<IBinary, BinaryFormat>,
+        IConverter<DataStream, DataStream>
     {
         /// <summary>
         /// Decompress a LZSS-DENC compressed stream.
         /// </summary>
         /// <param name="source">The compressed stream with LZSS-DENC.</param>
         /// <returns>The decompressed stream.</returns>
-        public BinaryFormat Convert(BinaryFormat source)
+        public BinaryFormat Convert(IBinary source)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
