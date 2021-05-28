@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>LayTeaBuild</AssemblyName>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>SceneGate.Games.ProfessorLayton.Build</RootNamespace>
+
+    <RuntimeIdentifiers>win-x64;linux-x64;osx-x64</RuntimeIdentifiers>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" >
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../LayTea/LayTea.csproj" />
+
+    <PackageReference Include="Cake.Frosting" />
+  </ItemGroup>
+
+</Project>
