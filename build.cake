@@ -8,8 +8,7 @@ Task("Define-Project")
     info.AddApplicationProjects("LayTea.Tool");
     info.AddTestProjects("LayTea.Tests");
 
-    info.PreviewNuGetFeed = "https://nuget.pkg.github.com/pleonex/index.json";
-    info.StableNuGetFeed = "https://nuget.pkg.github.com/pleonex/index.json";
+    info.PreviewNuGetFeed = "https://pkgs.dev.azure.com/SceneGate/SceneGate/_packaging/SceneGate-Preview/nuget/v3/index.json";
 
     // We can't force code coverage as it requires game files
     info.CoverageTarget = 0;
