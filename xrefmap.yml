@@ -770,6 +770,19 @@ references:
   commentId: T:SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer
   fullName: SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer
   nameWithType: MessageCollection2PoContainer
+- uid: SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.#ctor
+  name: MessageCollection2PoContainer()
+  href: api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.html#SceneGate_Games_ProfessorLayton_Texts_LondonLife_MessageCollection2PoContainer__ctor
+  commentId: M:SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.#ctor
+  fullName: SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.MessageCollection2PoContainer()
+  nameWithType: MessageCollection2PoContainer.MessageCollection2PoContainer()
+- uid: SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.#ctor*
+  name: MessageCollection2PoContainer
+  href: api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.html#SceneGate_Games_ProfessorLayton_Texts_LondonLife_MessageCollection2PoContainer__ctor_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.#ctor
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.MessageCollection2PoContainer
+  nameWithType: MessageCollection2PoContainer.MessageCollection2PoContainer
 - uid: SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.Convert(SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection)
   name: Convert(MessageCollection)
   href: api/SceneGate.Games.ProfessorLayton.Texts.LondonLife.MessageCollection2PoContainer.html#SceneGate_Games_ProfessorLayton_Texts_LondonLife_MessageCollection2PoContainer_Convert_SceneGate_Games_ProfessorLayton_Texts_LondonLife_MessageCollection_
@@ -997,6 +1010,19 @@ references:
   commentId: T:SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer
   fullName: SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer
   nameWithType: PoTableReplacer
+- uid: SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.#ctor
+  name: PoTableReplacer()
+  href: api/SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.html#SceneGate_Games_ProfessorLayton_Texts_PoTableReplacer__ctor
+  commentId: M:SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.#ctor
+  fullName: SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.PoTableReplacer()
+  nameWithType: PoTableReplacer.PoTableReplacer()
+- uid: SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.#ctor*
+  name: PoTableReplacer
+  href: api/SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.html#SceneGate_Games_ProfessorLayton_Texts_PoTableReplacer__ctor_
+  commentId: Overload:SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.#ctor
+  isSpec: "True"
+  fullName: SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.PoTableReplacer
+  nameWithType: PoTableReplacer.PoTableReplacer
 - uid: SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.Convert(Po)
   name: Convert(Po)
   href: api/SceneGate.Games.ProfessorLayton.Texts.PoTableReplacer.html#SceneGate_Games_ProfessorLayton_Texts_PoTableReplacer_Convert_Po_
