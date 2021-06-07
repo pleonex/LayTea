@@ -34,10 +34,10 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts
         }
 
         [Test]
-        public void ThrowIfNotInitialized()
+        public void DoesNotThrowIfNotInitialized()
         {
             Po po = new Po();
-            Assert.That(() => new PoTableReplacer().Convert(po), Throws.InvalidOperationException);
+            Assert.That(() => new PoTableReplacer().Convert(po), Throws.Nothing);
         }
 
         [Test]

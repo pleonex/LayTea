@@ -37,11 +37,11 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
         }
 
         [Test]
-        public void MissingInitializerThrows()
+        public void MissingInitializerDoesNotThrow()
         {
             var messages = new MessageCollection();
             var converter = new MessageCollection2PoContainer();
-            Assert.That(() => converter.Convert(messages), Throws.InvalidOperationException);
+            Assert.That(() => converter.Convert(messages), Throws.Nothing);
         }
 
         [Test]

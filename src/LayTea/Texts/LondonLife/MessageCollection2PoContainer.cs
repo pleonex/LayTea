@@ -39,6 +39,17 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
         private MessageContextProvider contextProvider;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="MessageCollection2PoContainer" /> class.
+        /// </summary>
+        /// <remarks>
+        /// By default uses the USA region. Call <see cref="Initialize(LondonLifeRegion)" /> to change the region.
+        /// </remarks>
+        public MessageCollection2PoContainer()
+        {
+            contextProvider = new MessageContextProvider(LondonLifeRegion.Usa);
+        }
+
+        /// <summary>
         /// Initializes the converter with the game region.
         /// </summary>
         /// <param name="parameters">The game region.</param>
@@ -56,8 +67,6 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
-            if (contextProvider == null)
-                throw new InvalidOperationException("Missing initialization");
 
             var container = new NodeContainerFormat();
 

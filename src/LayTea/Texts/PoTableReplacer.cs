@@ -32,6 +32,21 @@ namespace SceneGate.Games.ProfessorLayton.Texts
         private PoTableReplacerParams parameters;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="PoTableReplacer" /> class.
+        /// </summary>
+        /// <remarks>
+        /// By default it does not apply any replacement. Call <see cref="Initialize(PoTableReplacerParams)" />
+        /// to specify the replacements.
+        /// </remarks>
+        public PoTableReplacer()
+        {
+            parameters = new PoTableReplacerParams {
+                Replacer = new Replacer(),
+                TransformForward = true,
+            };
+        }
+
+        /// <summary>
         /// Initializes the converter.
         /// </summary>
         /// <param name="parameters">The converter parameters.</param>
@@ -49,8 +64,6 @@ namespace SceneGate.Games.ProfessorLayton.Texts
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
-            if (parameters == null)
-                throw new InvalidOperationException("Missing initialization");
 
             foreach (var entry in source.Entries) {
                 if (parameters.TransformForward) {
