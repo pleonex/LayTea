@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -49,12 +49,12 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
             yield return new TestCaseData(
                 save.Children[2].TransformWith<DencDecompression>(),
                 GetPalette(save.Children[1678]),
-                "ce512013456584f46778dc347ad104bbfae5ebe3fd814cb74fe062aca4c4a3fb");
+                "87af7866d63c1efe9dca3c80273773c160ff4db2dabc4ae3e5469414369d6f40");
 
             yield return new TestCaseData(
                 save.Children[3].TransformWith<DencDecompression>(),
                 GetPalette(save.Children[1679]),
-                "f660ad3bfa42de668be656d29ee7484ed069db1f87e5ccada28dffaed9285840");
+                "184992be99605e414f1519ef248d233dee68a78a13044124d5d977c61653e3a2");
         }
 
         [SetUp]
@@ -97,10 +97,11 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
         [TestCaseSource(nameof(GetImages))]
         public void DeserializeFile(Node pixels, PaletteCollection palette, string expectedHash)
         {
-            var bitmapParams = new IndexedImageBitmapParams { Palettes = palette };
+            var image2Bitmap = new IndexedImage2Bitmap();
+            image2Bitmap.Initialize(new IndexedImageBitmapParams { Palettes = palette });
             var bitmap = pixels.TransformWith<Acbg2IndexedImageContainer>()
                 .Children[0]
-                .TransformWith<IndexedImage2Bitmap, IndexedImageBitmapParams>(bitmapParams);
+                .TransformWith(image2Bitmap);
 
             using var sha256 = SHA256.Create();
             bitmap.Stream.Position = 0;

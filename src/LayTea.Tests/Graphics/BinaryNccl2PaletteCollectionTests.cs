@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -57,10 +57,11 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
             TestDataBase.IgnoreIfFileDoesNotExist(infoPath);
 
             var info = NodeContainerInfo.FromYaml(infoPath);
-            NodeFactory.FromFile(ncclPath, FileOpenMode.Read)
+            using var paletteNode = NodeFactory.FromFile(ncclPath, FileOpenMode.Read)
                 .TransformWith<BinaryNccl2PaletteCollection>()
-                .TransformWith<PaletteCollection2ContainerBitmap>()
-                .Should().MatchInfo(info);
+                .TransformWith<PaletteCollection2ContainerBitmap>();
+
+            _ = paletteNode.Should().MatchInfo(info);
         }
     }
 }

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <RootNamespace>SceneGate.Games.ProfessorLayton</RootNamespace>
   </PropertyGroup>
 
@@ -15,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="Texim" />
     <PackageReference Include="Yarhl" />
-    <PackageReference Include="Yarhl.Media" />
+    <PackageReference Include="Yarhl.Media.Text" />
     <PackageReference Include="YamlDotNet" />
 
     <InternalsVisibleTo Include="LayTea.Tests" />

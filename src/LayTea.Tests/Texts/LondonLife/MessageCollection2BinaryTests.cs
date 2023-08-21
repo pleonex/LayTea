@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -117,16 +117,16 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
                     TransformForward = false,
                 };
 
-                msgNode.TransformWith<Binary2MessageCollection>()
-                    .TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(LondonLifeRegion.Usa)
+                _ = msgNode.TransformWith<Binary2MessageCollection>()
+                    .TransformWith(new MessageCollection2PoContainer(LondonLifeRegion.Usa))
                     .Children
-                    .Select(c => c.TransformWith<PoTableReplacer, PoTableReplacerParams>(replacerFParams))
+                    .Select(c => c.TransformWith(new PoTableReplacer(replacerFParams)))
                     .Select(c => c.TransformWith<Po2Binary>())
                     .Select(c => {
                         c.Stream.Position = 0; // we need to fix this bug in Yarhl...
                         return c.TransformWith<Binary2Po>();
                     })
-                    .Select(c => c.TransformWith<PoTableReplacer, PoTableReplacerParams>(replacerBParams))
+                    .Select(c => c.TransformWith(new PoTableReplacer(replacerBParams)))
                     .First().Parent
                     .TransformWith<PoContainer2MessageCollection>();
             } catch {

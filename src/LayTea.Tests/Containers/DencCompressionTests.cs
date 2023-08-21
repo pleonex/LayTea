@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,8 +38,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
         [Test]
         public void InvalidCompressionTypeThrows()
         {
-            var compression = new DencCompression();
-            compression.Initialize((DencCompressionKind)0x80);
+            var compression = new DencCompression((DencCompressionKind)0x80);
 
             DataStream input = new DataStream();
             input.WriteByte(0xCA);
@@ -65,8 +64,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
             BinaryFormat compressed = null;
             BinaryFormat decompressedAfter = null;
             try {
-                var compression = new DencCompression();
-                compression.Initialize(isLzss ? DencCompressionKind.Lzss : DencCompressionKind.None);
+                var compression = new DencCompression(isLzss ? DencCompressionKind.Lzss : DencCompressionKind.None);
                 compressed = compression.Convert(decompressed);
 
                 decompressedAfter = decompression.Convert(compressed);

@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -52,11 +52,11 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
         [Test]
         public void InvalidStreamInitializationThrows()
         {
-            Assert.That(() => compression.Initialize(null), Throws.ArgumentNullException);
+            Assert.That(() => new LzssdCompression(null), Throws.ArgumentNullException);
 
             var stream = new DataStream();
             stream.Dispose();
-            Assert.That(() => compression.Initialize(stream), Throws.InstanceOf<ObjectDisposedException>());
+            Assert.That(() => new LzssdCompression(stream), Throws.InstanceOf<ObjectDisposedException>());
         }
 
         [TestCaseSource(nameof(GetCompressedFiles))]
@@ -93,28 +93,12 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
             input.Write(new byte[] { 0xCA, 0xFE }, 0, 2);
 
             using var expectedOutput = new DataStream();
-            compression.Initialize(expectedOutput);
+            compression = new LzssdCompression(expectedOutput);
 
             using var actualOutput = compression.Convert(input);
 
             Assert.That(actualOutput, Is.SameAs(expectedOutput));
             Assert.That(actualOutput.Length, Is.EqualTo(3));
-        }
-
-        [Test]
-        public void WriteInNewStreamAfterConversion()
-        {
-            using var input = new DataStream();
-            input.Write(new byte[] { 0xCA, 0xFE }, 0, 2);
-
-            using var firstOutput = new DataStream();
-            compression.Initialize(firstOutput);
-
-            compression.Convert(input);
-            using var secondOutput = compression.Convert(input);
-
-            Assert.That(firstOutput, Is.Not.SameAs(secondOutput));
-            Assert.That(secondOutput.Length, Is.EqualTo(3));
         }
 
         [Test]

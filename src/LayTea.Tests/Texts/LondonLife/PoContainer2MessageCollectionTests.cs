@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -65,7 +65,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
                     .TransformWith<Binary2MessageCollection>();
                 expected = msgNode.GetFormatAs<MessageCollection>();
 
-                msgNode.TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(LondonLifeRegion.Usa);
+                msgNode.TransformWith(new MessageCollection2PoContainer(LondonLifeRegion.Usa));
             } catch {
                 Assert.Ignore("Failed to obtain PO container");
             }

@@ -5,6 +5,7 @@ artifacts/
 
 # Build system
 tools/
+.vs/
 
 # Test results
 test_results/

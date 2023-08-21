@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts
         public void Guards()
         {
             Assert.That(() => new PoTableReplacer().Convert(null), Throws.ArgumentNullException);
-            Assert.That(() => new PoTableReplacer().Initialize(null), Throws.ArgumentNullException);
+            Assert.That(() => new PoTableReplacer(null), Throws.ArgumentNullException);
         }
 
         [Test]
@@ -54,8 +54,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts
             Po expected = new Po();
             expected.Add(new PoEntry { Original = "abc", Translated = "cba" });
 
-            var converter = new PoTableReplacer();
-            converter.Initialize(converterParams);
+            var converter = new PoTableReplacer(converterParams);
             var actual = converter.Convert(expected);
 
             Assert.That(actual, Is.SameAs(expected));
@@ -78,8 +77,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts
             Po expected = new Po();
             expected.Add(new PoEntry { Original = "abc", Translated = "cba" });
 
-            var converter = new PoTableReplacer();
-            converter.Initialize(converterParams);
+            var converter = new PoTableReplacer(converterParams);
             var actual = converter.Convert(expected);
 
             Assert.That(actual, Is.SameAs(expected));

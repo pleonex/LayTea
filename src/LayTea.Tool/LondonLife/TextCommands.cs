@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -63,7 +63,7 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
             }
 
             messageNode.TransformWith<Binary2MessageCollection>()
-                .TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(region);
+                .TransformWith(new MessageCollection2PoContainer(region));
 
             Replacer replacer;
             if (string.IsNullOrEmpty(table)) {
@@ -78,7 +78,7 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
                 TransformForward = true,
             };
             foreach (var children in messageNode.Children) {
-                children.TransformWith<PoTableReplacer, PoTableReplacerParams>(replacerParams)
+                children.TransformWith(new PoTableReplacer(replacerParams))
                     .TransformWith<Po2Binary>()
                     .Stream.WriteTo(Path.Combine(output, $"{children.Name}.po"));
             }
@@ -125,7 +125,7 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
             using var node = NodeFactory.FromDirectory(input, "*.po", FileOpenMode.Read);
             foreach (var child in node.Children) {
                 child.TransformWith<Binary2Po>()
-                    .TransformWith<PoTableReplacer, PoTableReplacerParams>(replacerParams);
+                    .TransformWith(new PoTableReplacer(replacerParams));
             }
 
             node.TransformWith<PoContainer2MessageCollection>()
@@ -134,7 +134,7 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
             switch (format) {
                 case LondonLifeTextFormat.CommonDarc:
                     // Compress message with LZSS in DENC
-                    node.TransformWith<DencCompression, DencCompressionKind>(DencCompressionKind.Lzss);
+                    node.TransformWith(new DencCompression(DencCompressionKind.Lzss));
 
                     // Open container
                     var darc = NodeFactory.FromFile(originalDarc, FileOpenMode.Read)

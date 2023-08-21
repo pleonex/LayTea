@@ -6,8 +6,8 @@ children:
     format_type: Yarhl.IO.BinaryFormat
     stream:
       offset: 0
-      length: 254
-      sha256: 4e5e1f7560e25a27f813df990d7e714d704bc10fa702277f89501299e4bc2908
+      length: 199
+      sha256: a78a728b9a9651bbda69fd5f3d7e940e4573a7d8800d5b6522a60b4ed22e52a7
     check_children: true
 
   - name: Palette 1

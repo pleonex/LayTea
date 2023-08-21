@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,17 +26,15 @@ namespace SceneGate.Games.ProfessorLayton.Texts
     /// <summary>
     /// In-place converter for text replacement in PO formats.
     /// </summary>
-    public class PoTableReplacer :
-        IInitializer<PoTableReplacerParams>, IConverter<Po, Po>
+    public class PoTableReplacer : IConverter<Po, Po>
     {
-        private PoTableReplacerParams parameters;
+        private readonly PoTableReplacerParams parameters;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PoTableReplacer" /> class.
         /// </summary>
         /// <remarks>
-        /// By default it does not apply any replacement. Call <see cref="Initialize(PoTableReplacerParams)" />
-        /// to specify the replacements.
+        /// By default it does not apply any replacement.
         /// </remarks>
         public PoTableReplacer()
         {
@@ -47,10 +45,10 @@ namespace SceneGate.Games.ProfessorLayton.Texts
         }
 
         /// <summary>
-        /// Initializes the converter.
+        /// Initializes a new instance of the <see cref="PoTableReplacer" /> class.
         /// </summary>
         /// <param name="parameters">The converter parameters.</param>
-        public void Initialize(PoTableReplacerParams parameters)
+        public PoTableReplacer(PoTableReplacerParams parameters)
         {
             this.parameters = parameters ?? throw new ArgumentNullException(nameof(parameters));
         }
