@@ -42,7 +42,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
                     Path.Combine(basePath, data[0]),
                     Path.Combine(basePath, data[1]),
                     Path.Combine(basePath, data[2]))
-                    .SetName($"({data[0]}, {data[1]}, {data[2]})"));
+                    .SetArgDisplayNames(data[0], data[1], data[2]));
         }
 
         [Test]

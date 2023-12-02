@@ -41,7 +41,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
                 .Select(data => new TestCaseData(
                     Path.Combine(basePath, data[0]),
                     Path.Combine(basePath, data[1]))
-                    .SetName($"({data[0]}, {data[1]})"));
+                    .SetArgDisplayNames(data[0], data[1]));
         }
 
         [Test]

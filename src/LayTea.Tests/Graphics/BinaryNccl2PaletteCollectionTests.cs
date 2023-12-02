@@ -24,6 +24,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
     using System.Linq;
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Graphics;
+    using SixLabors.ImageSharp.Formats.Bmp;
     using Texim.Formats;
     using Yarhl.FileSystem;
     using Yarhl.IO;
@@ -40,7 +41,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
                 .Select(data => new TestCaseData(
                     Path.Combine(basePath, data[0]),
                     Path.Combine(basePath, data[1]))
-                    .SetName($"({data[0]}, {data[1]})"));
+                    .SetArgDisplayNames(data[0], data[1]));
         }
 
         [Test]
@@ -59,7 +60,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
             var info = NodeContainerInfo.FromYaml(infoPath);
             using var paletteNode = NodeFactory.FromFile(ncclPath, FileOpenMode.Read)
                 .TransformWith<BinaryNccl2PaletteCollection>()
-                .TransformWith<PaletteCollection2ContainerBitmap>();
+                .TransformWith(new PaletteCollection2ContainerBitmap(new BmpEncoder()));
 
             _ = paletteNode.Should().MatchInfo(info);
         }

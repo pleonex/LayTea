@@ -49,12 +49,14 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
             yield return new TestCaseData(
                 save.Children[2].TransformWith<DencDecompression>(),
                 GetPalette(save.Children[1678]),
-                "87af7866d63c1efe9dca3c80273773c160ff4db2dabc4ae3e5469414369d6f40");
+                "87af7866d63c1efe9dca3c80273773c160ff4db2dabc4ae3e5469414369d6f40")
+                .SetArgDisplayNames(save.Children[2].Path);
 
             yield return new TestCaseData(
                 save.Children[3].TransformWith<DencDecompression>(),
                 GetPalette(save.Children[1679]),
-                "184992be99605e414f1519ef248d233dee68a78a13044124d5d977c61653e3a2");
+                "184992be99605e414f1519ef248d233dee68a78a13044124d5d977c61653e3a2")
+                .SetArgDisplayNames(save.Children[3].Path);
         }
 
         [SetUp]
