@@ -16,7 +16,7 @@ public sealed class BuildLifetime : FrostingLifetime<BuildContext>
     public override void Setup(BuildContext context, ISetupContext info)
     {
         // We can't force code coverage locally as it requires game files
-        context.DotNetContext.CoverageTarget = context.BuildSystem().IsLocalBuild ? 0 : 80;
+        context.DotNetContext.CoverageTarget = context.BuildSystem().IsLocalBuild ? 0 : 100;
 
         context.ReadArguments();
 

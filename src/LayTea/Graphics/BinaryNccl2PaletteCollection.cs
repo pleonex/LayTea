@@ -48,11 +48,11 @@ namespace SceneGate.Games.ProfessorLayton.Graphics
             } else if (id == "CMNT") {
                 var comment = reader.ReadString();
                 if (!string.IsNullOrEmpty(comment)) {
-                    throw new FormatException("Oh check this out!");
+                    throw new FormatException("Unknown CMNT section");
                 }
             } else {
                 reader.Stream.Position += size - 8;
-                throw new FormatException("Oh check this out!");
+                throw new FormatException("Unknown section: " + id);
             }
 
             return model;
