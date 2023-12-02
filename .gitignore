@@ -1,21 +1,20 @@
 # Build outputs
 obj/
 bin/
-artifacts/
+build/artifacts/
+build/temp/
+/CHANGELOG.md
+/CHANGELOG.NEXT.md
 
-# Build system
-tools/
+# IDEs
+.vs/
+*.csproj.user
+*.DotSettings.user
 
 # Test results
-test_results/
 BenchmarkDotNet.Artifacts/
 *.nettrace
 *.speedscope.json
-
-# Documentation output
-docs/_site
-docs/api
-docs/_site_pdf
 
 # Test and research data
 gamedata/

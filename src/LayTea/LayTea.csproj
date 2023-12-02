@@ -1,8 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0</TargetFrameworks>
+    <Description></Description>
+    <IsPackable>true</IsPackable>
+
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <RootNamespace>SceneGate.Games.ProfessorLayton</RootNamespace>
+
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +15,7 @@
     <EmbeddedResource Include="Texts/LondonLife/*.txt" />
 
     <None Include="../../docs/images/favicon-128.png" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
+    <None Include="../../docs/index.md" Pack="true" PackagePath="$(PackageReadmeFile)" Visible="False" />
   </ItemGroup>
 
   <ItemGroup>

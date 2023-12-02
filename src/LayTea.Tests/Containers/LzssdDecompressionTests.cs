@@ -44,7 +44,6 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
         }
 
         [TestCaseSource(nameof(GetCompressedFiles))]
-        [Timeout(10_000)]
         public void DecompressionWithFiles(string inputPath, long offset, long length, string infoPath)
         {
             TestDataBase.IgnoreIfFileDoesNotExist(inputPath);

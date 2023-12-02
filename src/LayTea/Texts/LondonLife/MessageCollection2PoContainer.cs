@@ -88,7 +88,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
                 }
 
                 var entries = CreateEntries(source.Messages, i, sections[sectionIdx]);
-                currentPo?.Add(entries);
+                currentPo.Add(entries);
             }
 
             return container;

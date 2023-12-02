@@ -92,6 +92,7 @@ namespace SceneGate.Games.ProfessorLayton.Containers
             int outputPos = 0;
             var output = new byte[inputLen * 2];
 
+#pragma warning disable S2583 // false positive
             int currentRawSequence = 0;
             while (inputPos < inputLen) {
                 (int sequencePos, int sequenceLen) = FindSequence(input, inputPos);

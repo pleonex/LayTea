@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+
     <RootNamespace>SceneGate.Games.ProfessorLayton.Tests</RootNamespace>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
