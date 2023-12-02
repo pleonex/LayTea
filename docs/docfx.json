@@ -1,58 +1,66 @@
 {
-    "metadata": [
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "LayTea/*.csproj"
+          ],
+          "src": "../src"
+        }
+      ],
+      "dest": "api",
+      "includePrivateMembers": false,
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false,
+      "noRestore": false,
+      "namespaceLayout": "flattened",
+      "memberLayout": "samePage",
+      "EnumSortOrder": "alphabetic",
+      "allowCompilationErrors": false
+    }
+  ],
+  "build": {
+    "content": [
       {
-        "src": [
-          {
-            "files": [
-              "LayTea/LayTea.csproj"
-            ],
-            "src": "../src"
-          }
-        ],
-        "dest": "api",
-        "filter": "filter_config.yml",
-        "disableGitFeatures": false,
-        "disableDefaultFilter": false
+        "files": [
+          "api/**.yml",
+          "api/index.md"
+        ]
+      },
+      { "files": "**/*.{md,yml}", "src": "articles", "dest": "docs" },
+      { "files": [ "toc.yml", "*.md" ] }
+    ],
+    "resource": [
+      {
+        "files": [ "**/images/**", "**/resources/**" ],
+        "exclude": [ "_site/**", "obj/**" ]
       }
     ],
-    "build": {
-      "content": [
-        {
-          "files": [ "api/**.yml", "dev/**" ]
-        },
-        {
-          "files": [ "toc.yml", "index.md" ]
-        },
-        {
-          "files": [ "guides/**" ]
-        },
-        {
-          "files": ["README.md", "CONTRIBUTING.md"],
-          "src": "../"
-        }
-      ],
-      "resource": [
-        {
-          "files": ["images/**"]
-        }
-      ],
-      "dest": "_site",
-      "globalMetadataFiles": ["global_metadata.json"],
-      "fileMetadataFiles": [],
-      "template": [
-        "default",
-        "statictoc",
-        "default-widescreen"
-      ],
-      "postProcessors": [],
-      "markdownEngineName": "markdig",
-      "noLangKeyword": false,
-      "keepFileLink": false,
-      "cleanupCacheHistory": false,
-      "disableGitFeatures": false,
-      "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ],
-      "xref": [
-        "https://scenegate.github.io/Yarhl/xrefmap.yml"
-      ]
+    "output": "_site",
+    "globalMetadata": {
+      "_appTitle": "Modding tools for 'Professor Layton' games",
+      "_appName": "LayTea",
+      "_appFooter": "<span>Copyright (c) 2020 pleonex. Docs made with <a href=\"https://dotnet.github.io/docfx\" target=\"_blank\">docfx</a></span>",
+      "_appLogoPath": "images/favicon-48.png",
+      "_appFaviconPath": "images/favicon-128.ico",
+      "_enableSearch": true,
+      "_enableNewTab": true,
+      "_lang": "en"
+    },
+    "fileMetadataFiles": [],
+    "template": [
+      "default",
+      "modern",
+      "template"
+    ],
+    "postProcessors": [],
+    "keepFileLink": false,
+    "disableGitFeatures": false,
+    "sitemap": {
+      "baseUrl": "https://pleonex.dev/LayTea",
+      "priority": 0.5,
+      "changefreq": "monthly"
     }
+  }
 }

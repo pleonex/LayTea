@@ -2,9 +2,14 @@
     <PropertyGroup>
         <Product>SceneGate.Games.ProfessorLayton</Product>
         <Authors>pleonex</Authors>
+        <Company>None</Company>
         <Copyright>Copyright (C) 2020 pleonex</Copyright>
 
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+        <!-- By default no project generates libs (pack nuget). Enable it per project.
+             This allow to pack at the solution level so the platform info is kept. -->
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -13,17 +18,26 @@
         <RepositoryUrl>https://github.com/pleonex/LayTea</RepositoryUrl>
         <PackageIcon>icon.png</PackageIcon>
         <PackageTags>modding;scenegate;layton;romhacking</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <!-- Deterministic and source link -->
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-        <!-- Deterministic and source link -->
+        <!-- Publish the repository URL in the nuget metadata for SourceLink -->
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
+        <!-- Embed auto-generated code for SourceLink -->
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+        <!-- For SourceLink and debugging support we don't publish a symbol NuGet
+            as some NuGet feeds like Azure DevOps does not provide a symbol server.
+            Instead we embed the metadata (PDB) inside the DLLs and EXEs.
+            We use this approach instead of providing the .pdb inside the NuGet
+            as the latter has known issues with Visual Studio:
+            https://github.com/dotnet/sourcelink/issues/628 -->
+        <DebugType>embedded</DebugType>
+
+        <!-- Enable deterministic builds -->
         <Deterministic>true</Deterministic>
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
@@ -35,11 +49,10 @@
     <PropertyGroup>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisLevel>latest</AnalysisLevel>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All"/>
         <PackageReference Include="SonarAnalyzer.CSharp" PrivateAssets="All"/>
-        <PackageReference Include="Roslynator.Analyzers" PrivateAssets="All"/>
     </ItemGroup>
 </Project>

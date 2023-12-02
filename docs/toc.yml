@@ -1,11 +1,11 @@
-- name: Home
-  href: index.md
-
 - name: Guides
-  href: guides/
+  href: articles/
 
 - name: API
-  href: dev/
+  href: api/
+
+- name: Changelog
+  href: articles/changelog.md
 
 - name: GitHub
   href: https://github.com/pleonex/LayTea

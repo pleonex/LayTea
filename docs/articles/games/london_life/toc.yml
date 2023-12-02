@@ -1,0 +1,42 @@
+- name: 🏠 Introduction
+  href: ../../../index.md
+
+- name: 🎩 Professor Layton - London Life
+- name: Overview
+  href: ./summary.md
+
+- name: 📃 File formats
+- name: Containers ARCHIVE
+  href: ARCHIVE.md
+- name: Containers ANAG
+  href: ANAG.md
+- name: Containers DARC
+  href: DARC.md
+- name: Container town
+  href: ll_town.md
+- name: Container save
+  href: ll_save.md
+- name: Compression DENC
+  href: DENC.md
+- name: Texts MSG
+  href: MSG.md
+- name: Palettes NCCL
+  href: NCCL.md
+- name: Pixels NCCG
+  href: NCCG.md
+- name: Tile maps NCSC
+  href: NCSC.md
+- name: Sprites NCOB
+  href: NCOB.md
+- name: Palettes ACL
+  href: ACL.md
+- name: Pixels ACB and ACG
+  href: ACB.md
+- name: Tile maps ASC
+  href: ASC.md
+- name: Sprites ACP
+  href: ACP.md
+- name: Sprites ACE
+  href: ACE.md
+#- name: (TODO) Animations ANM
+#- name: (TODO) Wi-Fi images

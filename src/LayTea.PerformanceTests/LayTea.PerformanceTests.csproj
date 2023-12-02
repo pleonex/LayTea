@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+
+    <TargetFramework>net6.0</TargetFramework>
+
     <RootNamespace>SceneGate.Games.ProfessorLayton.PerformanceTests</RootNamespace>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
