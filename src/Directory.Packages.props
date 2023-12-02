@@ -10,7 +10,7 @@
         <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
         <PackageVersion Include="coverlet.collector" Version="6.0.0" />
-        <PackageVersion Include="BenchmarkDotNet" Version="0.12.1" />
+        <PackageVersion Include="BenchmarkDotNet" Version="0.13.10" />
         <PackageVersion Include="YamlDotNet" Version="13.7.1" />
 
         <PackageVersion Include="System.CommandLine" Version="2.0.0-beta1.21216.1" />

@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <AssemblyName>LayTeaConsole</AssemblyName>
 
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
 
     <RootNamespace>SceneGate.Games.ProfessorLayton.Tool</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
