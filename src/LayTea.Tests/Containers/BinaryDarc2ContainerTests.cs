@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -64,7 +64,6 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
 
         protected override BinaryFormat GetBinary()
         {
-            TestContext.WriteLine(Path.GetFileName(binaryPath));
             var stream = DataStreamFactory.FromFile(binaryPath, FileOpenMode.Read);
             return new BinaryFormat(stream);
         }
