@@ -147,15 +147,13 @@ namespace SceneGate.Games.ProfessorLayton.Tool
             var mapParams = new MapDecompressionParams {
                 Map = map.GetFormatAs<ScreenMap>(),
             };
-            var mapDecompression = new MapDecompression();
-            mapDecompression.Initialize(mapParams);
+            var mapDecompression = new MapDecompression(mapParams);
             var indexedImage = mapDecompression.Convert(pixels.Children[0].GetFormatAs<IndexedImage>());
 
             var paletteParams = new IndexedImageBitmapParams {
                 Palettes = palette.GetFormatAs<PaletteCollection>(),
             };
-            var bitmapConverter = new IndexedImage2Bitmap();
-            bitmapConverter.Initialize(paletteParams);
+            var bitmapConverter = new IndexedImage2Bitmap(paletteParams);
             using var bitmap = bitmapConverter.Convert(indexedImage);
             bitmap.Stream.WriteTo(output);
         }
@@ -199,15 +197,13 @@ namespace SceneGate.Games.ProfessorLayton.Tool
             var mapParams = new MapDecompressionParams {
                 Map = map.GetFormatAs<Ncsc>(),
             };
-            var mapDecompression = new MapDecompression();
-            mapDecompression.Initialize(mapParams);
+            var mapDecompression = new MapDecompression(mapParams);
             var indexedImage = mapDecompression.Convert(pixels.GetFormatAs<IndexedImage>());
 
             var paletteParams = new IndexedImageBitmapParams {
                 Palettes = palette.GetFormatAs<PaletteCollection>(),
             };
-            var bitmapConverter = new IndexedImage2Bitmap();
-            bitmapConverter.Initialize(paletteParams);
+            var bitmapConverter = new IndexedImage2Bitmap(paletteParams);
             using var bitmap = bitmapConverter.Convert(indexedImage);
             bitmap.Stream.WriteTo(output);
         }

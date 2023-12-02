@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -73,14 +73,18 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
             using var pixelsNode = NodeFactory.FromFile(nccgPath, FileOpenMode.Read)
                 .TransformWith<BinaryNccg2IndexedImage>();
 
-            var mapsParams = new MapDecompressionParams {
-                Map = mapsNode.GetFormatAs<Ncsc>(),
-            };
             var bitmapParams = new IndexedImageBitmapParams {
                 Palettes = paletteNode.GetFormatAs<PaletteCollection>(),
             };
-            pixelsNode.TransformWith<MapDecompression, MapDecompressionParams>(mapsParams)
-                .TransformWith<IndexedImage2Bitmap, IndexedImageBitmapParams>(bitmapParams)
+            var image2Bitmap = new IndexedImage2Bitmap(bitmapParams);
+
+            var mapsParams = new MapDecompressionParams {
+                Map = mapsNode.GetFormatAs<Ncsc>(),
+            };
+            var mapDecompression = new MapDecompression(mapsParams);
+
+            _ = pixelsNode.TransformWith(mapDecompression)
+                .TransformWith(image2Bitmap)
                 .Stream.Should().MatchInfo(info);
         }
     }
