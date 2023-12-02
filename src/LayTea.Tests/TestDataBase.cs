@@ -29,9 +29,10 @@ namespace SceneGate.Games.ProfessorLayton.Tests
     {
         public static string RootFromOutputPath {
             get {
-                string envVar = Environment.GetEnvironmentVariable("YARHL_TEST_DIR");
-                if (!string.IsNullOrEmpty(envVar))
+                string envVar = Environment.GetEnvironmentVariable("SCENEGATE_TEST_DIR");
+                if (!string.IsNullOrEmpty(envVar)) {
                     return envVar;
+                }
 
                 string programDir = AppDomain.CurrentDomain.BaseDirectory;
                 string path = Path.Combine(
@@ -55,8 +56,9 @@ namespace SceneGate.Games.ProfessorLayton.Tests
 
         public static IEnumerable<string> ReadTestListFile(string filePath)
         {
-            if (!File.Exists(filePath))
+            if (!File.Exists(filePath)) {
                 return Array.Empty<string>();
+            }
 
             return File.ReadAllLines(filePath)
                 .Select(line => line.Trim())
