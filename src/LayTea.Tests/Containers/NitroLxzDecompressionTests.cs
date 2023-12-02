@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
                 .Select(data => new TestCaseData(
                     Path.Combine(basePath, data[0]),
                     Path.Combine(basePath, data[1]))
-                    .SetName($"({data[0]}, {data[1]})"));
+                    .SetArgDisplayNames(data[0], data[1]));
         }
 
         [Test]

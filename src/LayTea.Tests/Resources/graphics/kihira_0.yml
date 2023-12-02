@@ -1,131 +1,150 @@
 name: kihira_0.nccl
-format_type: "Yarhl.FileSystem.NodeContainerFormat"
+format_type: Yarhl.FileSystem.NodeContainerFormat
+stream: 
+tags: {}
 check_children: true
 children:
-  - name: Palette 0
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 254
-      sha256: 4e5e1f7560e25a27f813df990d7e714d704bc10fa702277f89501299e4bc2908
-    check_children: true
-
-  - name: Palette 1
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 2
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 3
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 4
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 5
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 6
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 7
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 8
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 9
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 10
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 11
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 12
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 13
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 14
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
-
-  - name: Palette 15
-    format_type: Yarhl.IO.BinaryFormat
-    stream:
-      offset: 0
-      length: 184
-      sha256: 6f1cd7b366d3631c6cbdde0296167c9efecce5e83e4f85c6ccdc7bbfea0131ee
-    check_children: true
+- name: Palette 0
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 45a8f4d7fc692c9adc4d94a2837a6786812cb899a2155a2505706e5e75789e9e
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 1
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 2
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 3
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 4
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 5
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 6
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 7
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 8
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 9
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 10
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 11
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 12
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 13
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 14
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []
+- name: Palette 15
+  format_type: Yarhl.IO.BinaryFormat
+  stream:
+    offset: 0
+    length: 4854
+    sha256: 50fbd4e808d4cd57bd41040260d56f29c46cf982fe29fca5d602cf0e29446988
+  tags: {}
+  check_children: true
+  children: []

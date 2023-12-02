@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
     using System.Linq;
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Graphics;
+    using SixLabors.ImageSharp.Formats.Bmp;
     using Texim.Compressions.Nitro;
     using Texim.Formats;
     using Texim.Palettes;
@@ -44,7 +45,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
                     Path.Combine(basePath, data[1]),
                     Path.Combine(basePath, data[2]),
                     Path.Combine(basePath, data[3]))
-                    .SetName($"({data[0]}, {data[1]}, {data[2]}, {data[3]})"));
+                    .SetArgDisplayNames(data[0], data[1], data[2], data[3]));
         }
 
         [Test]
@@ -64,24 +65,24 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
 
             var info = BinaryInfo.FromYaml(infoPath);
 
-            using var paletteNode = NodeFactory.FromFile(ncclPath, FileOpenMode.Read)
+            using Node paletteNode = NodeFactory.FromFile(ncclPath, FileOpenMode.Read)
                 .TransformWith<BinaryNccl2PaletteCollection>();
 
-            using var mapsNode = NodeFactory.FromFile(ncscPath, FileOpenMode.Read)
+            using Node mapsNode = NodeFactory.FromFile(ncscPath, FileOpenMode.Read)
                 .TransformWith<BinaryNcsc2ScreenMap>();
+            var mapDecompression = new MapDecompression(new() { Map = mapsNode.GetFormatAs<Ncsc>() });
 
-            using var pixelsNode = NodeFactory.FromFile(nccgPath, FileOpenMode.Read)
+            using Node pixelsNode = NodeFactory.FromFile(nccgPath, FileOpenMode.Read)
                 .TransformWith<BinaryNccg2IndexedImage>();
-
-            var mapsParams = new MapDecompressionParams {
-                Map = mapsNode.GetFormatAs<Ncsc>(),
-            };
-            var bitmapParams = new IndexedImageBitmapParams {
+            var image2Bitmap = new IndexedImage2Bitmap(new() {
                 Palettes = paletteNode.GetFormatAs<PaletteCollection>(),
-            };
-            pixelsNode.TransformWith<MapDecompression, MapDecompressionParams>(mapsParams)
-                .TransformWith<IndexedImage2Bitmap, IndexedImageBitmapParams>(bitmapParams)
-                .Stream.Should().MatchInfo(info);
+                Encoder = new BmpEncoder(),
+            });
+
+            _ = pixelsNode.TransformWith(mapDecompression)
+                .TransformWith(image2Bitmap);
+
+            _ = pixelsNode.Stream.Should().MatchInfo(info);
         }
     }
 }

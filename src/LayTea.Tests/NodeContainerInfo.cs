@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,8 +20,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using Yarhl.FileSystem;
 
 namespace SceneGate.Games.ProfessorLayton.Tests
 {
@@ -46,6 +48,29 @@ namespace SceneGate.Games.ProfessorLayton.Tests
                 .WithNamingConvention(UnderscoredNamingConvention.Instance)
                 .Build()
                 .Deserialize<NodeContainerInfo>(yaml);
+        }
+
+        public static NodeContainerInfo FromNode(Node node)
+        {
+            return new NodeContainerInfo {
+                Name = node.Name,
+                FormatType = node.Format?.GetType().FullName,
+                Tags = node.Tags
+                    .Where(x => x.Value?.GetType().IsPrimitive || x.Value is string)
+                    .ToDictionary(x => x.Key, x => x.Value),
+                Stream = BinaryInfo.FromStream(node.Stream),
+                CheckChildren = true,
+                Children = new(node.Children.Select(FromNode).ToArray()),
+            };
+        }
+
+        public void ToYamlFile(string path)
+        {
+            var yaml = new SerializerBuilder()
+                .WithNamingConvention(UnderscoredNamingConvention.Instance)
+                .Build()
+                .Serialize(this);
+            File.WriteAllText(path, yaml);
         }
     }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
                     Path.Combine(basePath, data[0]),
                     Path.Combine(basePath, data[1]),
                     Path.Combine(basePath, data[2]))
-                    .SetName($"({data[0]}, {data[1]}, {data[2]})"));
+                    .SetArgDisplayNames(data[0], data[1], data[2]));
         }
 
         [Test]
@@ -70,7 +70,8 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
             var bitmapParams = new IndexedImageBitmapParams {
                 Palettes = paletteNode.GetFormatAs<PaletteCollection>(),
             };
-            pixelsNode.TransformWith<IndexedImage2Bitmap, IndexedImageBitmapParams>(bitmapParams)
+            var image2Bitmap = new IndexedImage2Bitmap(bitmapParams);
+            _ = pixelsNode.TransformWith(image2Bitmap)
                 .Stream.Should().MatchInfo(info);
         }
     }

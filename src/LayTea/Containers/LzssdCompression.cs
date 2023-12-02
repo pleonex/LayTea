@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,26 +26,27 @@ namespace SceneGate.Games.ProfessorLayton.Containers
     /// <summary>
     /// Compression algorithm for LZSS variant found in DENC formats.
     /// </summary>
-    public class LzssdCompression :
-        IInitializer<DataStream>, IConverter<BinaryFormat, BinaryFormat>
+    public class LzssdCompression : IConverter<IBinary, BinaryFormat>
     {
         private const int MaxDistance = (1 << 11) - 1;
         private const int MinSequenceLength = 2;
         private const int MaxSequenceLength = ((1 << 4) + MinSequenceLength) - 1;
         private const int MaxRawLength = (1 << 7) - 1;
 
-        private DataStream requestedOutput;
+        private readonly DataStream requestedOutput;
 
         /// <summary>
-        /// Initializes the converter with the output stream to write the
-        /// compressed data.
+        /// Initializes a new instance of the <see cref="LzssdCompression"/> class.
+        /// </summary>
+        public LzssdCompression()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LzssdCompression"/> class.
         /// </summary>
         /// <param name="parameters">The output stream.</param>
-        /// <remarks>
-        /// <p>The given output stream is only used once in the following call
-        /// to Convert. Following calls will use a new default (memory) stream.</p>
-        /// </remarks>
-        public void Initialize(DataStream parameters)
+        public LzssdCompression(DataStream parameters)
         {
             if (parameters == null)
                 throw new ArgumentNullException(nameof(parameters));
@@ -60,7 +61,7 @@ namespace SceneGate.Games.ProfessorLayton.Containers
         /// </summary>
         /// <param name="source">The decompressed stream.</param>
         /// <returns>The compressed stream with LZSS-DENC.</returns>
-        public BinaryFormat Convert(BinaryFormat source)
+        public BinaryFormat Convert(IBinary source)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -123,9 +124,6 @@ namespace SceneGate.Games.ProfessorLayton.Containers
             if (requestedOutput != null) {
                 outputStream = requestedOutput;
                 outputStream.Write(output, 0, outputPos);
-
-                // Don't use it in the next conversion.
-                requestedOutput = null;
             } else {
                 outputStream = DataStreamFactory.FromArray(output, 0, outputPos);
             }

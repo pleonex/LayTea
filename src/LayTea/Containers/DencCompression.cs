@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +26,11 @@ namespace SceneGate.Games.ProfessorLayton.Containers
     /// <summary>
     /// Converter to compress binary streams in a DENC container.
     /// </summary>
-    public class DencCompression :
-        IInitializer<DencCompressionKind>, IConverter<BinaryFormat, BinaryFormat>
+    public class DencCompression : IConverter<BinaryFormat, BinaryFormat>
     {
         private const string Stamp = "DENC";
         private const int HeaderLength = 0x10;
-        private DencCompressionKind compressionKind;
+        private readonly DencCompressionKind compressionKind;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DencCompression" /> class.
@@ -42,10 +41,10 @@ namespace SceneGate.Games.ProfessorLayton.Containers
         }
 
         /// <summary>
-        /// Initialize the converter with the compression to use.
+        /// Initializes a new instance of the <see cref="DencCompression" /> class.
         /// </summary>
         /// <param name="parameters">The kind of compression to use.</param>
-        public void Initialize(DencCompressionKind parameters)
+        public DencCompression(DencCompressionKind parameters)
         {
             compressionKind = parameters;
         }
@@ -89,9 +88,8 @@ namespace SceneGate.Games.ProfessorLayton.Containers
             if (compressionKind == DencCompressionKind.None) {
                 input.WriteTo(output);
             } else if (compressionKind == DencCompressionKind.Lzss) {
-                var lzss = new LzssdCompression();
-                lzss.Initialize(output);
-                lzss.Convert(input);
+                var lzss = new LzssdCompression(output);
+                _ = lzss.Convert(input);
             }
         }
     }

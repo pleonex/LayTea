@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,18 +31,17 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
     /// <summary>
     /// Converter for a message collection into PO.
     /// </summary>
-    public sealed class MessageCollection2PoContainer :
-        IInitializer<LondonLifeRegion>, IConverter<MessageCollection, NodeContainerFormat>
+    public sealed class MessageCollection2PoContainer : IConverter<MessageCollection, NodeContainerFormat>
     {
         private readonly StringBuilder contextBuilder = new StringBuilder();
         private readonly MessageTextSerializer textParser = new MessageTextSerializer();
-        private MessageContextProvider contextProvider;
+        private readonly MessageContextProvider contextProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageCollection2PoContainer" /> class.
         /// </summary>
         /// <remarks>
-        /// By default uses the USA region. Call <see cref="Initialize(LondonLifeRegion)" /> to change the region.
+        /// By default uses the USA region.
         /// </remarks>
         public MessageCollection2PoContainer()
         {
@@ -50,10 +49,10 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
         }
 
         /// <summary>
-        /// Initializes the converter with the game region.
+        /// Initializes a new instance of the <see cref="MessageCollection2PoContainer" /> class.
         /// </summary>
         /// <param name="parameters">The game region.</param>
-        public void Initialize(LondonLifeRegion parameters)
+        public MessageCollection2PoContainer(LondonLifeRegion parameters)
         {
             contextProvider = new MessageContextProvider(parameters);
         }
@@ -97,7 +96,7 @@ namespace SceneGate.Games.ProfessorLayton.Texts.LondonLife
         private IEnumerable<PoEntry> CreateEntries(Collection<Message> messages, int index, MessageSection section)
         {
             // Some dialogs ends with "next_box" even when there aren't more boxes
-            // in the dialog. As we split by "next_box" we need to preseve that command
+            // in the dialog. As we split by "next_box" we need to preserve that command
             // somehow, so we set a flag in the context.
             bool hasEndStop = (messages[index].Content.Count > 0)
                 && (messages[index].QuestionOptions == null)

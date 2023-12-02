@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,8 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
                     .Select(line => line.Split(','))
                     .Select(data => new TestFixtureData(
                         Path.Combine(ContainersResources, data[0]),
-                        Path.Combine(ContainersResources, data[1])));
+                        Path.Combine(ContainersResources, data[1]))
+                        .SetArgDisplayNames(data[0], data[1]));
         }
 
         public static IEnumerable GetSubstreamAndInfoCollection(string listName)
@@ -55,7 +56,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
                     int.Parse(info[2]),
                     int.Parse(info[3]),
                     Path.Combine(ContainersResources, info[0]))
-                    .SetName($"{{m}}({info[0]})");
+                    .SetArgDisplayNames(info[0]);
             }
         }
     }

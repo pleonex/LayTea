@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -61,7 +61,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Texts.LondonLife
                 Assert.Ignore("Failed to obtain messages");
             }
 
-            Assert.That(() => msgNode.TransformWith<MessageCollection2PoContainer, LondonLifeRegion>(LondonLifeRegion.Usa), Throws.Nothing);
+            Assert.That(() => msgNode.TransformWith(new MessageCollection2PoContainer(LondonLifeRegion.Usa)), Throws.Nothing);
             foreach (var child in msgNode.Children) {
                 Assert.That(child.Format, Is.InstanceOf<Po>(), child.Name);
             }

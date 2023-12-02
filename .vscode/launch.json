@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "Build",
-            "program": "${workspaceFolder}/src/LayTea.Tool/bin/Debug/net6.0/linux-x64/LayTea.Tool.dll",
+            "program": "${workspaceFolder}/src/LayTea.Tool/bin/Debug/net8.0/win-x64/LayTea.Tool.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
