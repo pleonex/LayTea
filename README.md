@@ -34,19 +34,28 @@ Feel free to ask any question in the
 Check our on-line [documentation](https://pleonex.dev/LayTea) for more
 information about the file formats and how to use the tools.
 
-## Usage
+## Tool installation
 
-The project delivers a programming .NET library with the support of the formats
-and a console program to extract and import the game files.
+1. Install [.NET 8.0](https://dotnet.microsoft.com/en-us/download)
+2. Install the latest version of the tool: `dotnet tool install -g LayTea`
+   - You can update it with `dotnet tool update -g LayTea`
+   - To use preview versions, add the argument
+     `--prerelease --add-source https://pkgs.dev.azure.com/SceneGate/SceneGate/_packaging/SceneGate-Preview/nuget/v3/index.json`
 
-- Library:
-  - `SceneGate.Games.ProfessorLayton`: available to download via the
-    [SceneGate AzureDevOps NuGet feed](https://dev.azure.com/SceneGate/SceneGate/_artifacts/feed/SceneGate-Preview).
-- Program:
-  - _LayTeaConsole_: it is not available to download yet.
+## Library usage
 
-To use the .NET library adds a `nuget.config` file in the same directory as your
-solution file (.sln) with the following content:
+The project delivers a programming .NET (C#) library with the support of the
+formats. You can use this library to create programs that manipulates the game
+assets.
+
+- `SceneGate.Games.ProfessorLayton`
+
+Stable releases are published in nuget.org.
+
+Preview releases can be found in this
+[Azure DevOps package repository](https://dev.azure.com/SceneGate/SceneGate/_packaging?_a=feed&feed=SceneGate-Preview).
+To use a preview release, create a file nuget.config in the same directory of
+your solution (.sln) file with the following content:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
