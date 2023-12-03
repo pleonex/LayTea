@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayTea", "LayTea\LayTea.csproj", "{8717406A-EEAF-4B6C-9DF4-F104E7D61427}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceneGate.Games.ProfessorLayton", "SceneGate.Games.ProfessorLayton\SceneGate.Games.ProfessorLayton.csproj", "{8717406A-EEAF-4B6C-9DF4-F104E7D61427}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayTea.Tests", "LayTea.Tests\LayTea.Tests.csproj", "{936111B3-DA2B-4EE4-A9D9-18097BE4361B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceneGate.Games.ProfessorLayton.Tests", "SceneGate.Games.ProfessorLayton.Tests\SceneGate.Games.ProfessorLayton.Tests.csproj", "{936111B3-DA2B-4EE4-A9D9-18097BE4361B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayTea.Tool", "LayTea.Tool\LayTea.Tool.csproj", "{127BB0F9-84F0-48DB-987B-C9383CFC55CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayTea", "LayTea\LayTea.csproj", "{127BB0F9-84F0-48DB-987B-C9383CFC55CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayTea.PerformanceTests", "LayTea.PerformanceTests\LayTea.PerformanceTests.csproj", "{1049A217-BEA9-4439-8BAF-1EA89A08CF01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceneGate.Games.ProfessorLayton.PerformanceTests", "SceneGate.Games.ProfessorLayton.PerformanceTests\SceneGate.Games.ProfessorLayton.PerformanceTests.csproj", "{1049A217-BEA9-4439-8BAF-1EA89A08CF01}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4ACEDA74-67A3-439D-811A-58A2A84B19CE}"
 	ProjectSection(SolutionItems) = preProject
@@ -80,5 +80,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0257B07A-23F4-47FE-9D6A-6DED5F67C68F}
 	EndGlobalSection
 EndGlobal

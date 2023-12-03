@@ -5,17 +5,18 @@
 
     <TargetFramework>net8.0</TargetFramework>
 
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="LondonLife/*.txt" CopyToOutputDirectory="Always" />
+    <None Include="../LayTea.Tests/Resources/**" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SceneGate.Games.ProfessorLayton\SceneGate.Games.ProfessorLayton.csproj" />
-    <PackageReference Include="System.CommandLine" />
+
+    <PackageReference Include="BenchmarkDotNet" />
+    <PackageReference Include="Yarhl" />
   </ItemGroup>
 
 </Project>
