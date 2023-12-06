@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,22 +41,32 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
 
         private static Command CreateTextCommand()
         {
+            var tableArg = new Option<string>("--table", "optional path to the table file");
+
+            var exportInputArg = new Option<string>("--input", "the game file") { IsRequired = true };
+            var exportFormatArg = new Option<LondonLifeTextFormat>("--format", "the format of the input file") { IsRequired = true };
+            var exportOutputArg = new Option<string>("--output", "the output folder for the text files") { IsRequired = true };
             var export = new Command("export", "Export the text to PO") {
-                new Option<string>("--input", "the game file", ArgumentArity.ExactlyOne),
-                new Option<string>("--table", "optional path to the table file", ArgumentArity.ZeroOrOne),
-                new Option<LondonLifeTextFormat>("--format", "the format of the input file", ArgumentArity.ExactlyOne),
-                new Option<string>("--output", "the output folder for the text files", ArgumentArity.ExactlyOne),
+                exportInputArg,
+                tableArg,
+                exportFormatArg,
+                exportOutputArg,
             };
-            export.Handler = CommandHandler.Create<string, string, LondonLifeTextFormat, string>(TextCommands.Export);
+            export.SetHandler(TextCommands.Export, exportInputArg, tableArg, exportFormatArg, exportOutputArg);
+
+            var importInputArg = new Option<string>("--input", "the input folder with the text files") { IsRequired = true };
+            var importDarcArg = new Option<string>("--original-darc", "the original ll_common.darc file if the output format is CommonDarc");
+            var importOutputArg = new Option<string>("--output", "the new game file") { IsRequired = true };
+            var importFormatArg = new Option<LondonLifeTextFormat>("--format", "the format of the output file") { IsRequired = true };
 
             var import = new Command("import", "Import the text from PO") {
-                new Option<string>("--input", "the input folder with the text files", ArgumentArity.ExactlyOne),
-                new Option<string>("--table", "optional path to the table file", ArgumentArity.ZeroOrOne),
-                new Option<string>("--original-darc", "the original ll_common.darc file if the output format is CommonDarc", ArgumentArity.ZeroOrOne),
-                new Option<string>("--output", "the new game file", ArgumentArity.ExactlyOne),
-                new Option<LondonLifeTextFormat>("--format", "the format of the output file", ArgumentArity.ExactlyOne),
+                importInputArg,
+                tableArg,
+                importDarcArg,
+                importOutputArg,
+                importFormatArg,
             };
-            import.Handler = CommandHandler.Create<string, string, string, string, LondonLifeTextFormat>(TextCommands.Import);
+            import.SetHandler(TextCommands.Import, importInputArg, tableArg, importDarcArg, importOutputArg, importFormatArg);
 
             return new Command("text", "Export/Import text files") {
                 export,
@@ -66,23 +76,29 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
 
         private static Command CreateGraphicCommand()
         {
+            var townInArg = new Option<string>("--town", "the ll_town.darc file") { IsRequired = true };
+            var townOutArg = new Option<string>("--output", "the output directory") { IsRequired = true };
             var exportTown = new Command("export-town", "Export the graphics from ll_town.darc") {
-                new Option<string>("--town", "the ll_town.darc file", ArgumentArity.ExactlyOne),
-                new Option<string>("--output", "the output directory", ArgumentArity.ExactlyOne),
+                townInArg,
+                townOutArg,
             };
-            exportTown.Handler = CommandHandler.Create<string, string>(GraphicCommands.ExportTown);
+            exportTown.SetHandler(GraphicCommands.ExportTown, townInArg, townOutArg);
 
+            var saveInArg = new Option<string>("--save", "the ll_save.darc file") { IsRequired = true };
+            var saveOutArg = new Option<string>("--output", "the output directory") { IsRequired = true };
             var exportSave = new Command("export-save", "Export the graphics from ll_save.darc") {
-                new Option<string>("--save", "the ll_save.darc file", ArgumentArity.ExactlyOne),
-                new Option<string>("--output", "the output directory", ArgumentArity.ExactlyOne),
+                saveInArg,
+                saveOutArg,
             };
-            exportSave.Handler = CommandHandler.Create<string, string>(GraphicCommands.ExportSave);
+            exportSave.SetHandler(GraphicCommands.ExportSave, saveInArg, saveOutArg);
 
+            var kihiraInArg = new Option<string>("--kihira", "the kihira.archive file") { IsRequired = true };
+            var kihiraOutArg = new Option<string>("--output", "the output directory") { IsRequired = true };
             var exportKihira = new Command("export-kihira", "Export the graphics from kihira.archive") {
-                new Option<string>("--kihira", "the kihira.archive file", ArgumentArity.ExactlyOne),
-                new Option<string>("--output", "the output directory", ArgumentArity.ExactlyOne),
+                kihiraInArg,
+                kihiraOutArg,
             };
-            exportKihira.Handler = CommandHandler.Create<string, string>(GraphicCommands.ExportKihira);
+            exportKihira.SetHandler(GraphicCommands.ExportKihira, kihiraInArg, kihiraOutArg);
 
             return new Command("graphic", "Export/Import graphic files") {
                 exportTown,
