@@ -17,12 +17,11 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace SceneGate.Games.ProfessorLayton.Tests.Assertions;
+namespace Yarhl.Experimental.TestFramework.FluentAssertions;
 
-using FluentAssertions;
-using FluentAssertions.Execution;
-using FluentAssertions.Primitives;
-using SceneGate.Games.ProfessorLayton.Tests;
+using global::FluentAssertions;
+using global::FluentAssertions.Execution;
+using global::FluentAssertions.Primitives;
 using Yarhl.FileSystem;
 
 public class NodeAssertions

@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>File format support for Professor Layton games.</Description>
+    <IsPackable>true</IsPackable>
+
+    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Texts/LondonLife/*.yml" />
+    <EmbeddedResource Include="Texts/LondonLife/*.txt" />
+
+    <None Include="../../docs/images/favicon-128.png" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
+    <None Include="../../docs/index.md" Pack="true" PackagePath="$(PackageReadmeFile)" Visible="False" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Texim" />
+    <PackageReference Include="Yarhl" />
+    <PackageReference Include="Yarhl.Media.Text" />
+    <PackageReference Include="YamlDotNet" />
+
+    <InternalsVisibleTo Include="SceneGate.Games.ProfessorLayton.Tests" />
+  </ItemGroup>
+
+</Project>

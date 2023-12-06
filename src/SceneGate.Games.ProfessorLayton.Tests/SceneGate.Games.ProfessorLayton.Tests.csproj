@@ -1,15 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
 
-    <RootNamespace>SceneGate.Games.ProfessorLayton.Tests</RootNamespace>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Moq" />
-    <ProjectReference Include="../LayTea/LayTea.csproj" />
+    <ProjectReference Include="..\SceneGate.Games.ProfessorLayton\SceneGate.Games.ProfessorLayton.csproj" />
 
     <PackageReference Include="FluentAssertions" />
     <PackageReference Include="nunit" />

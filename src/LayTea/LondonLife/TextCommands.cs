@@ -93,7 +93,7 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
         /// <param name="output">The new binary message file.</param>
         /// <param name="format">The format of the output file.</param>
         /// <returns>A return code of the operation.</returns>
-        public static int Import(
+        public static void Import(
             string input,
             string table,
             string originalDarc,
@@ -104,7 +104,7 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
                 Console.WriteLine(
                     $"The format '{nameof(LondonLifeTextFormat.CommonDarc)}' " +
                     "requires the argument --original-darc");
-                return 1;
+                return;
             }
 
             var region = LondonLifeRegion.Usa;
@@ -152,8 +152,6 @@ namespace SceneGate.Games.ProfessorLayton.Tool.LondonLife
                     node.Stream.WriteTo(output);
                     break;
             }
-
-            return 0;
         }
     }
 }

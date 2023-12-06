@@ -1,30 +1,31 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>File format support for Professor Layton games.</Description>
+    <OutputType>Exe</OutputType>
+    <Description>Tool to export and import assets from Professor Layton games.</Description>
     <IsPackable>true</IsPackable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>laytea</ToolCommandName>
 
-    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
-    <RootNamespace>SceneGate.Games.ProfessorLayton</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
 
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
+
+    <!-- Bug in System.CommandLine -->
+    <NoWarn>NETSDK1187</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Texts/LondonLife/*.yml" />
-    <EmbeddedResource Include="Texts/LondonLife/*.txt" />
-
     <None Include="../../docs/images/favicon-128.png" Pack="true" PackagePath="$(PackageIcon)" Visible="false" />
     <None Include="../../docs/index.md" Pack="true" PackagePath="$(PackageReadmeFile)" Visible="False" />
+
+    <Content Include="LondonLife/*.txt" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Texim" />
-    <PackageReference Include="Yarhl" />
-    <PackageReference Include="Yarhl.Media.Text" />
-    <PackageReference Include="YamlDotNet" />
-
-    <InternalsVisibleTo Include="LayTea.Tests" />
+    <ProjectReference Include="..\SceneGate.Games.ProfessorLayton\SceneGate.Games.ProfessorLayton.csproj" />
+    <PackageReference Include="System.CommandLine" />
   </ItemGroup>
 
 </Project>

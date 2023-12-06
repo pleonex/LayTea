@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,33 +17,31 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+namespace Yarhl.Experimental.TestFramework.FluentAssertions;
+
 using System.IO;
-using SceneGate.Games.ProfessorLayton.Tests.Assertions;
 using Yarhl.FileSystem;
 using Yarhl.IO;
 
-namespace SceneGate.Games.ProfessorLayton.Tests
+public static class FluentAssertionsExtensions
 {
-    public static class YarhlTestExtensions
+    public static StreamAssertions Should(this DataStream binary)
     {
-        public static StreamAssertions Should(this DataStream binary)
-        {
-            return new StreamAssertions(binary);
-        }
+        return new StreamAssertions(binary);
+    }
 
-        public static StreamAssertions Should(this Stream binary)
-        {
-            return new StreamAssertions(binary);
-        }
+    public static StreamAssertions Should(this Stream binary)
+    {
+        return new StreamAssertions(binary);
+    }
 
-        public static BinaryFormatAssertions Should(this BinaryFormat binary)
-        {
-            return new BinaryFormatAssertions(binary);
-        }
+    public static BinaryFormatAssertions Should(this BinaryFormat binary)
+    {
+        return new BinaryFormatAssertions(binary);
+    }
 
-        public static NodeAssertions Should(this Node node)
-        {
-            return new NodeAssertions(node);
-        }
+    public static NodeAssertions Should(this Node node)
+    {
+        return new NodeAssertions(node);
     }
 }

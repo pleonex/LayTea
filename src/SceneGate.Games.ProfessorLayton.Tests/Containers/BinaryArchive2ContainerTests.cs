@@ -17,59 +17,58 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-namespace SceneGate.Games.ProfessorLayton.Tests.Containers
-{
-    using System;
-    using System.Collections;
-    using System.IO;
-    using NUnit.Framework;
-    using SceneGate.Games.ProfessorLayton.Containers;
-    using Yarhl.FileFormat;
-    using Yarhl.FileSystem;
-    using Yarhl.IO;
+namespace SceneGate.Games.ProfessorLayton.Tests.Containers;
 
-    [TestFixtureSource(typeof(BinaryArchive2ContainerTests), nameof(BinaryArchive2ContainerTests.TestsInfo))]
-    public class BinaryArchive2ContainerTests : Binary2ContainerTests
-    {
+using System;
+using System.Collections;
+using NUnit.Framework;
+using SceneGate.Games.ProfessorLayton.Containers;
+using Yarhl.Experimental.TestFramework;
+using Yarhl.FileFormat;
+using Yarhl.FileSystem;
+using Yarhl.IO;
+
+[TestFixtureSource(typeof(BinaryArchive2ContainerTests), nameof(TestsInfo))]
+public class BinaryArchive2ContainerTests : Binary2ContainerTests
+{
         private readonly string yamlPath;
         private readonly string binaryPath;
 
         public BinaryArchive2ContainerTests(string yamlPath, string binaryPath)
-        {
+    {
             this.yamlPath = yamlPath;
             this.binaryPath = binaryPath;
 
             TestDataBase.IgnoreIfFileDoesNotExist(yamlPath);
             TestDataBase.IgnoreIfFileDoesNotExist(binaryPath);
-        }
+    }
 
         public static IEnumerable TestsInfo {
             get => TestData.GetStreamAndInfoCollection("archive.txt");
         }
 
-        [Test]
-        public void NotBinaryChildThrowsException()
-        {
-            using var container = new NodeContainerFormat();
-            container.Root.Add(new Node("child", new NodeContainerFormat()));
+    [Test]
+    public void NotBinaryChildThrowsException()
+    {
+        using var container = new NodeContainerFormat();
+        container.Root.Add(new Node("child", new NodeContainerFormat()));
 
-            var converter = GetToBinaryConverter();
-            Assert.That(() => converter.Convert(container), Throws.InstanceOf<FormatException>());
-        }
+        var converter = GetToBinaryConverter();
+        Assert.That(() => converter.Convert(container), Throws.InstanceOf<FormatException>());
+    }
 
-        protected override BinaryFormat GetBinary()
-        {
+    protected override BinaryFormat GetBinary()
+    {
             var stream = DataStreamFactory.FromFile(binaryPath, FileOpenMode.Read);
-            return new BinaryFormat(stream);
-        }
+        return new BinaryFormat(stream);
+    }
 
-        protected override NodeContainerInfo GetContainerInfo() =>
+    protected override NodeContainerInfo GetContainerInfo() =>
             NodeContainerInfo.FromYaml(yamlPath);
 
-        protected override IConverter<NodeContainerFormat, BinaryFormat> GetToBinaryConverter() =>
-            new Container2BinaryArchive();
+    protected override IConverter<NodeContainerFormat, BinaryFormat> GetToBinaryConverter() =>
+        new Container2BinaryArchive();
 
-        protected override IConverter<BinaryFormat, NodeContainerFormat> GetToContainerConverter() =>
-            new BinaryArchive2Container();
-    }
+    protected override IConverter<BinaryFormat, NodeContainerFormat> GetToContainerConverter() =>
+        new BinaryArchive2Container();
 }
