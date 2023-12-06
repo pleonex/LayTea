@@ -11,6 +11,9 @@
 
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
+
+    <!-- Bug in System.CommandLine -->
+    <NoWarn>NETSDK1187</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
