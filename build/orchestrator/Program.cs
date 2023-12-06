@@ -22,7 +22,7 @@ public sealed class BuildLifetime : FrostingLifetime<BuildContext>
 
         context.DotNetContext.PreviewNuGetFeed = "https://pkgs.dev.azure.com/SceneGate/SceneGate/_packaging/SceneGate-Preview/nuget/v3/index.json";
         context.DotNetContext.ApplicationProjects.Add(new ProjectPublicationInfo(
-            "./src/LayTea.Tool", [ "win-x64", "linux-x64", "osx-x64" ], "net8.0"));
+            "./src/LayTea", [ "win-x64", "linux-x64", "osx-x64" ], "net8.0"));
 
         context.Print();
     }
