@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,83 +17,84 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+namespace SceneGate.Games.ProfessorLayton.Tests.Containers;
+
 using System;
 using System.Collections;
 using FluentAssertions;
 using NUnit.Framework;
 using SceneGate.Games.ProfessorLayton.Containers;
+using Yarhl.Experimental.TestFramework;
+using Yarhl.Experimental.TestFramework.FluentAssertions;
 using Yarhl.IO;
 
-namespace SceneGate.Games.ProfessorLayton.Tests.Containers
+[TestFixture]
+public class DencDecompressionTests
 {
-    [TestFixture]
-    public class DencDecompressionTests
+    private DencDecompression decompression;
+
+    [OneTimeSetUp]
+    public void SetUpFixture()
     {
-        private DencDecompression decompression;
+        decompression = new DencDecompression();
+    }
 
-        [OneTimeSetUp]
-        public void SetUpFixture()
-        {
-            decompression = new DencDecompression();
+    [TestCaseSource(nameof(GetCompressedFiles))]
+    public void DecompressionWithFiles(string inputPath, long offset, long length, string infoPath)
+    {
+        TestDataBase.IgnoreIfFileDoesNotExist(inputPath);
+        TestDataBase.IgnoreIfFileDoesNotExist(infoPath);
+
+        using var input = new BinaryFormat(DataStreamFactory.FromFile(inputPath, FileOpenMode.Read, offset, length));
+        var expected = BinaryInfo.FromYaml(infoPath);
+
+        int initialStreams = DataStream.ActiveStreams;
+        BinaryFormat decompressed = null;
+        try {
+            decompression.Invoking(converter => decompressed = converter.Convert(input))
+                .Should().NotThrow();
+            decompressed.Should().MatchInfo(expected);
+        } finally {
+            decompressed?.Dispose();
         }
 
-        [TestCaseSource(nameof(GetCompressedFiles))]
-        public void DecompressionWithFiles(string inputPath, long offset, long length, string infoPath)
-        {
-            TestDataBase.IgnoreIfFileDoesNotExist(inputPath);
-            TestDataBase.IgnoreIfFileDoesNotExist(infoPath);
+        DataStream.ActiveStreams.Should().Be(initialStreams);
+    }
 
-            using var input = new BinaryFormat(DataStreamFactory.FromFile(inputPath, FileOpenMode.Read, offset, length));
-            var expected = BinaryInfo.FromYaml(infoPath);
+    [Test]
+    public void NullDecompressionThrowsException()
+    {
+        Assert.That(() => decompression.Convert(null), Throws.ArgumentNullException);
+    }
 
-            int initialStreams = DataStream.ActiveStreams;
-            BinaryFormat decompressed = null;
-            try {
-                decompression.Invoking(converter => decompressed = converter.Convert(input))
-                    .Should().NotThrow();
-                decompressed.Should().MatchInfo(expected);
-            } finally {
-                decompressed?.Dispose();
-            }
+    [Test]
+    public void InvalidStampThrows()
+    {
+        using var binary = new BinaryFormat();
+        binary.Stream.Write(new byte[] { 0x41, 0x42, 0x43, 0x30 }, 0, 4);
 
-            DataStream.ActiveStreams.Should().Be(initialStreams);
-        }
+        Assert.That(() => decompression.Convert(binary), Throws.InstanceOf<FormatException>());
+    }
 
-        [Test]
-        public void NullDecompressionThrowsException()
-        {
-            Assert.That(() => decompression.Convert(null), Throws.ArgumentNullException);
-        }
+    [Test]
+    public void InvalidCompressionThrows()
+    {
+        byte[] data = new byte[] {
+            0x44, 0x45, 0x4E, 0x43, // DENC
+            0x01, 0x00, 0x00, 0x00, // decompressed
+            0x41, 0x42, 0x43, 0x44, // algorithm (ABCD)
+            0x01, 0x00, 0x00, 0x00, // compressed
+            0xAA,                   // data
+        };
 
-        [Test]
-        public void InvalidStampThrows()
-        {
-            using var binary = new BinaryFormat();
-            binary.Stream.Write(new byte[] { 0x41, 0x42, 0x43, 0x30 }, 0, 4);
+        using var binary = new BinaryFormat();
+        binary.Stream.Write(data, 0, data.Length);
 
-            Assert.That(() => decompression.Convert(binary), Throws.InstanceOf<FormatException>());
-        }
+        Assert.That(() => decompression.Convert(binary), Throws.InstanceOf<NotImplementedException>());
+    }
 
-        [Test]
-        public void InvalidCompressionThrows()
-        {
-            byte[] data = new byte[] {
-                0x44, 0x45, 0x4E, 0x43, // DENC
-                0x01, 0x00, 0x00, 0x00, // decompressed
-                0x41, 0x42, 0x43, 0x44, // algorithm (ABCD)
-                0x01, 0x00, 0x00, 0x00, // compressed
-                0xAA,                   // data
-            };
-
-            using var binary = new BinaryFormat();
-            binary.Stream.Write(data, 0, data.Length);
-
-            Assert.That(() => decompression.Convert(binary), Throws.InstanceOf<NotImplementedException>());
-        }
-
-        private static IEnumerable GetCompressedFiles()
-        {
-            return TestData.GetSubstreamAndInfoCollection("denc.txt");
-        }
+    private static IEnumerable GetCompressedFiles()
+    {
+        return TestData.GetSubstreamAndInfoCollection("denc.txt");
     }
 }

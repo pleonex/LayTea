@@ -24,6 +24,8 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Graphics
     using System.Linq;
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Graphics;
+    using Yarhl.Experimental.TestFramework;
+    using Yarhl.Experimental.TestFramework.FluentAssertions;
     using SixLabors.ImageSharp.Formats.Bmp;
     using Texim.Compressions.Nitro;
     using Texim.Formats;

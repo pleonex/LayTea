@@ -17,6 +17,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+namespace SceneGate.Games.ProfessorLayton.Tests.Containers;
+
 using System;
 using System.Collections;
 using System.IO;
@@ -24,54 +26,53 @@ using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
 using SceneGate.Games.ProfessorLayton.Containers;
+using Yarhl.Experimental.TestFramework;
+using Yarhl.Experimental.TestFramework.FluentAssertions;
 using Yarhl.FileSystem;
 using Yarhl.IO;
 
-namespace SceneGate.Games.ProfessorLayton.Tests.Containers
+[TestFixture]
+public class NitroLzxDecompressionTests
 {
-    [TestFixture]
-    public class NitroLzxDecompressionTests
+    public static IEnumerable GetFiles()
     {
-        public static IEnumerable GetFiles()
-        {
-            string basePath = Path.Combine(TestDataBase.RootFromOutputPath, "containers");
-            string listPath = Path.Combine(basePath, "lzx.txt");
-            return TestDataBase.ReadTestListFile(listPath)
-                .Select(line => line.Split(','))
-                .Select(data => new TestCaseData(
-                    Path.Combine(basePath, data[0]),
-                    Path.Combine(basePath, data[1]))
-                    .SetArgDisplayNames(data[0], data[1]));
-        }
+        string basePath = Path.Combine(TestDataBase.RootFromOutputPath, "containers");
+        string listPath = Path.Combine(basePath, "lzx.txt");
+        return TestDataBase.ReadTestListFile(listPath)
+            .Select(line => line.Split(','))
+            .Select(data => new TestCaseData(
+                Path.Combine(basePath, data[0]),
+                Path.Combine(basePath, data[1]))
+                .SetArgDisplayNames(data[0], data[1]));
+    }
 
-        [Test]
-        public void Guards()
-        {
-            var converter = new NitroLzxDecompression();
-            converter.Invoking(x => x.Convert((Stream)null)).Should().Throw<ArgumentNullException>();
-            converter.Invoking(x => x.Convert((BinaryFormat)null)).Should().Throw<ArgumentNullException>();
-        }
+    [Test]
+    public void Guards()
+    {
+        var converter = new NitroLzxDecompression();
+        converter.Invoking(x => x.Convert((Stream)null)).Should().Throw<ArgumentNullException>();
+        converter.Invoking(x => x.Convert((BinaryFormat)null)).Should().Throw<ArgumentNullException>();
+    }
 
-        [TestCaseSource(nameof(GetFiles))]
-        public void DeserializeAndCheckImageHash(string infoPath, string binPath)
-        {
-            TestDataBase.IgnoreIfFileDoesNotExist(binPath);
-            TestDataBase.IgnoreIfFileDoesNotExist(infoPath);
+    [TestCaseSource(nameof(GetFiles))]
+    public void DeserializeAndCheckImageHash(string infoPath, string binPath)
+    {
+        TestDataBase.IgnoreIfFileDoesNotExist(binPath);
+        TestDataBase.IgnoreIfFileDoesNotExist(infoPath);
 
-            var info = BinaryInfo.FromYaml(infoPath);
-            NodeFactory.FromFile(binPath, FileOpenMode.Read)
-                .TransformWith<NitroLzxDecompression>()
-                .Stream.Should().MatchInfo(info);
-        }
+        var info = BinaryInfo.FromYaml(infoPath);
+        NodeFactory.FromFile(binPath, FileOpenMode.Read)
+            .TransformWith<NitroLzxDecompression>()
+            .Stream.Should().MatchInfo(info);
+    }
 
-        [Test]
-        public void InvalidStampThrows()
-        {
-            var stream = new DataStream();
-            stream.Write(new byte[] { 0x10, 0x20, 0x00, 0x00 }, 0, 4);
+    [Test]
+    public void InvalidStampThrows()
+    {
+        var stream = new DataStream();
+        stream.Write(new byte[] { 0x10, 0x20, 0x00, 0x00 }, 0, 4);
 
-            var converter = new NitroLzxDecompression();
-            converter.Invoking(x => x.Convert(stream)).Should().Throw<FormatException>();
-        }
+        var converter = new NitroLzxDecompression();
+        converter.Invoking(x => x.Convert(stream)).Should().Throw<FormatException>();
     }
 }

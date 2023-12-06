@@ -23,6 +23,7 @@ namespace SceneGate.Games.ProfessorLayton.Tests.Containers
     using System.IO;
     using NUnit.Framework;
     using SceneGate.Games.ProfessorLayton.Containers;
+    using Yarhl.Experimental.TestFramework;
     using Yarhl.FileFormat;
     using Yarhl.FileSystem;
     using Yarhl.IO;

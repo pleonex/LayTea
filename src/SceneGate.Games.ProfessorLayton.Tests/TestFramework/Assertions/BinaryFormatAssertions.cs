@@ -1,4 +1,4 @@
-// Copyright (c) 2021 SceneGate
+﻿// Copyright (c) 2021 SceneGate
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,34 +17,33 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-using FluentAssertions;
-using FluentAssertions.Primitives;
+namespace Yarhl.Experimental.TestFramework.FluentAssertions;
+
+using global::FluentAssertions;
+using global::FluentAssertions.Primitives;
 using Yarhl.IO;
 
-namespace SceneGate.Games.ProfessorLayton.Tests.Assertions
+public class BinaryFormatAssertions :
+    ReferenceTypeAssertions<BinaryFormat, BinaryFormatAssertions>
 {
-    public class BinaryFormatAssertions :
-        ReferenceTypeAssertions<BinaryFormat, BinaryFormatAssertions>
+    public BinaryFormatAssertions(BinaryFormat instance)
+        : base(instance)
     {
-        public BinaryFormatAssertions(BinaryFormat instance)
-            : base(instance)
-        {
-        }
+    }
 
-        protected override string Identifier => "binary";
+    protected override string Identifier => "binary";
 
-        [CustomAssertion]
-        public AndConstraint<BinaryFormatAssertions> MatchInfo(BinaryInfo info)
-        {
-            Subject.Stream.Should().MatchInfo(info);
-            return new AndConstraint<BinaryFormatAssertions>(this);
-        }
+    [CustomAssertion]
+    public AndConstraint<BinaryFormatAssertions> MatchInfo(BinaryInfo info)
+    {
+        Subject.Stream.Should().MatchInfo(info);
+        return new AndConstraint<BinaryFormatAssertions>(this);
+    }
 
-        [CustomAssertion]
-        public AndConstraint<BinaryFormatAssertions> HaveSha256(string hash)
-        {
-            Subject.Stream.Should().HaveSha256(hash);
-            return new AndConstraint<BinaryFormatAssertions>(this);
-        }
+    [CustomAssertion]
+    public AndConstraint<BinaryFormatAssertions> HaveSha256(string hash)
+    {
+        Subject.Stream.Should().HaveSha256(hash);
+        return new AndConstraint<BinaryFormatAssertions>(this);
     }
 }
